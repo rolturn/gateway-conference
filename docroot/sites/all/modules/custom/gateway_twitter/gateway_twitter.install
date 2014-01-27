@@ -1,0 +1,53 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * jQuery Countdown install file.
+ */
+ 
+ 
+/**
+ * Implementation of hook_install().
+ *
+ */
+function gateway_twitter_install() {
+  
+  variable_set('gateway_twitter_block_title', 'Latest Tweet');
+  variable_set('gateway_twitter_search_string', 'from:gatewaypeople');
+  variable_set('gateway_twitter_interval', '30000');
+  variable_set('gateway_twitter_title', 'Latest Tweet');
+  variable_set('gateway_twitter_caption', 'GatewayPeople');
+  variable_set('gateway_twitter_width', 'auto');
+  variable_set('gateway_twitter_height', '300');
+  variable_set('gateway_twitter_shell_background', '#8ec1da');
+  variable_set('gateway_twitter_shell_color', '#ffffff');
+  variable_set('gateway_twitter_tweets_background', '#ffffff');
+  variable_set('gateway_twitter_tweets_color', '#444444');
+  variable_set('gateway_twitter_tweets_links', '#1985b5');
+  
+  drupal_set_message(t('Gateway Twitter has been installed successfully. <a href="!link">Click here</a> for configurations!', array(
+    '!link' => url('admin/config/gateway/gateway-twitter')
+  )));
+}// end function gateway_twitter_install;
+
+/**
+ * Implementation of hook_uninstall().
+ *
+ */
+function gateway_twitter_uninstall() {
+  
+  variable_del('gateway_twitter_block_title');
+  variable_del('gateway_twitter_search_string');
+  variable_del('gateway_twitter_interval');
+  variable_del('gateway_twitter_title');
+  variable_del('gateway_twitter_caption');
+  variable_del('gateway_twitter_width');
+  variable_del('gateway_twitter_height');
+  variable_del('gateway_twitter_shell_background');
+  variable_del('gateway_twitter_shell_color');
+  variable_del('gateway_twitter_tweets_background');
+  variable_del('gateway_twitter_tweets_color');
+  variable_del('gateway_twitter_tweets_links');
+  
+}// end function gateway_twitter_uninstall;

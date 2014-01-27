@@ -1,0 +1,101 @@
+body {
+  background: #D7DCDE;
+  background-image: url(images/body_bg.jpg);
+  font-family: "source-sans-pro", "Trebuchet MS", Tahoma, Verdana, sans-serif; }
+
+a {
+  color: #666;
+  text-decoration: none; }
+
+#wrapper {
+  width: 900px;
+  margin: 50px auto 0; }
+
+.block {
+  background-color: rgba(255, 255, 255, 0.3);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4DFFFFFF,endColorstr=#4DFFFFFF);
+  -moz-border-radius: 15px 15px 15px 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  border-radius: 15px 15px 15px 15px;
+  padding: 25px;
+  margin-top: 15px; }
+
+h1, h2, h3, h4, h5 {
+  font-weight: 200;
+  margin: 0;
+  padding: 0; }
+
+.logo {
+  height: 85px;
+  width: 241px;
+  background-image: url(images/gateway-logo.png);
+  background-repeat: no-repeat;
+  text-indent: -9999px; }
+
+p {
+  margin: 0;
+  padding: 10px 0; }
+  p.subtle {
+    color: #999; }
+
+#playerContent {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding: 28.1% 0; }
+  #playerContent object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+ul.social {
+  -webkit-box-sizing: border-box;
+  /* content-box */
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+  margin: 15px 0;
+  padding: 0; }
+  ul.social li {
+    margin: 0;
+    padding: 0;
+    background-image: url(images/social-sprite.png);
+    background-repeat: no-repeat;
+    margin-right: 5px;
+    list-style-type: none;
+    display: inline-block; }
+    ul.social li a {
+      text-indent: -999999px;
+      height: 32px;
+      width: 32px;
+      display: inline-block; }
+    ul.social li.email {
+      background-position: -1px 0; }
+      ul.social li.email:hover {
+        background-position: -1px -32px; }
+    ul.social li.facebook {
+      background-position: -33px 0; }
+      ul.social li.facebook:hover {
+        background-position: -33px -32px; }
+    ul.social li.twitter {
+      background-position: -65px 0; }
+      ul.social li.twitter:hover {
+        background-position: -65px -32px; }
+    ul.social li.gateway-prayer {
+      background-position: -97px 0; }
+      ul.social li.gateway-prayer:hover {
+        background-position: -97px -32px; }
+    ul.social li.devotional {
+      background-position: -129px 0; }
+      ul.social li.devotional:hover {
+        background-position: -129px -32px; }
+    ul.social li.last {
+      margin-right: 0px; }
+
+.admin{color: #D3D3D3;}
+.admin a {color:#C0C0C0;}
+ul.link_list li {}
+ul.link_list a {}

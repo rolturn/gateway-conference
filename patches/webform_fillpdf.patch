@@ -1,0 +1,24 @@
+diff --git a/docroot/sites/all/modules/contrib/webform/templates/webform-submission-page.tpl.php b/docroot/sites/all/modules/contrib/webform/templates/webform-submission-page.tpl.php
+index bd0407d..db5f224 100644
+--- a/docroot/sites/all/modules/contrib/webform/templates/webform-submission-page.tpl.php
++++ b/docroot/sites/all/modules/contrib/webform/templates/webform-submission-page.tpl.php
+@@ -15,6 +15,19 @@
+  */
+ ?>
+ 
++<?php
++//echo '<pre>';
++//print_r($submission);
++if (module_exists('fillpdf')) {
++	// Depending on wether or not the graduate app was filled out
++	// we need to load a different pdf for filling.
++	$form_id = 236; // Should match the nid of the undergrad app
++	if ($submission->data[235]['value'][0] == 'graduate') {
++		$form_id = 232; // Should match the nid of the grad app
++	}
++	echo l("Download Filled PDF", fillpdf_pdf_link($form_id, null, $webform = array('nid'=>184,'sid'=>$submission->sid)));
++}
++?>
+ <?php if ($mode == 'display' || $mode == 'form'): ?>
+   <div class="clearfix">
+     <?php print $submission_actions; ?>

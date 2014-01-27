@@ -1,0 +1,54 @@
+
+
+// ! Schedule Layout
+
+.view-id-schedule {
+	.view-group {
+		margin: 2em 0 0 0;
+		a .more {
+			color: lighten($c-secondary,10%);
+			font-weight: 600;
+			&:hover {
+				color: lighten($c-secondary,40%);
+			}
+		}
+	}
+	.views-row-odd,
+	.views-row-even {
+		padding: .5em;
+		@include trans-bg($c-secondary,.05);
+		.session-time,
+		.session-title {
+			font-weight: 300;
+		}
+		.session-time {
+			color: lighten($c-secondary,10%);
+			@include box-sizing();
+ 			@include break-contain(v-tablet-tablet) {
+	 			@include col(1.5,5.5,2);
+ 			}
+		}
+		.session-title {
+			color: lighten($c-primary,10%);
+			@include box-sizing();
+ 			@include clearfix(after);
+ 			@include break-contain(v-tablet-tablet) {
+	 			@include col-last(4,5.5,2);
+ 			}
+		}
+		.session-additional {
+			font-style: italic;
+			color: $c-secondary;
+ 			@include break-contain(v-tablet-tablet) {
+	 			@include col-last(4,5.5,2);
+ 			}
+		}
+		
+		.schedule-event .more {
+			@include clearfix(before);
+		}
+	}
+	.views-row-even {
+		@include trans-bg($c-secondary,.2);
+	}
+}

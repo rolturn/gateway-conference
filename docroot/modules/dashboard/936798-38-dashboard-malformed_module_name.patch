@@ -1,0 +1,21 @@
+diff --git a/modules/dashboard/dashboard.module b/modules/dashboard/dashboard.module
+index 4cf654f..7d6d8a4 100644
+--- a/modules/dashboard/dashboard.module
++++ b/modules/dashboard/dashboard.module
+@@ -550,7 +550,16 @@ function dashboard_update() {
+       if ($region_name == 'disabled_blocks') {
+         $region_name = 'dashboard_inactive';
+       }
++      // Get a list of enabled modules with values that matches the block_string from the block id.
++      $module_list = module_list();
++      foreach($module_list as $module) {
++        $module_map[$module] = str_replace('_', '-', $module);
++      }
+       foreach ($blocks as $weight => $block_string) {
++        // Replaces any malformed module name containing more than one word
++        foreach($module_map as $module_name => $module) {
++          $block_string = str_replace($module, $module_name, $block_string);
++        }
+         // Parse the query string to determine the block's module and delta.
+         preg_match('/block-([^-]+)-(.+)/', $block_string, $matches);
+         $block = new stdClass();

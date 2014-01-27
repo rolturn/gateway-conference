@@ -1,0 +1,357 @@
+@charset "UTF-8";
+
+/* CSS Document */
+
+a {
+	color: $grey;
+	text-decoration: none;
+	&:visited {
+		color: $grey;
+		text-decoration: none;
+	}
+	&:hover {
+		color: lighten($light-grey, 20%);
+	}
+}
+
+p a {
+	display: inline-block;
+	border-bottom: 1px dotted #666;
+	line-height: 1em;
+}
+
+#skip-link {
+	display: none;
+}
+
+/* Main-Menu (named this because of Drupal 7)
+----------------------------------------------------------------------------------------------------*/
+
+/* Override style on Nice Menus
+----------------------------------------------------------------------------------------------------*/
+
+/*Navigation
+------------------------------------------------------------------------*/
+
+
+#header-top {
+	p a {
+		border: none;
+	}
+	a {
+		&.mobile-register, &.mobile-menu-btn {
+			display: none;
+		}
+	}
+}
+
+.site-title {
+	@include transitions();
+	a {
+		display: block;
+		margin: 30px 0 0 0;
+		width: 100%;
+		height: 0;
+		padding: 15% 0;
+		background-size: 100%;
+		background-position: left center;
+		@include transitions();
+	}
+	@include col(3,10,1);
+	@include break(tablet) {
+		@include col(3,10,0);
+	}
+	@include break(v-tablet) {
+		@include col(4,10,0);
+		float: none;
+		margin: 0 auto;
+		a {
+			background-position: center center;
+		}
+	}
+	@include break(mobile) {
+		float: none;
+		margin: 0 auto;
+		@include col(8,10,5);
+	}	
+}
+
+
+.navigation {
+	margin: 35px 0 0 0;
+	@include col-last(7,10,1);
+	@include transitions();
+	@include break(tablet) {
+		@include col-last(7,10,1);
+	}
+	@include break(v-tablet) {
+		@include col(1,1,0);
+		margin: 0;
+	}
+	@include break(mobile) {
+		display: none;
+	}
+}
+
+#branding-full-bg.stuck {
+	padding: 0 0 20px 0;
+	.site-title {
+		@include col(2,10,1);
+		a {
+			width: 40%;
+			margin: 0;
+			background-size: 250%;
+		}
+	}
+	.navigation {
+		margin: 15px 0 0 0;
+		@include col-last(8,10,1);
+		nav#sub-nav {
+			display: none;
+		}
+	}
+}
+
+nav#main-nav,
+nav#sub-nav {
+	ul {
+		margin: 0 0 .25em 0;
+		width: 100%;
+		float: right;
+		text-align: right;
+		@include break(v-tablet) {
+			text-align: center;
+		}
+	}
+	li {
+		display: inline;
+		text-align: right;
+		&.active-trail {
+			a {
+				cursor: default;
+				&:hover {
+					color: $dark-grey;
+					//@include gradient-trans(darken($c-primary,10%),0,darken($c-primary,30%),.5);
+				}
+			}
+		}
+		a {
+			display: inline-block;
+			font-family: $f-secondary;
+			color: lighten($c-secondary, 40%);
+			font-size: 1.2em;
+			//font-weight: 400;
+			letter-spacing: 0.07em;
+			text-transform: uppercase;
+			padding: 5px 15px;
+			@include box-sizing();
+			@include break(tablet) {
+				font-size: 1em;
+			}
+			&#register-now {
+				color: lighten($c-primary, 50%);
+				@include trans-bg($c-primary,.8);
+				@include border-radius(5px);
+				&:hover, &:active {
+					color: darken($c-primary,50%);
+				}
+			}
+			&:hover, &:active {
+				color: #fff;
+				@include trans-bg($c-secondary,.8);
+				@include border-radius(5px);
+			}
+		}
+	}
+}
+
+nav#sub-nav li a {
+	font-family: $f-secondary;
+	color: $grey;
+	font-size: 90%;
+	font-weight: 200;
+}
+
+/*
+nav#main-nav {
+	@include col-last(7,10,1);
+	@include break(tablet) {
+		@include col(1,1,0);
+	}
+	@include break(mobile) {
+		display: none;
+	}
+	ul {
+		margin: 0;
+		@include break(tablet) {
+			float: none;
+			margin: -70px 0 0 0;
+		}
+	}
+	li {
+		display: inline;
+		float: left;
+		width: 19.7%;
+		margin-left: .3%;
+		text-align: center;
+		&.first {
+			width: 20%;
+			margin-left: 0;
+		}
+		&.active-trail {
+			a {
+				cursor: default;
+				&:hover {
+					color: $c-primary;
+					@include gradient-trans(darken($c-primary,10%),0,darken($c-primary,30%),.5);
+				}
+			}
+		}
+		a {
+			display: inline-block;
+			font-family: $f-secondary;
+			color: $c-secondary;
+			font-size: 1.3em;
+			font-weight: 200;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			//padding: 60px 10px 12px 10px;
+			//border-bottom: 2px solid $black;
+			@include box-sizing();
+			//@include gradient-trans(darken($c-primary,10%),0,darken($c-primary,30%),.5);
+			margin-right: 4px;
+			//text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+			width: 100%;
+			@include break(tablet) {
+				padding: 50px 10px 10px 10px;
+			}
+			@include break(v-tablet) {
+				padding: 50px 5px 10px 5px;
+				font-size: 1.2em;
+				font-weight: 300;
+			}
+			&:hover, &:active {
+				//color: #d7d7d7;
+				//@include gradient-trans(darken($light-grey,20%),0,darken($light-grey,60%),.5);
+			}
+		}
+	}
+}
+*/
+
+
+a img {
+border-bottom: none;
+}
+
+// TABS ===============================================================
+
+.inline, .tabs, .primary {
+	width: 100%;
+}
+
+.inline li, .tabs li, .primary li {
+	display: inline-block;
+	margin: 10px 2px 10px 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tabs li, .primary li {
+	margin: 0 2px 10px 0;
+}
+
+.inline a, .tabs a, .primary a {
+	background: #666;
+	border-radius: 2px;
+	color: #000;
+	display: inline-block;
+	font-size: .8em;
+	font-weight: bold;
+	letter-spacing: .05em;
+	padding: 4px 8px 3px;
+	text-decoration: none;
+	text-transform: uppercase;
+	&:hover {
+		background: #a9020a;
+		color: #fff;
+	}
+}
+
+
+.tabs li.active a, .primary li.active a {
+	display: none;
+	background: #eee;
+	color: #999;
+	cursor: auto;
+	&:hover {
+		color: #999;
+	}
+}
+
+// Aside Menus =======================================================
+
+aside nav {
+	&.item-list ul li {
+		list-style: none;
+		display: inline;
+	}
+	&.menu ul li {
+		list-style: none;
+		&.expanded {
+			padding-bottom: 5px;
+			a {
+				color: rgb(250, 250, 250);
+			}
+			nav.menu ul li {
+				background: rgb(230, 230, 230);
+				border-radius: 2px 0 0 2px;
+				a {
+					color: rgb(110, 110, 110);
+				}
+			}
+		}
+	}
+
+	ul li a {
+		border-bottom: none;
+		line-height: .8em;
+		padding: 10px 0 10px;
+	}
+}
+
+// More Buttons =======================================================
+
+.more-link {
+	text-align: left;
+}
+
+.more a, a.more, .more-link a, a.more-link, .file {
+	background-color: #222;
+	border-radius: 3px;
+	color: #666;
+	padding: 5px 8px;
+	display: table;
+	margin-top: 10px;
+	&:hover {
+		background-color: #555;
+		color: #fff;
+	}
+}
+
+.more-link a, a.more-link {
+	border-radius: 3px;
+	text-transform: uppercase;
+	font-size: .7em;
+}
+
+aside .more-link a,
+aside .more a,
+aside a.more,
+aside .more-link a,
+aside a.more-link,
+aside .file {
+	display: block;
+	text-align: center;
+}
+

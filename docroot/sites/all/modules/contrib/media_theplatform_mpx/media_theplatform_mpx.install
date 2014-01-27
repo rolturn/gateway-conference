@@ -1,0 +1,395 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for media_theplatform_mpx.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function media_theplatform_mpx_schema() {
+  $schema['mpx_player'] = array(
+    'description' => 'Stores imported mpxPlayers.',
+    'fields' => array(
+      'player_id' => array(
+        'description' => 'The primary identifier for a mpxPlayer.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'Title in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'description' => array(
+        'description' => 'Description in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => '',
+      ),
+      'id' => array(
+        'description' => 'Id in thePlatform',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'pid' => array(
+        'description' => 'PID in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'guid' => array(
+        'description' => 'Title of the mpxPlayer',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'fid' => array(
+        'description' => 'Fid in file_managed',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'account' => array(
+        'description' => 'Account in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'head_html' => array(
+        'type' => 'blob',
+        'description' => 'HTML in the <head> tag',
+      ),
+      'body_html' => array(
+        'type' => 'blob',
+        'description' => 'HTML in the <head> tag',
+      ),
+      'height' => array(
+        'description' => 'height of the player',
+        'type' => 'int',
+      ),
+      'width' => array(
+        'description' => 'width of the player',
+        'type' => 'int',
+      ),
+      'player_data' => array(
+        'type' => 'blob',
+        'description' => 'Serialized array of player data',
+      ),
+      'created' => array(
+        'description' => 'timestamp of created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated' => array(
+        'description' => 'timestamp of import',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'status' => array(
+        'description' => 'Player status',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ),
+    'primary key' => array('player_id'),
+  );
+  $schema['mpx_video'] = array(
+    'description' => 'Stores imported mpx Videos.',
+    'fields' => array(
+      'video_id' => array(
+        'description' => 'The primary identifier for a Video.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'Title in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'description' => array(
+        'description' => 'Description in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Id in thePlatform',
+      ),
+      'guid' => array(
+        'description' => 'Guid in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'fid' => array(
+        'description' => 'Fid in file_managed',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'player_id' => array(
+        'description' => 'player_id field in mpx_video.',
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+      'release_id' => array(
+        'description' => 'Release ID (used for JS and iFrame embeds)',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'account' => array(
+        'description' => 'Account in thePlatform',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'thumbnail_url' => array(
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+        'description' => 'thumbnail URL',
+      ),
+      'created' => array(
+        'description' => 'timestamp of created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated' => array(
+        'description' => 'timestamp of import',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'status' => array(
+        'description' => 'Video status',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ),
+    'primary key' => array('video_id'),
+  );
+  $schema['mpx_log'] = array(
+    'description' => 'Stores mpx log data.',
+    'fields' => array(
+      'log_id' => array(
+        'description' => 'Counter ID field',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'uid' => array(
+        'description' => 'User uid',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'type' => array(
+        'description' => 'Log type',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'type_id' => array(
+        'description' => 'Type id',
+        'type' => 'varchar',
+        'length' => 255,
+        'default' => NULL,
+      ),
+      'action' => array(
+        'description' => 'Action desc',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'details' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'Action details',
+      ),
+      'timestamp' => array(
+        'description' => 'timestamp of created',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('log_id'),
+  );
+
+  $schema['mpx_categories'] = array(
+    'description' => 'Stores mpx category IDs for synching with Drupal terms',
+    'fields' => array(
+      'mpx_id' => array(
+        'description' => 'The term ID in mpx',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'mpx_parent_id' => array(
+        'description' => 'The parent term ID in mpx',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'tid' => array(
+        'description' => 'The Drupal term ID',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'vid' => array(
+        'description' => 'The Drupal vocabulary ID',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'parent' => array(
+        'description' => 'The Drupal parent ID',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'title' => array(
+        'description' => 'The category title',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'full_title' => array(
+        'description' => 'The full MPX title',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'updated' => array(
+        'description' => 'The update time',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'status' => array(
+        'description' => 'The item status',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('mpx_id'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function media_theplatform_mpx_install() {
+  return array();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function media_theplatform_mpx_uninstall() {
+  drupal_load('module', 'media_theplatform_mpx');
+  // Expire signIn token.
+  media_theplatform_mpx_expire_token();
+  foreach (media_theplatform_mpx_variable_default() as $variable => $value) {
+    media_theplatform_mpx_variable_del($variable);
+  }
+  return array(array('success' => TRUE, 'query' => "Deleted all variables in the Media: mpx namespace."));
+}
+
+/**
+ * Adds support for separate mimetypes for players and videos
+ */
+function media_theplatform_mpx_update_7200() {
+  db_query("UPDATE file_managed m SET m.filemime = 'player/mpx' WHERE m.uri LIKE 'mpx://p/%'");
+}
+
+/**
+ * Add player_id field to mpx_video table.
+ */
+function media_theplatform_mpx_update_7201() {
+  $default_player_fid = media_theplatform_mpx_variable_get('default_player_fid', '');
+  $default_player_id = db_query('SELECT player_id FROM {mpx_player} WHERE fid = :fid',
+    array(':fid' => $default_player_fid))->fetchField();
+
+  $player_id_field = array(
+    'description' => 'player_id field in mpx_video.',
+    'type' => 'int',
+    'not null' => FALSE,
+  );
+
+  db_add_field('mpx_video', 'player_id', $player_id_field);
+}
+
+/**
+ * Add height and width fields to player table
+ */
+function media_theplatform_mpx_update_7202() {
+  $height_field = array(
+    'description' => 'height of the player',
+    'type' => 'int',
+  );
+  $width_field = array(
+    'description' => 'width of the player',
+    'type' => 'int',
+  );
+  db_add_field('mpx_player', 'height', $height_field);
+  db_add_field('mpx_player', 'width', $width_field);
+
+  // Update existing players
+  media_theplatform_mpx_import_all_players();
+}
+
+/**
+ * Add release_id field to video table
+ */
+function media_theplatform_mpx_update_7203() {
+  $release_id_field = array(
+    'description' => 'Release ID (used for JS embed)',
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => '',
+  );
+  db_add_field('mpx_video', 'release_id', $release_id_field);
+
+  // Set the last notification to 1, this forces an update on all videos
+  media_theplatform_mpx_variable_set('last_notification', 1);
+  media_theplatform_mpx_import_all_videos('update');
+}

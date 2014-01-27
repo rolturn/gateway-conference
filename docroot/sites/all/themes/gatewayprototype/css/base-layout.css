@@ -1,0 +1,534 @@
+
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+hr {
+  margin: 1.5em;
+}
+
+
+/* PERCENTAGE COLUMNS
+----------------------------------------------------------------------------------------------------*/
+
+.desk-2,
+.desk-3,
+.desk-4,
+.desk-5,
+.desk-6,
+.desk-7,
+.desk-8 {
+  margin-right: 5%;
+  display: inline;
+  float: left;
+  list-style-type: none;
+}
+
+.desk-5,
+.desk-6,
+.desk-7,
+.desk-8 {
+  margin-right: 2.5%;
+}
+
+.desk-2 {
+  width: 47.5%;
+}
+
+.desk-3 {
+  width: 30%;
+}
+
+.desk-4 {
+  width: 21.25%;
+}
+
+.desk-5 {
+  width: 18%;
+}
+
+.desk-6 {
+  width: 14.583;
+}
+
+.desk-7 {
+  width: 12.1428%;
+}
+
+.desk-8 {
+  width: 10.3125%;
+}
+
+.desk-2:nth-child(2n+0),
+.desk-3:nth-child(3n+0),
+.desk-4:nth-child(4n+0),
+.desk-5:nth-child(5n+0),
+.desk-6:nth-child(6n+0),
+.desk-7:nth-child(7n+0),
+.desk-8:nth-child(8n+0) {
+  margin-right: 0;
+  float: right;
+}
+
+.desk-2:nth-child(2n+1),
+.desk-3:nth-child(3n+1),
+.desk-4:nth-child(4n+1),
+.desk-5:nth-child(5n+1),
+.desk-6:nth-child(6n+1),
+.desk-7:nth-child(7n+1),
+.desk-8:nth-child(8n+1) {
+  clear: left;
+}
+
+@media screen and (max-width: 1200px) {
+  
+.desk-2:nth-child(2n+0),
+.desk-3:nth-child(3n+0),
+.desk-4:nth-child(4n+0),
+.desk-5:nth-child(5n+0),
+.desk-6:nth-child(6n+0),
+.desk-7:nth-child(7n+0),
+.desk-8:nth-child(8n+0) {
+  margin-right: 5%;
+  float: left;
+}
+
+.desk-5:nth-child(5n+0),
+.desk-6:nth-child(6n+0),
+.desk-7:nth-child(7n+0),
+.desk-8:nth-child(8n+0) {
+  margin-right: 2.5%;
+}
+
+.desk-2:nth-child(2n+1),
+.desk-3:nth-child(3n+1),
+.desk-4:nth-child(4n+1),
+.desk-5:nth-child(5n+1),
+.desk-6:nth-child(6n+1),
+.desk-7:nth-child(7n+1),
+.desk-8:nth-child(8n+1) {
+  clear: none;
+}
+
+.horz-tabt-1 {
+  float: none;
+  width: 100%;
+}
+
+.horz-tabt-2 {
+  width: 47.5%;
+}
+
+.horz-tabt-3 {
+  width: 30%;
+}
+
+.horz-tabt-4 {
+  width: 21.25%;
+}
+
+.horz-tabt-5 {
+  width: 18%;
+}
+
+.horz-tabt-6 {
+  width: 14.583;
+}
+
+.horz-tabt-7 {
+  width: 12.1428%;
+}
+
+.horz-tabt-8 {
+  width: 10.3125%;
+}
+
+
+.horz-tabt-2:nth-child(2n+0),
+.horz-tabt-3:nth-child(3n+0),
+.horz-tabt-4:nth-child(4n+0),
+.horz-tabt-5:nth-child(5n+0),
+.horz-tabt-6:nth-child(6n+0),
+.horz-tabt-7:nth-child(7n+0),
+.horz-tabt-8:nth-child(8n+0) {
+  margin-right: 0;
+  float: right;
+}
+
+.horz-tabt-2:nth-child(2n+1),
+.horz-tabt-3:nth-child(3n+1),
+.horz-tabt-4:nth-child(4n+1),
+.horz-tabt-5:nth-child(5n+1),
+.horz-tabt-6:nth-child(6n+1),
+.horz-tabt-7:nth-child(7n+1),
+.horz-tabt-8:nth-child(8n+1) {
+  clear: left;
+}
+
+}
+
+
+@media screen and (max-width: 1020px) {
+  
+  
+.horz-tabt-2:nth-child(2n+0),
+.horz-tabt-3:nth-child(3n+0),
+.horz-tabt-4:nth-child(4n+0),
+.horz-tabt-5:nth-child(5n+0),
+.horz-tabt-6:nth-child(6n+0),
+.horz-tabt-7:nth-child(7n+0),
+.horz-tabt-8:nth-child(8n+0) {
+  margin-right: 5%;
+  float: left;
+}
+
+.horz-tabt-5:nth-child(5n+0),
+.horz-tabt-6:nth-child(6n+0),
+.horz-tabt-7:nth-child(7n+0),
+.horz-tabt-8:nth-child(8n+0) {
+  margin-right: 2.5%;
+}
+
+.horz-tabt-2:nth-child(2n+1),
+.horz-tabt-3:nth-child(3n+1),
+.horz-tabt-4:nth-child(4n+1),
+.horz-tabt-5:nth-child(5n+1),
+.horz-tabt-6:nth-child(6n+1),
+.horz-tabt-7:nth-child(7n+1),
+.horz-tabt-8:nth-child(8n+1) {
+  clear: none;
+}
+
+.vert-tabt-1 {
+  float: none;
+  width: 100%;
+}
+
+.vert-tabt-2 {
+  width: 47.5%;
+}
+
+.vert-tabt-3 {
+  width: 30%;
+}
+
+.vert-tabt-4 {
+  width: 21.25%;
+}
+
+.vert-tabt-5 {
+  width: 18%;
+}
+
+.vert-tabt-6 {
+  width: 14.583;
+}
+
+.vert-tabt-7 {
+  width: 12.1428%;
+}
+
+.vert-tabt-8 {
+  width: 10.3125%;
+}
+
+.vert-tabt-2:nth-child(2n+0),
+.vert-tabt-3:nth-child(3n+0),
+.vert-tabt-4:nth-child(4n+0),
+.vert-tabt-5:nth-child(5n+0),
+.vert-tabt-6:nth-child(6n+0),
+.vert-tabt-7:nth-child(7n+0),
+.vert-tabt-8:nth-child(8n+0) {
+  margin: 0;
+  float: right;
+}
+
+.vert-tabt-5:nth-child(5n+0),
+.vert-tabt-6:nth-child(6n+0),
+.vert-tabt-7:nth-child(7n+0),
+.vert-tabt-8:nth-child(8n+0) {
+  margin-right: 2.5%;
+}
+
+.vert-tabt-2:nth-child(2n+1),
+.vert-tabt-3:nth-child(3n+1),
+.vert-tabt-4:nth-child(4n+1),
+.vert-tabt-5:nth-child(5n+1),
+.vert-tabt-6:nth-child(6n+1),
+.vert-tabt-7:nth-child(7n+1),
+.vert-tabt-8:nth-child(8n+1) {
+  clear: left;
+}
+
+}
+
+@media screen and (max-width: 750px) {
+  
+  
+.vert-tabt-2:nth-child(2n+0),
+.vert-tabt-3:nth-child(3n+0),
+.vert-tabt-4:nth-child(4n+0),
+.vert-tabt-5:nth-child(5n+0),
+.vert-tabt-6:nth-child(6n+0),
+.vert-tabt-7:nth-child(7n+0),
+.vert-tabt-8:nth-child(8n+0) {
+  margin-right: 5%;
+  float: left;
+}
+
+.vert-tabt-5:nth-child(5n+0),
+.vert-tabt-6:nth-child(6n+0),
+.vert-tabt-7:nth-child(7n+0),
+.vert-tabt-8:nth-child(8n+0) {
+  margin-right: 2.5%;
+}
+
+.vert-tabt-2:nth-child(2n+1),
+.vert-tabt-3:nth-child(3n+1),
+.vert-tabt-4:nth-child(4n+1),
+.vert-tabt-5:nth-child(5n+1),
+.vert-tabt-6:nth-child(6n+1),
+.vert-tabt-7:nth-child(7n+1),
+.vert-tabt-8:nth-child(8n+1) {
+  clear: none;
+}
+
+.mobile-1 {
+  float: none;
+  width: 100%;
+}
+
+.mobile-2 {
+  width: 47.5%;
+}
+
+.mobile-3 {
+  width: 30%;
+}
+
+.mobile-4 {
+  width: 21.25%;
+}
+
+.mobile-5 {
+  width: 18%;
+}
+
+.mobile-6 {
+  width: 14.583;
+}
+
+.mobile-7 {
+  width: 12.1428%;
+}
+
+.mobile-8 {
+  width: 10.3125%;
+}
+
+.mobile-2:nth-child(2n+0),
+.mobile-3:nth-child(3n+0),
+.mobile-4:nth-child(4n+0),
+.mobile-5:nth-child(5n+0),
+.mobile-6:nth-child(6n+0),
+.mobile-7:nth-child(7n+0),
+.mobile-8:nth-child(8n+0) {
+  margin: 0;
+  float: right;
+}
+
+.mobile-2:nth-child(2n+1),
+.mobile-3:nth-child(3n+1),
+.mobile-4:nth-child(4n+1),
+.mobile-5:nth-child(5n+1),
+.mobile-6:nth-child(6n+1),
+.mobile-7:nth-child(7n+1),
+.mobile-8:nth-child(8n+1)  {
+  clear: left;
+}
+
+}
+
+
+/* `Code
+----------------------------------------------------------------------------------------------------*/
+
+pre,
+.notice {
+  background: #fff;
+  border: 1px solid;
+  border-color: #eed #ccb #bba #ddc;
+  overflow: auto;
+  padding: 10px 0 10px 10px;
+}
+
+* html pre {
+  overflow: hidden;
+  width: 100%;
+}
+
+code {
+  background: #ff9;
+  padding: 0 2px;
+}
+
+
+
+/**
+ * Tables =============================================================
+ */
+table {
+  margin: 0px 0px 10px;
+  width: 100%;
+}
+
+table caption {
+  font-style: italic;
+  text-transform: capitalize;
+}
+  
+.fieldset table {
+	margin: 0px;
+}
+
+table td,
+table th {
+  vertical-align: top;
+  border-width: 0px 0px;
+  padding: .5em .75em;
+}
+
+table th {
+	padding: .5em .75em .5em 0;
+}
+
+table thead {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+table tbody tr:nth-child(2n-1) {
+  background: rgba(255,255,255,.35);
+}
+
+table tbody tr:nth-child(2n) {
+  background: rgba(0,0,0,.025);
+}
+
+table tfoot tr {
+  color: #aaa;
+  text-transform: uppercase;
+  font-size: .7em;
+  font-weight: normal;
+}
+
+
+
+@media all and (max-width: 750px) {
+
+#admin-menu-wrapper {
+  display: none;
+}
+
+}
+
+
+
+/* Header
+----------------------------------------------------------------------------------------------------*/
+#header-top {
+  display: block;
+}
+
+#header-top p {
+  margin: 0;
+  padding: 0;
+  line-height: 1em;
+}
+
+header #identity {
+	border-bottom: none;
+	text-transform: uppercase;
+}
+
+
+
+/* Preface
+----------------------------------------------------------------------------------------------------*/
+
+#preface img {
+  /* forces images in preface to span full width of area */
+	width: 100%;
+  height: auto;
+}
+
+
+
+/* content-main
+----------------------------------------------------------------------------------------------------*/
+
+.messages {
+  border-radius: 3px;
+}
+
+.help, .tab {
+  margin: 12.5px;
+}
+
+
+
+/*Content
+------------------------------------------------------------------------*/
+.content-aside {
+  float: left;
+  width: 25%;
+  margin: 0 5% 0 0;
+}
+
+.content-main {
+  width: 65%;
+  margin: 0 5% 0 0;
+  float: right;
+}
+
+
+
+/*Aside
+------------------------------------------------------------------------*/
+
+/*Sidebar First
+------------------------------------------------------------------------*/
+
+/*Sidebar Last
+------------------------------------------------------------------------*/
+
+aside img {
+  height: auto;
+  width: 100%;
+}
+
+
+
+/**
+ * Postscript Bottom =======================================================
+ */
+
+
+#postscript-bottom ul {
+  width: 100%;
+}
+
+
+
+
+
+/**
+ * Site Info aka Footer =======================================================
+ */
+
+#site-info .copyright {
+	display: block;
+  padding: 0 0 10px 0;
+}
+
+

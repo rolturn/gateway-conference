@@ -1,0 +1,10 @@
+name = Book Actions 
+description = Adds bulk actions for books.
+core = 7.x
+
+; Information added by drupal.org packaging script on 2012-03-27
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "Other"
+datestamp = "1332807620"
+

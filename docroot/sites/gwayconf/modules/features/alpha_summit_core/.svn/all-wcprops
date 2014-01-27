@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/alpha_summit_core
+END
+alpha_summit_core.module
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/alpha_summit_core/alpha_summit_core.module
+END
+alpha_summit_core.features.inc
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/alpha_summit_core/alpha_summit_core.features.inc
+END
+alpha_summit_core.info
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/alpha_summit_core/alpha_summit_core.info
+END
+alpha_summit_core.context.inc
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/alpha_summit_core/alpha_summit_core.context.inc
+END

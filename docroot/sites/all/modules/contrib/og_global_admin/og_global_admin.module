@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Organic groups global admin module.
+ */
+
+/**
+ * Implements hook_permission().
+ */
+function og_global_admin_permission() {
+  return array(
+    'access all private group content' => array(
+      'title' => t('Access all private group content'),
+      'description' => t(''),
+    ),
+  );
+}
+
+/**
+ * Implements hook_user_load().
+ */
+function og_global_admin_user_load($users) {
+  foreach ($users as $record) {
+    $account = $users[$record->uid];
+    if (user_access('access all private group content', $account)) {
+      _og_global_admin_add_to_all_groups($account);
+    }
+  }
+}
+
+/**
+ * Helper function to add a user to all the organic groups.
+ *
+ * @param $account stdClass
+ */
+function _og_global_admin_add_to_all_groups($account) {
+  $organic_groups = og_get_all_group();
+
+  $users_groups = array();
+  foreach ($account->group_audience[LANGUAGE_NONE] as $group) {
+    $users_groups[] = $group['gid'];
+  }
+
+  $missing_groups = array_diff($organic_groups, $users_groups);
+  if (empty($missing_groups)) {
+    return;
+  }
+
+  foreach ($missing_groups as $group) {
+    $account->original = $account;
+
+    $values = array('entity' => $account, 'force reload' => FALSE);
+    $account = og_group($group, $values);
+  }
+  $account = user_save($account);
+}

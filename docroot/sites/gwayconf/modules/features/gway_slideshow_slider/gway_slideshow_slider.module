@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Gateway Slideshow Slider feature.
+ */
+
+include_once 'gway_slideshow_slider.features.inc';

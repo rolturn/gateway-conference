@@ -1,0 +1,14 @@
+name = OpenGate Developer Tools
+description = Enables various developer tools such as the Devel Modue, Backup and Migrate, and Features Plumber.
+core = 7.x
+package = Configurations
+php = 5.2.4
+version = 7.x-1.0-beta1
+project = opengate_developer_tools
+dependencies[] = backup_migrate
+dependencies[] = ctools
+dependencies[] = strongarm
+dependencies[] = views_ui
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = file_private_path

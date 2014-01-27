@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--[if IE]><script language="javascript" type="text/javascript" src="/sites/all/modules/flot/flot/excanvas.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="/misc/favicon.ico" type="image/x-icon" />
+  <title>#1285090: Panels node\edit forms | drupal.org</title>
+  <link type="text/css" rel="stylesheet" media="all" href="http://drupal.org/files/css/css_f3090bb4d8cf2abb7b0ced22ff672715.css" />
+  <script type="text/javascript" src="http://drupal.org/files/js/js_a3b9bb70ebc13b523f3d8f1155e9c0d4.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","googleanalytics":{"trackOutgoing":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip"},"html5UserGeolocationPrecision":"1","jcarousel":{"ajaxPath":"\/jcarousel\/ajax\/views"},"project_issue":{"follower_count":"19"},"BUE":{"templates":{"e10":{"iconpath":"\/sites\/all\/libraries\/bueditor","buttons":[["Bold","\u003cstrong\u003e%TEXT%\u003c\/strong\u003e","ico_bold.png","B"],["Italic","\u003cem\u003e%TEXT%\u003c\/em\u003e","ico_italic.png","I"],["Strike-through","\u003cdel\u003e%TEXT%\u003c\/del\u003e","ico_strike.png",""],["Heading 2","\u003ch2\u003e%TEXT%\u003c\/h2\u003e","ico_h2.png",""],["Heading 3","\u003ch3\u003e%TEXT%\u003c\/h3\u003e","ico_h3.png",""],["Heading 4","\u003ch4\u003e%TEXT%\u003c\/h4\u003e","ico_h4.png",""],["Quote","\u003cblockquote\u003e%TEXT%\u003c\/blockquote\u003e","ico_quote.png",""],["Code","\u003ccode\u003e%TEXT%\u003c\/code\u003e","code","C"],["PHP formatted code","\u003c?php\n%TEXT%\n?\u003e","PHP",""],["Insert\/edit image","js:\nvar form = [\n{name: 'src', title: 'Image URL', required: true, value: 'http:\/\/drupal.org\/files\/', attributes: {onfocus: \"_=this.value;this.value='';this.value=_;\"}},\n {name: 'width', title: 'Width x Height', suffix: ' x ', getnext: true, attributes: {size: 3}},\n {name: 'height', attributes: {size: 3}},\n {name: 'alt', title: 'Alternative text', required: true}\n];\nE.tagDialog('img', form, {title: 'Insert\/edit image'});\n","ico_img.png","M"],["Insert\/edit link","js:\nvar form = [\n {name: 'href', title: 'Link URL', required: true, suffix: E.imce.button('attr_href')},\n {name: 'html', title: 'Link text'},\n {name: 'title', title: 'Link title'}\n];\nE.tagDialog('a', form, {title: 'Insert\/edit link'});","ico_link.png","L"],["Ordered list. Converts selected lines to a numbered list.","js: E.wrapLines('\u003col\u003e\\n', '  \u003cli\u003e', '\u003c\/li\u003e', '\\n\u003c\/ol\u003e');","ico_ol.png","O"],["Unordered list. Converts selected lines to a bulleted list.","js: E.wrapLines('\u003cul\u003e\\n', '  \u003cli\u003e', '\u003c\/li\u003e', '\\n\u003c\/ul\u003e');","ico_ul.png","U"],["Get help on button functionality.","js: E.help('fadeIn');","ico_help.png","H"]],"sprite":{"url":"http:\/\/drupal.org\/files\/bueditor-sprites\/sprite_7cd18835b1b79d28571553895d57fd06.png","unit":20,"x1":"\/sites\/all\/modules\/bueditor\/icons\/x1.png"}}},"preset":{"edit-comment":"e10"}},"ahah":{"edit-project-info-project-title":{"url":"\/project\/issues\/update_project","event":"blur","keypress":null,"wrapper":"project-info-wrapper","selector":"#edit-project-info-project-title","effect":"none","method":"replace","progress":{"type":"none"},"button":false},"edit-attach":{"url":"\/comment-upload\/js","event":"mousedown","keypress":true,"wrapper":"attach-wrapper","selector":"#edit-attach","effect":"none","method":"replace","progress":{"type":"bar","message":"Please wait..."},"button":{"attach":"Attach"}}},"tableDrag":{"comment-upload-attachments":{"comment-upload-weight":[{"target":"comment-upload-weight","source":"comment-upload-weight","relationship":"sibling","action":"order","hidden":true,"limit":0}]}}});
+//--><!]]>
+</script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+if (Drupal.jsEnabled) { Drupal.flot = {}; }
+//--><!]]>
+</script>
+  <!--[if lte IE 6]><style>img, div#header-screen, a { behavior: url("/sites/all/themes/bluecheese/iepngfix.htc") }</style><![endif]-->
+</head>
+
+<body class="not-front logged-in page-node node-type-project-issue no-sidebars drupalorg-site-main">
+  <div id="skip-links">
+    <a href="#content">Skip to main content</a>
+    <a href="#search">Skip to search</a>
+  </div>
+    <div id="header" class="clear-block">
+    <div id="header-screen" class="clear-block">
+      <div id="header-inner" class="container-12 clear-block">
+        <div id="nav-header" class="grid-12">
+          <ul><li class="menu-2 first"><a href="/start" title="Getting Started with Drupal">Get Started</a></li>
+<li class="menu-4"><a href="/community" title="Drupal Community">Community</a></li>
+<li class="menu-16434"><a href="/documentation" title="Drupal Documentation">Documentation</a></li>
+<li class="menu-14"><a href="/support" title="Support for using Drupal">Support</a></li>
+<li class="menu-10468"><a href="/download" title="Download and Extend Drupal">Download &amp; Extend</a></li>
+<li class="menu-10"><a href="/drupal-services" title="Buy Drupal Products and Services">Marketplace</a></li>
+<li class="menu-25050 last"><a href="/about" title="About Drupal">About</a></li>
+</ul>        </div> <!-- /#nav-header -->
+
+        <div id="header-content" class="grid-12">
+          <div id="header-left" class="grid-7 alpha">
+            <div id="header-left-inner" class="grid-6 alpha">
+              <div id="site-name"><a href="/" title="Drupal">Drupal</a></div>
+                          </div> <!-- /#header-left-inner -->
+          </div> <!-- /#header-left -->
+
+          <div id="header-right" class="grid-5 omega">
+            <div id="header-right-inner">
+              <form action="/search/site"  accept-charset="UTF-8" method="post" id="search-theme-form">
+<div><div id="search">
+  <div class="form-item" id="edit-search-theme-form-1-wrapper">
+ <input type="text" maxlength="128" name="search_theme_form" id="edit-search-theme-form-1" size="15" value="" placeholder="Search drupal.org" class="form-text" />
+</div>
+  <input type="image" id="search-theme-form-submit" src="/sites/all/themes/bluecheese/images/btn-search.png" alt="Search" name="op" />
+  <div id="search-theme-form-advanced"><fieldset class=" collapsible collapsed"><legend>Refine your search</legend><div class="form-radios"><div class="form-divider"><div class="form-item" id="edit-meta-type--wrapper">
+ <label class="option" for="edit-meta-type-"><input type="radio" id="edit-meta-type-" name="meta_type" value=""  checked="checked"  class="form-radio" /> All</label>
+</div>
+<div class="form-item" id="edit-meta-type-module-wrapper">
+ <label class="option" for="edit-meta-type-module"><input type="radio" id="edit-meta-type-module" name="meta_type" value="module"   class="form-radio" /> Modules</label>
+</div>
+<div class="form-item" id="edit-meta-type-theme-wrapper">
+ <label class="option" for="edit-meta-type-theme"><input type="radio" id="edit-meta-type-theme" name="meta_type" value="theme"   class="form-radio" /> Themes</label>
+</div>
+</div><div class="form-item" id="edit-meta-type-documentation-wrapper">
+ <label class="option" for="edit-meta-type-documentation"><input type="radio" id="edit-meta-type-documentation" name="meta_type" value="documentation"   class="form-radio" /> Documentation</label>
+</div>
+<div class="form-item" id="edit-meta-type-forum-issues-wrapper">
+ <label class="option" for="edit-meta-type-forum-issues"><input type="radio" id="edit-meta-type-forum-issues" name="meta_type" value="forum-issues"   class="form-radio" /> Forums & Issues</label>
+</div>
+<div class="form-item" id="edit-meta-type-group-wrapper">
+ <label class="option" for="edit-meta-type-group"><input type="radio" id="edit-meta-type-group" name="meta_type" value="group"   class="form-radio" /> Groups</label>
+</div>
+</div></fieldset>
+</div>
+  <input type="hidden" name="form_build_id" id="form-dcc78d2a2e492369d11ea7a1e0ac1d9d" value="form-dcc78d2a2e492369d11ea7a1e0ac1d9d"  />
+<input type="hidden" name="form_token" id="edit-search-theme-form-form-token" value="39b106c0b28b5a016b3a90ba92a63541"  />
+<input type="hidden" name="form_id" id="edit-search-theme-form" value="search_theme_form"  />
+</div>
+
+</div></form>
+            </div> <!-- /#header-right-inner -->
+          </div> <!-- /#header-right -->
+        </div> <!-- /#header-content -->
+
+        <div id="nav-masthead" class="grid-12">
+          <ul><li class="homepage first"><a href="/home">Drupal Homepage</a></li>
+<li class="dashboard last"><a href="/user/60946/dashboard">Your Dashboard</a></li>
+</ul><div id="userinfo"><a href="/user" title="View &amp; edit your user profile">Logged in as rtdean93</a> <a href="/logout">Log out</a></div>        </div> <!-- /#nav-masthead -->
+      </div> <!-- /#header-inner -->
+    </div>
+  </div> <!-- /#header -->
+
+  <div id="page" class="container-12 clear-block">
+    <div id="page-inner">
+
+      <div id="page-heading" class="grid-12">
+
+                  <div id="page-title-tools" class="clear-block">
+
+            <div class="grid-8 alpha">
+                                                <div id="page-title" class="h2">Download &amp; Extend</div>
+                                          </div>
+
+                          <div id="page-tools" class="grid-4 omega">
+                              </div> <!-- /#page-tools -->
+                      </div> <!-- /#page-title-tools -->
+
+                      <div id="nav-content" class="clear-block">
+              <ul class="links"><li class="home first"><a href="/download">Download &amp; Extend Home</a></li>
+<li class="core"><a href="/project/drupal">Drupal Core</a></li>
+<li class="distributions"><a href="/project/distributions">Distributions</a></li>
+<li class="modules active"><a href="/project/modules" class="active">Modules</a></li>
+<li class="themes last"><a href="/project/themes">Themes</a></li>
+</ul>            </div> <!-- /#nav-content -->
+          
+          <div class="breadcrumb"><a href="/project/workbench_moderation">Workbench Moderation</a> » <a href="/project/issues/workbench_moderation">Issues</a></div>
+                      <h1 id="page-subtitle">Panels node\edit forms</h1>
+          
+        
+      </div> <!-- /#page-heading -->
+
+      <div id="column-left" class="grid-12">
+
+                  <div id="tabs" class="clear-block">
+            <ul class="tabs primary clear-block"><li class="active" ><a href="/node/1285090" class="active">View</a></li>
+<li ><a href="/node/1285090/edit">Edit</a></li>
+</ul>          </div> <!-- /#tabs -->
+        
+        
+        <div id="content" class="clear-block">
+                    
+          <div id="content-inner" class="clear-block"><div id="node-1285090" class="node clear-block node-type-project_issue">
+
+  
+  
+      <div class="submitted">Posted by <a href="/user/467342" title="View user profile.">Blue_Jumpers_Filip</a> on <em>September 20, 2011 at 2:05pm</em></div>
+  
+  <div class="node-content">
+    <div class="project-issue"><div id="project-summary-container" class="clear-block">
+  <div id="project-issue-summary-links">
+    <span class="flag-wrapper flag-project-issue-follow flag-project-issue-follow-1285090">
+      <a href="/flag/flag/project_issue_follow/1285090?destination=node%2F1285090&amp;token=e541477a81dc9bf2f03cbd85bafe9b5a" title="" class="flag flag-action flag-link-toggle" rel="nofollow">Follow</a><span class="flag-throbber">&nbsp;</span>
+    </span>
+<div class="project-issue-follow-count">19 followers</div>    <div class="item-list"><h3>Jump to:</h3><ul class="internal-links"><li class="first"><a href="/node/1285090#comment-7054450" class="active">Most recent comment</a></li>
+<li><a href="/node/1285090#comment-7052966" class="active">Most recent attachment</a></li>
+<li class="last"><a href="/node/1285090#comment-form" class="active">Add new comment</a></li>
+</ul></div>  </div>
+  <div id="project-issue-summary-table" class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Project:</td><td>Workbench Moderation</td> </tr>
+ <tr class="even"><td>Version:</td><td>7.x-1.x-dev</td> </tr>
+ <tr class="odd"><td>Component:</td><td>Code</td> </tr>
+ <tr class="even"><td>Category:</td><td>bug report</td> </tr>
+ <tr class="odd"><td>Priority:</td><td>normal</td> </tr>
+ <tr class="even"><td>Assigned:</td><td>Unassigned</td> </tr>
+ <tr class="odd"><td>Status:</td><td>needs review</td> </tr>
+</tbody>
+</table>
+</div>
+</div>
+<h2>Issue Summary</h2><p>Possibly related in some way to <span class="project-issue-status-7 project-issue-status-info"><a href="/node/1188590" title="Status: closed (fixed)">#1188590: Task plugin for 'node/%node/draft' and 'node/%node/revisions/%/view'</a></span> but I didn't want to muddle that one in case it's just a support issue rather than anything else. </p>
+<p>I've got custom /node/%node/edit templates defined in panels but they get switched off when I enable the workbench moderation module.  Is there a way to allow this theming and customisation and workbench moderation to work together?</p>
+<p>I came across the aforementioned issue and <a href="http://drupal.org/node/1226174" title="http://drupal.org/node/1226174" rel="nofollow">http://drupal.org/node/1226174</a> but neither seems to help.  </p>
+<p>I've tried out the workbench module after discovering it through Drupalcon and it looks fantastic but as I'm using panels pretty heavily they'd need to work together well for me to use it rather than my usual flag/rules versioning method.</p>
+</div>  </div>
+
+  </div>
+  <div id="comments">
+    <h2>Comments</h2>
+    <a id="comment-5046924"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5046924" class="active">#1</a></h3>
+    <div class="submitted">Posted by <a href="/user/179805" title="View user profile.">stevector</a> on <em>September 27, 2011 at 11:05pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <div class="project-issue"><div class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Category:</td><td>support request</td><td>&raquo; feature request</td> </tr>
+</tbody>
+</table>
+</div></div><p>Thanks for pointing this out Blue_Jumpers_Filip. We need a task plugin for node/%node/edit that follows the same basic structure as the patch in <span class="project-issue-status-7 project-issue-status-info"><a href="/node/1188590" title="Status: closed (fixed)">#1188590: Task plugin for 'node/%node/draft' and 'node/%node/revisions/%/view'</a></span> The fact that Workbench Moderation is already using hook_menu_alter() on this path might complicate things.</p>
+<p>Blue, If you have the time and knowledge please write such a patch and post it here. I'd rather not delay the other patch for this one.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5046924">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-5888560"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5888560" class="active">#2</a></h3>
+    <div class="submitted">Posted by <a href="/user/33014" title="View user profile.">chiebert</a> on <em>April 18, 2012 at 11:00pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Discovered this after posting [what I think is] the same issue over in <span class="project-issue-status-3 project-issue-status-info"><a href="/node/1532244" title="Status: closed (duplicate)">#1532244: Ctools page manager unable to override node_edit form because of workbench_moderation_node_edit_page_override</a></span>. Has there been any movement on this? I'm in the same boat, where I want to clean up the admin experience for my users, but workbench_moderation is preventing the use of panels/page manager to modify the node/%node/edit form.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5888560">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-5967308"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5967308" class="active">#3</a></h3>
+    <div class="submitted">Posted by <a href="/user/11015" title="View user profile.">andremolnar</a> on <em>May 7, 2012 at 10:21pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>I've actually started working on this based on the work in <span class="project-issue-status-7 project-issue-status-info"><a href="/node/1188590" title="Status: closed (fixed)">#1188590: Task plugin for 'node/%node/draft' and 'node/%node/revisions/%/view'</a></span> and should have a patch soon.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5967308">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-5981384"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5981384" class="active">#4</a></h3>
+    <div class="submitted">Posted by <a href="/user/11015" title="View user profile.">andremolnar</a> on <em>May 10, 2012 at 7:23pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>So I started looking into this and there are a couple of things that could be done. </p>
+<p>1) You can create a new custom Task for node/%node/edit</p>
+<p>This is the path I originally went down.<br />
+This would require that workbench_moderation_menu_alter *NOT* clobber node/%node/edit (since that is what keeps you from assigning the panel page to that path)<br />
+BUT on a similar note - it would also mean that the 'virgin' page_manager task provided for node/%node/edit would also not be available for other uses.</p>
+<p>I chatted with EclipseGc about this and figured there had to be a better way.  He agreed and pointed me in a new direction.</p>
+<p>2) Create an argument and context plugin for workbench_moderation moderated nodes<br />
+I also went down this path, but ran into some issues (but maybe its the overall better way to fix this).<br />
+I started by cloning the code of the original ctools provided 'node' plugins for both the argument and the context - and adjusted the context plugin to find the current 'draft' node to load up for editing.<br />
+But, the node context is deprecated in favour of the entity context - fair enough.<br />
+So I cloned that code, but really there is only a single line that needed changing -<br /></p><div class="codeblock"><code> <br />elseif (is_object($data)) {<br />    $ids = entity_extract_ids($entity_type, $data);<br />-  $id = $ids[0];<br />+ $id = $ids[1];<br />  }</code></div><br />
+And that is only because despite passing in the draft version of the node to the entity context - it would get the ids of the entity (i.e. original node id and vids) and return the original nid and then set the context to that (undoing the discovery and loading of the draft node in the argument plugin).
+<p><em><strong>As I type this I realize I could have simply returned the id of the draft node to the context and I could have simply used the original entity context - and not created a custom one.</strong></em></p>
+<p>Regardless I got to that point, and configured a panel page with the new argument and loaded entity.  This all worked but I then ran into an issue with diff module and had to shelve this for a bit.</p>
+<p>So after typing this out, I'm going to go back and make a few fixes and attach a patch to have some other eyeballs on this.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5981384">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-5992798"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5992798" class="active">#5</a></h3>
+    <div class="submitted">Posted by <a href="/user/11015" title="View user profile.">andremolnar</a> on <em>May 14, 2012 at 6:41am</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <div class="project-issue"><div class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Status:</td><td>active</td><td>&raquo; needs review</td> </tr>
+</tbody>
+</table>
+</div></div><p>I continued to plug away on this one.  In the end all the plugin creation was overkill (and never quite working right).  I was able to simply make an alteration to the existing ctools and page_manager plugins via alter hooks.</p>
+<p>The solution was so simple in fact, I kind of hate myself for having wasted so much time exploring the other options.</p>
+<p>Patch is against 7.x-1.x</p>
+
+  
+<div id="pift-results-1285090-5992798"><table class="sticky-enabled">
+ <thead><tr><th>Attachment</th><th>Size</th><th>Status</th><th>Test result</th><th>Operations</th> </tr></thead>
+<tbody>
+ <tr class="pift-pass odd"><td><a href="http://drupal.org/files/playnicewithpanels_1285090_5.patch">playnicewithpanels_1285090_5.patch</a></td><td>3.98 KB</td><td>Idle</td><td>PASSED: [[SimpleTest]]: [MySQL] 137 pass(es).</td><td><a href="http://qa.drupal.org/pifr/test/269988">View details</a> | <a href="/pift/retest/269988">Re-test</a></td> </tr>
+</tbody>
+</table>
+</div>    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5992798">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-5992854"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5992854" class="active">#6</a></h3>
+    <div class="submitted">Posted by <a href="/user/11015" title="View user profile.">andremolnar</a> on <em>May 14, 2012 at 7:03am</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Same patch slightly better code comments.</p>
+
+  
+<div id="pift-results-1285090-5992854"><table class="sticky-enabled">
+ <thead><tr><th>Attachment</th><th>Size</th><th>Status</th><th>Test result</th><th>Operations</th> </tr></thead>
+<tbody>
+ <tr class="pift-pass odd"><td><a href="http://drupal.org/files/playnicewithpanels_1285090_6.patch">playnicewithpanels_1285090_6.patch</a></td><td>4.37 KB</td><td>Idle</td><td>PASSED: [[SimpleTest]]: [MySQL] 137 pass(es).</td><td><a href="http://qa.drupal.org/pifr/test/269998">View details</a> | <a href="/pift/retest/269998">Re-test</a></td> </tr>
+</tbody>
+</table>
+</div>    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5992854">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-5998704"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-5998704" class="active">#7</a></h3>
+    <div class="submitted">Posted by <a href="/user/11015" title="View user profile.">andremolnar</a> on <em>May 15, 2012 at 2:03pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Here's a patch against the 1.1 release if you're a drush make and apply patch kind of person.</p>
+
+  
+<div id="pift-results-1285090-5998704"><table class="sticky-enabled">
+ <thead><tr><th>Attachment</th><th>Size</th><th>Status</th><th>Test result</th><th>Operations</th> </tr></thead>
+<tbody>
+ <tr class="pift-pass odd"><td><a href="http://drupal.org/files/playnicewithpanels-1285090-7.patch">playnicewithpanels-1285090-7.patch</a></td><td>4.37 KB</td><td>Idle</td><td>PASSED: [[SimpleTest]]: [MySQL] 137 pass(es).</td><td><a href="http://qa.drupal.org/pifr/test/270613">View details</a> | <a href="/pift/retest/270613">Re-test</a></td> </tr>
+</tbody>
+</table>
+</div>    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/5998704">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6065594"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6065594" class="active">#8</a></h3>
+    <div class="submitted">Posted by <a href="/user/253909" title="View user profile.">acrollet</a> on <em>May 31, 2012 at 10:01pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <div class="project-issue"><div class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Status:</td><td>needs review</td><td>&raquo; reviewed &amp; tested by the community</td> </tr>
+</tbody>
+</table>
+</div></div><p>I've applied the patch in #7 and it's working well so far, will comment if I see any issues.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6065594">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6450678"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6450678" class="active">#9</a></h3>
+    <div class="submitted">Posted by <a href="/user/401531" title="View user profile.">cschults</a> on <em>September 7, 2012 at 9:44pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Any chance the patch will be included in the next version of Workbench Moderation?</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6450678">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6524138"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6524138" class="active">#10</a></h3>
+    <div class="submitted">Posted by <a href="/user/124931" title="View user profile.">joel_osc</a> on <em>September 26, 2012 at 2:33pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>I am bit confused here, I wonder if someone could shed some light on this - from what I can tell this patch is included in the 7.x-1.2 release from May 17. However, as soon as I enable workbench_moderation my page override for node/edit gets disabled. Then when I go to re-enable it I get the following message which I thought this patch was supposed to address:<br /></p><div class="codeblock"><code>Page manager module is unable to enable node/%node/edit because some other module already has overridden with workbench_moderation_node_edit_page_override</code></div>.
+<p>Any help is appreciated!</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6524138">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6537120"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6537120" class="active">#11</a></h3>
+    <div class="submitted">Posted by <a href="/user/1342304" title="View user profile.">goodale</a> on <em>September 29, 2012 at 11:00am</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Looking at the commit log it seems to have not been committed for the 7.x-1.2 release, however the patch does apply cleanly to that release.  I assume the maintainers are waiting further feedback on any issues, or that it is in the dev branch and will be in a future release.</p>
+<p>I've not had a chance to test it yet, but will report if I do and see any.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6537120">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6554506"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6554506" class="active">#12</a></h3>
+    <div class="submitted">Posted by <a href="/user/124931" title="View user profile.">joel_osc</a> on <em>October 3, 2012 at 7:01pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Verified patch against latest and everything works!</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6554506">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6654378"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6654378" class="active">#13</a></h3>
+    <div class="submitted">Posted by <a href="/user/354445" title="View user profile.">TimG1</a> on <em>October 26, 2012 at 8:06pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Patch #7 on 7.x-1.2 is working for me so far.</p>
+<p>Thanks!<br />
+-Tim</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6654378">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6718464"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6718464" class="active">#14</a></h3>
+    <div class="submitted">Posted by <a href="/user/350856" title="View user profile.">NotGoddess</a> on <em>November 11, 2012 at 9:03am</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Working nicely for me as well.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6718464">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-6837984"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-6837984" class="active">#15</a></h3>
+    <div class="submitted">Posted by <a href="/user/241634" title="View user profile.">tim.plunkett</a> on <em>December 12, 2012 at 5:35pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <div class="project-issue"><div class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Category:</td><td>feature request</td><td>&raquo; bug report</td> </tr>
+ <tr class="even"><td>Status:</td><td>reviewed &amp; tested by the community</td><td>&raquo; needs review</td> </tr>
+</tbody>
+</table>
+</div></div><p>The patch works great, but the comments are a bit circumspect, and I'm not 100% sure of the approach.</p>
+<p>But, I would definitely consider this a bug. I had just finished carefully crafting a node edit form, and enabling this disabled it with no warning at all.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/6837984">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-7031438"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-7031438" class="active">#16</a></h3>
+    <div class="submitted">Posted by <a href="/user/11015" title="View user profile.">andremolnar</a> on <em>February 5, 2013 at 10:12pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Can you clarify which comments are circumspect?  In this thread or in the code iteself?</p>
+<p>Can you clarify which part of the approach you're unsure of?</p>
+<p>Also, did the application of this patch break the node edit form you had crafted or fix it?</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/7031438">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-7052966"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-7052966" class="active">#17</a></h3>
+    <div class="submitted">Posted by <a href="/user/339714" title="View user profile.">sylus</a> on <em>February 11, 2013 at 3:13pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <p>Attaching update to latest dev sha: d196989</p>
+
+  
+<div id="pift-results-1285090-7052966"><table class="sticky-enabled">
+ <thead><tr><th>Attachment</th><th>Size</th><th>Status</th><th>Test result</th><th>Operations</th> </tr></thead>
+<tbody>
+ <tr class="pift-pass odd"><td><a href="http://drupal.org/files/playnicewithpanels-1285090-12.patch">playnicewithpanels-1285090-12.patch</a></td><td>4.4 KB</td><td>Idle</td><td>PASSED: [[SimpleTest]]: [MySQL] 137 pass(es).</td><td><a href="http://qa.drupal.org/pifr/test/443283">View details</a> | <a href="/pift/retest/443283">Re-test</a></td> </tr>
+</tbody>
+</table>
+</div>    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/7052966">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-7053680"></a>
+<div class="comment comment-published clear-block comment-even"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-7053680" class="active">#18</a></h3>
+    <div class="submitted">Posted by <a href="/user/180064" title="View user profile.">System Message</a> on <em>February 11, 2013 at 5:40pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <div class="project-issue"><div class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Status:</td><td>needs review</td><td>&raquo; needs work</td> </tr>
+</tbody>
+</table>
+</div></div><p>The last submitted patch, <a href="#pift-results-1285090" rel="nofollow">playnicewithpanels-1285090-12.patch</a>, failed testing.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/7053680">reply</a></li>
+</ul>  </div>
+</div></div>
+<a id="comment-7054450"></a>
+<div class="comment comment-published clear-block comment-odd"><div class="comment-inner">
+  <div class="comment-heading">
+        <h3 class="comment-title"><a href="/node/1285090#comment-7054450" class="active">#19</a></h3>
+    <div class="submitted">Posted by <a href="/user/339714" title="View user profile.">sylus</a> on <em>February 11, 2013 at 9:10pm</em>        </div>
+  </div>
+  <div class="content">
+    <div class="clear-block">
+            <div class="project-issue"><div class="summary"><table>
+<tbody>
+ <tr class="odd"><td>Status:</td><td>needs work</td><td>&raquo; needs review</td> </tr>
+</tbody>
+</table>
+</div></div><p><a href="#comment-7052966" rel="nofollow">#17</a>: <a href="#pift-results-1285090" rel="nofollow">playnicewithpanels-1285090-12.patch</a> queued for re-testing.</p>
+    </div>
+        <ul class="links"><li class="comment_reply first last"><a href="/comment/reply/1285090/7054450">reply</a></li>
+</ul>  </div>
+</div></div>
+<div class="box">
+
+  <h2>Post new comment</h2>
+
+  <div class="content"><div class="project-issue"><div class="node-form"><div class="standard"><form action="/comment/reply/1285090"  accept-charset="UTF-8" method="post" id="comment-form" enctype="multipart/form-data">
+<div><fieldset class=" collapsible"><legend>Edit issue settings</legend><div class="description">Note: changing any of these items will update the issue's overall values.</div><div class="form-item" id="edit-title-wrapper">
+ <label for="edit-title">Issue title: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="128" name="title" id="edit-title" size="60" value="Panels node\edit forms" class="form-text required" />
+</div>
+<div id="project-info-wrapper" class="inline-options"><div class="form-item" id="edit-project-info-project-title-wrapper">
+ <label for="edit-project-info-project-title">Project: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="128" name="project_info[project_title]" id="edit-project-info-project-title" size="35" value="Workbench Moderation" onFocus="project_issue_autocomplete_handler()" class="form-text form-autocomplete required" />
+</div>
+<input class="autocomplete" type="hidden" id="edit-project-info-project-title-autocomplete" value="http://drupal.org/project/autocomplete/issue/project" disabled="disabled" /><div class="form-item" id="edit-project-info-rid-wrapper">
+ <label for="edit-project-info-rid">Version: <span class="form-required" title="This field is required.">*</span></label>
+ <select name="project_info[rid]" class="form-select required" id="edit-project-info-rid" ><option value="0">&lt;none&gt;</option><option value="1348850">7.x-2.x-dev</option><option value="1094036" selected="selected">7.x-1.x-dev</option><option value="1892594">7.x-1.3</option><option value="1587844">7.x-1.2</option><option value="1329748">7.x-1.1</option><option value="1227564">7.x-1.0-beta8</option><option value="1190892">7.x-1.0-beta7</option><option value="1189856">7.x-1.0-beta6</option><option value="1079128">7.x-1.0-beta5</option><option value="1261350">7.x-1.0</option></select>
+</div>
+<div class="form-item" id="edit-project-info-component-wrapper">
+ <label for="edit-project-info-component">Component: <span class="form-required" title="This field is required.">*</span></label>
+ <select name="project_info[component]" class="form-select required" id="edit-project-info-component" ><option value="Code" selected="selected">Code</option><option value="Documentation">Documentation</option><option value="Miscellaneous">Miscellaneous</option><option value="User interface">User interface</option></select>
+</div>
+<div class="form-item" id="edit-project-info-assigned-wrapper">
+ <label for="edit-project-info-assigned">Assigned: </label>
+ <select name="project_info[assigned]" class="form-select" id="edit-project-info-assigned" ><option value="0" selected="selected">Unassigned</option><option value="60946">rtdean93</option></select>
+</div>
+</div><div class="inline-options"><div class="form-item" id="edit-category-wrapper">
+ <label for="edit-category">Category: <span class="form-required" title="This field is required.">*</span></label>
+ <select name="category" class="form-select required" id="edit-category" ><option value="0">&lt;none&gt;</option><option value="bug" selected="selected">bug report</option><option value="task">task</option><option value="feature">feature request</option><option value="support">support request</option></select>
+</div>
+<div class="form-item" id="edit-priority-wrapper">
+ <label for="edit-priority">Priority: </label>
+ <select name="priority" class="form-select" id="edit-priority" ><option value="1">critical</option><option value="4">major</option><option value="2" selected="selected">normal</option><option value="3">minor</option></select>
+</div>
+<div class="form-item" id="edit-sid-wrapper">
+ <label for="edit-sid">Status: </label>
+ <select name="sid" class="form-select" id="edit-sid" ><option value="1">active</option><option value="13">needs work</option><option value="8" selected="selected">needs review</option><option value="14">reviewed &amp; tested by the community</option><option value="15">patch (to be ported)</option><option value="2">fixed</option><option value="4">postponed</option><option value="16">postponed (maintainer needs more info)</option><option value="3">closed (duplicate)</option><option value="5">closed (won&#039;t fix)</option><option value="6">closed (works as designed)</option><option value="18">closed (cannot reproduce)</option><option value="7">closed (fixed)</option></select>
+</div>
+<div class="standard fieldset-description">Descriptions of the <a href="/node/45111">Priority</a> and <a href="/node/156119">Status</a> values can be found in the <a href="/node/317">Issue queue handbook</a>.</div></div></fieldset>
+<div class="form-item" id="edit-comment-wrapper">
+ <label for="edit-comment">Comment: </label>
+ <textarea cols="60" rows="15" name="comment" id="edit-comment"  class="form-textarea resizable"></textarea>
+</div>
+<ul class="tips"><li>Web page addresses and e-mail addresses turn into links automatically.</li><li>Allowed HTML tags: &lt;h2&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; &lt;em&gt; &lt;strong&gt; &lt;code&gt; &lt;del&gt; &lt;img&gt; &lt;blockquote&gt; &lt;q&gt; &lt;cite&gt; &lt;sup&gt; &lt;sub&gt; &lt;p&gt; &lt;br&gt;  &lt;ul&gt; &lt;ol&gt; &lt;li&gt; &lt;dl&gt; &lt;dt&gt; &lt;dd&gt; &lt;a&gt; &lt;b&gt; &lt;u&gt; &lt;i&gt; &lt;table&gt; &lt;tr&gt; &lt;td&gt; &lt;th&gt; &lt;tbody&gt; &lt;thead&gt; &lt;tfoot&gt; &lt;colgroup&gt; &lt;caption&gt; &lt;hr&gt;</li><li>Lines and paragraphs break automatically.</li><li>You may post code using &lt;code&gt;...&lt;/code&gt; (generic) or &lt;?php ... ?&gt; (highlighted PHP) tags.</li><li>Project issue numbers (ex. [#12345]) turn into links automatically.</li><li>Only images hosted on this site may be used in &lt;img&gt; tags. Others are replaced with an error icon.</li></ul><p><a href="/filter/tips">More information about formatting options</a></p><input type="hidden" name="form_build_id" id="form-3d37d3a350c48cab6cb18304e25eedc0" value="form-3d37d3a350c48cab6cb18304e25eedc0"  />
+<input type="hidden" name="form_token" id="edit-form-token" value="e103f7416a4ba7252bc4f79f354ca0a1"  />
+<input type="hidden" name="form_id" id="edit-comment-form" value="comment_form"  />
+<div class="attachments"><fieldset class=" collapsible"><legend>File attachments</legend><div class="description">Changes made to the attachments are not permanent until you save this post.</div><div id="attach-wrapper"><div class="form-item" id="edit-upload-wrapper">
+ <label for="edit-upload">Attach new file: </label>
+ <input type="file" name="files[upload]"  class="form-file" id="edit-upload" size="60" />
+
+ <div class="description">The maximum upload size is <em>3 MB</em>. Only files with the following extensions may be uploaded: <em>jpg jpeg gif png txt xls pdf ppt pps odt ods odp gz tgz patch diff zip test info po pot psd</em>. Only files ending in <em>.patch</em> or <em>.diff</em> will be sent for testing. For patches that should not be tested by the testbot (for example, patches that do not work with the current API version in the issue), add "do-not-test" before the .patch. For example "drupal.do_nothing_555555-do-not-test.patch"</div>
+</div>
+<input type="submit" name="attach" id="edit-attach" value="Attach"  class="form-submit" />
+</div></fieldset>
+</div><fieldset class=" collapsible collapsed"><legend>Tags</legend><div class="form-item" id="edit-taxonomy-tags-9-wrapper">
+ <label for="edit-taxonomy-tags-9">Issue tags: </label>
+ <input type="text" maxlength="255" name="taxonomy[tags][9]" id="edit-taxonomy-tags-9" size="60" value="" class="form-text form-autocomplete" />
+ <div class="description">Before adding tags <a href="/node/1023102">read the issue tag guidelines</a>. Do <strong>NOT</strong> use tags for adding random keywords or duplicating any other fields.  Separate terms with a comma, not a space.</div>
+</div>
+<input class="autocomplete" type="hidden" id="edit-taxonomy-tags-9-autocomplete" value="http://drupal.org/taxonomy/autocomplete/9" disabled="disabled" /></fieldset>
+<input type="submit" name="op" id="edit-submit" value="Save"  class="form-submit" />
+<input type="submit" name="op" id="edit-preview" value="Preview"  class="form-submit" />
+
+</div></form>
+</div></div></div></div>
+</div>
+  </div>
+</div>
+                  </div> <!-- /#content -->
+
+      </div> <!-- /#column-left -->
+
+      
+          </div> <!-- /#page-inner -->
+  </div> <!-- /#page -->
+
+  <div id="footer">
+    <div id="footer-inner" class="container-12 clear-block">
+              <div id="footer-region" class="grid-12">
+          <div id="footer-region-inner" class="clear-block">
+            <div class="grid-footer alpha"><ul><li class="0 first"><a href="http://drupal.org/news">Drupal News</a></li>
+<li class="1"><a href="http://drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://association.drupal.org/news" title="News from association.drupal.org">Association News</a></li>
+<li class="3"><a href="http://drupal.org/social-media" title="Drupal on social media">Social Media Directory</a></li>
+<li class="4"><a href="http://drupal.org/security" title="Advisories from the security team">Security Announcements</a></li>
+<li class="5 last"><a href="http://groups.drupal.org/jobs" title="Jobs posted on groups.drupal.org">Jobs</a></li>
+</ul></div><div class="grid-footer"><ul><li class="0 first"><a href="http://drupal.org/community">Community</a></li>
+<li class="1"><a href="http://drupal.org/getting-involved" title="Learn how to contribute to the Drupal project">Getting Involved</a></li>
+<li class="2"><span><a href="http://drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="http://drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="http://drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="3"><a href="http://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; Meetups</a></li>
+<li class="4 last"><a href="http://drupal.org/drupalcon" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+</ul></div><div class="grid-footer"><ul><li class="0 first"><a href="http://drupal.org/start">Get Started</a></li>
+<li class="1"><a href="http://drupal.org/documentation" title="Guidebooks and documentation for working with Drupal">Documentation Home</a></li>
+<li class="2"><a href="http://drupal.org/documentation/install" title="Guide for installing Drupal">Installation Guide</a></li>
+<li class="3"><a href="http://drupal.org/documentation/build" title="Guide for building and extending Drupal sites">Site Building Guide</a></li>
+<li class="4"><a href="http://drupal.org/support" title="Drupal support options">Support</a></li>
+<li class="5 last"><a href="http://api.drupal.org/" title="Drupal API Reference">api.drupal.org</a></li>
+</ul></div><div class="grid-footer"><ul><li class="0 first"><a href="http://drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="http://drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal Core</a></li>
+<li class="2"><a href="http://drupal.org/project/modules" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="http://drupal.org/project/themes" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="http://drupal.org/project/distributions" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul></div><div class="grid-footer omega"><ul><li class="0 first"><a href="http://drupal.org/about">About</a></li>
+<li class="1"><a href="http://drupal.org/druplicon" title="Drupal’s mascot">Druplicon</a></li>
+<li class="2"><a href="https://association.drupal.org/about" title="About the Drupal Association">The Drupal Association</a></li>
+<li class="3"><a href="https://association.drupal.org/advertising" title="How to advertise on Drupal.org">Advertise</a></li>
+<li class="4"><a href="http://drupal.org/node/179723" title="About Drupal.org">About Drupal.org</a></li>
+<li class="5 last"><a href="http://drupal.org/about/accessibility">Web accessibility</a></li>
+</ul></div>          </div> <!-- /#footer-region-inner -->
+        </div> <!-- /#footer-region -->
+                    <div id="footer-message" class="grid-12">
+          <div id="footer-message-inner" class="clear-block">
+            <p>Drupal is a <a href="http://drupal.com/trademark">registered trademark</a> of <a href="http://buytaert.net">Dries Buytaert</a>.</p>
+          </div> <!-- /#footer-message-inner -->
+        </div> <!-- /#footer-message -->
+          </div> <!-- /#footer-inner -->
+  </div> <!-- /#footer -->
+  <div><a href="http://drupal.org/sites/all/modules/httpbl/donotremove.php"><!-- nobody click here --></a></div><script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-2360451-1"]);_gaq.push(["_setVar", "authenticated user,Git user,Not a spammer"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+//--><!]]>
+</script>
+</body>
+</html>

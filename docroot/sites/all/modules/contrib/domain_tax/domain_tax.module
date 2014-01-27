@@ -1,0 +1,293 @@
+<?php
+/**
+ * Implements hook_permission().
+ */
+function domain_tax_permission() {
+  return array(
+    'administer domain taxonomy' => array(
+      'title' => t('Administer domain taxonomy'),
+      'description' => t('Assign terms and vocabularies to specific sites'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function domain_tax_form_taxonomy_form_vocabulary_alter(&$form, &$form_state) {
+  $vid = isset($form['#vocabulary']->vid) ? $form['#vocabulary']->vid : 0;
+  $vocs = variable_get('domain_tax_voc', array());
+
+  if (user_access('administer domain taxonomy')) {
+    $form['domain_tax'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('This is a domain specific vocabulary.'),
+      '#default_value' => isset($vocs[$vid]),
+    );
+  }
+  else {
+    $form['domain_tax'] = array(
+      '#type' => 'value',
+      '#value' => isset($vocs[$vid]),
+    );
+  }
+}
+
+/**
+ * Implements hook_taxonomy_vocabulary_delete().
+ */
+function domain_tax_taxonomy_vocabulary_delete($vocabulary) {
+  db_query("DELETE FROM {domain_tax} WHERE vid = :vid", array(':tid' => $vocabulary->vid));
+}
+
+/**
+ * Implements hook_taxonomy_vocabulary_update().
+ */
+function domain_tax_taxonomy_vocabulary_update($vocabulary) {
+  if (!isset($vocabulary->domain_tax)) {
+    return;
+  }
+
+  $vocs = variable_get('domain_tax_voc', array());
+  if ($vocabulary->domain_tax) {
+    $vocs[$vocabulary->vid] = $vocabulary->vid;
+  }
+  else {
+    unset($vocs[$vocabulary->vid]);
+  }
+  variable_set('domain_tax_voc', $vocs);
+}
+
+/**
+ * Implements hook_taxonomy_vocabulary_insert().
+ */
+function domain_tax_taxonomy_vocabulary_insert($vocabulary) {
+  domain_tax_taxonomy_vocabulary_update($vocabulary);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function domain_tax_form_taxonomy_form_term_alter(&$form, &$form_state) {
+  $term = (array)$form['#term'];
+  $voc = (array)$form['#vocabulary'];
+  $_domain = domain_get_domain();
+  $vocs = variable_get('domain_tax_voc', array());
+
+  // Don't alter term delete forms.
+  if (isset($form['delete']) || !in_array($voc['vid'], $vocs)) {
+    return;
+  }
+
+  $default = (isset($term['domain_tax']) && count((array)$term['domain_tax'])) ? $term['domain_tax'] : array();
+
+  if ((!isset($term['vid']) || isset($vocs[$term['vid']])) && user_access('administer domain taxonomy')) {
+
+    // Set the form options.
+    $domains = domain_domains();
+    $options = array();
+    foreach ($domains as $domain) {
+      // Handle 0 and -1.
+      if ($domain['domain_id'] == variable_get('default_domain', 0)) {
+        $domain['domain_id'] = -1;
+      }
+      $options[$domain['domain_id']] = check_plain($domain['sitename']);
+    }
+    $format = domain_select_format();
+
+    $form['domain_tax'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Domain access'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+    );
+    $form['domain_tax']['domain_tax_all'] = array(
+      '#type' => 'checkbox',
+      '#prefix' => t('<p><b>Publishing options:</b>'),
+      '#suffix' => '</p>',
+      '#title' => t('Send to all affiliates'),
+      '#required' => FALSE,
+      '#description' => t('Select if this term can be shown to all affiliates. This setting will override the options below.'),
+      '#default_value' => (isset($term['domain_tax'][0])),
+    );
+    $form['domain_tax']['domain_tax'] = array(
+      '#type' => empty($format) ? 'checkboxes' : 'select',
+      '#options' => $options,
+      '#title' => t('Domain access settings'),
+      '#description' => t('Select the affiliates that this term belongs to.'),
+      '#default_value' => $default,
+    );
+    if ($format) {
+      $form['domain_tax']['domain_tax']['#multiple'] = TRUE;
+      $form['domain_tax']['domain_tax']['#size'] = count($options) > 10 ? 10 : count($options);
+    }
+  }
+  else {
+    $form['domain_tax'] = array(
+      '#type' => 'value',
+      '#value' => $default
+    );
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * This hides unavailable tags from the administration interface.
+ */
+function domain_tax_form_taxonomy_overview_terms_alter(&$form, &$form_state) {
+  global $user;
+  $vocs = variable_get('domain_tax_voc', array());
+  $voc = $form['#vocabulary'];
+  $domain = domain_get_domain();
+  $default_domain = domain_default();
+
+  // Should we alter this form?
+  if ($user->uid == 1 || $domain['domain_id'] == $default_domain['domain_id'] || !in_array($voc->vid, $vocs)) {
+    return;
+  }
+
+  // Unset unavailable terms.
+  $tids = domain_tax_get_allowed_tids($domain['domain_id'], $voc->vid);
+  foreach (element_children($form) as $child) {
+    if (isset($form[$child]['#term']) && !in_array($form[$child]['#term']['tid'], $tids)) {
+      unset($form[$child]);
+    }
+  }
+
+  unset($form['actions']);
+}
+
+/**
+ * Helper function to fetch allowed tids from the database.
+ */
+function domain_tax_get_allowed_tids($domain_id, $vid = FALSE) {
+  $query = db_select('domain_tax', 'dt')
+    ->fields('dt', array('tid'))
+    ->condition('domain_id', array($domain_id, 0), 'IN');
+  if ($vid) {
+    $query->condition('vid', $vid);
+  }
+  $result = $query->execute();
+
+  $allowed_tids = array();
+  foreach ($result as $row) {
+    $allowed_tids[$row->tid] = $row->tid;
+  }
+
+  return $allowed_tids;
+}
+
+/**
+ * Implements hook_form_alter()
+ */
+function domain_tax_form_alter(&$form, &$form_state, $form_id) {
+  // There are forms that we never want to alter, and they are passed here.
+  $forms = module_invoke_all('domainignore');
+  if (in_array($form_id, $forms)) {
+    return;
+  }
+
+  // There are forms that we never want to alter, and they are passed here.
+  $forms = module_invoke_all('domainignore');
+
+  // Apply to all node editing forms only.
+  if (empty($form['#node_edit_form'])) {
+    return;
+  }
+
+  // Unset taxonomy terms not found in this domain.
+  $domain = domain_get_domain();
+  $allowed_tids = domain_tax_get_allowed_tids($domain['domain_id']);
+  $vocs = variable_get('domain_tax_voc', array());
+
+  // Iterate all taxonomy_term_reference and unset if found in this form.
+  $result = db_query("SELECT field_name, data FROM {field_config} WHERE type = 'taxonomy_term_reference'");
+  foreach ($result as $row) {
+    $field = $row->field_name;
+    $data = unserialize($row->data);
+    $voc = taxonomy_vocabulary_machine_name_load($data['settings']['allowed_values'][0]['vocabulary']);
+
+    if (isset($form[$field]) && in_array($voc->vid, $vocs)) {
+      foreach ($form[$field][LANGUAGE_NONE]['#options'] as $tid => $term) {
+        if (!in_array($tid, $allowed_tids)) {
+          unset($form[$field][LANGUAGE_NONE]['#options'][$tid]);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function domain_tax_taxonomy_term_insert($term) {
+  domain_tax_taxonomy_term_update($term);
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ */
+function domain_tax_taxonomy_term_update($term) {
+  if (!isset($term->domain_tax) || !isset($term->domain_tax_all)) {
+    return;
+  }
+
+  db_query("DELETE FROM {domain_tax} WHERE tid = :tid", array(':tid' => $term->tid));
+
+  foreach ($term->domain_tax as $domain_id) {
+    if ($domain_id != 0) {
+      $record = array(
+        'vid' => $term->vid,
+        'tid' => $term->tid,
+        'domain_id' => $domain_id,
+      );
+      drupal_write_record('domain_tax', $record);
+    }
+  }
+
+  if ($term->domain_tax_all) {
+    $record = array(
+      'vid' => $term->vid,
+      'tid' => $term->tid,
+      'domain_id' => 0,
+    );
+    drupal_write_record('domain_tax', $record);
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_load().
+ */
+function domain_tax_taxonomy_term_load($terms) {
+  $result = db_query('SELECT domain_id, tid FROM {domain_tax} WHERE tid IN (:tids)', array(':tids' => array_keys($terms)));
+  foreach ($result as $record) {
+    $terms[$record->tid]->domain_tax[$record->domain_id] = $record->domain_id;
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_delete().
+ */
+function domain_tax_taxonomy_term_delete($term) {
+  db_query("DELETE FROM {domain_tax} WHERE tid = :tid", array(':tid' => $term->tid));
+}
+
+/**
+ * Implements hook_views_data().
+ */
+function domain_tax_views_data() {
+  $data = array();
+
+  $data['taxonomy_term_data']['domain_tax'] = array(
+    'group' => t('Domain'),
+    'real field'  => 'tid',
+    'title' => t('Domain Taxonomy Filter'),
+    'help' => t('Filter any Views based on domain taxonomy ssettings'),
+    'filter' => array(
+      'handler' => 'domain_tax_filter_multiple',
+    ),
+  );
+
+  return $data;
+}

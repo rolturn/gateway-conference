@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Ministry Partner feature.
+ */
+
+include_once 'gway_ministry_partner.features.inc';

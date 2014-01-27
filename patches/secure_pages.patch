@@ -1,0 +1,46 @@
+From 0bcbafc7a2c93063289ebec3b135681df96fca23 Mon Sep 17 00:00:00 2001
+From: Bobby Dean <bobby.dean@gatewaystaff.com>
+Date: Fri, 30 Nov 2012 12:31:08 -0600
+Subject: [PATCH] Updated Secure Pages
+
+---
+ .../sites/blessedlife/modules/contrib/securepages/securepages.info  | 6 +++---
+ .../blessedlife/modules/contrib/securepages/securepages.module      | 5 ++++-
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/docroot/sites/blessedlife/modules/contrib/securepages/securepages.info b/docroot/sites/blessedlife/modules/contrib/securepages/securepages.info
+index eff6e6e..4a6b6a3 100644
+--- a/docroot/sites/blessedlife/modules/contrib/securepages/securepages.info
++++ b/docroot/sites/blessedlife/modules/contrib/securepages/securepages.info
+@@ -6,9 +6,9 @@ configure = admin/config/system/securepages
+ 
+ files[] = securepages.test
+ 
+-; Information added by drupal.org packaging script on 2012-05-23
+-version = "7.x-1.x-dev"
++; Information added by drupal.org packaging script on 2012-11-20
++version = "7.x-1.0-beta1"
+ core = "7.x"
+ project = "securepages"
+-datestamp = "1337776854"
++datestamp = "1353374317"
+ 
+diff --git a/docroot/sites/blessedlife/modules/contrib/securepages/securepages.module b/docroot/sites/blessedlife/modules/contrib/securepages/securepages.module
+index 7c3f077..f3b9c63 100644
+--- a/docroot/sites/blessedlife/modules/contrib/securepages/securepages.module
++++ b/docroot/sites/blessedlife/modules/contrib/securepages/securepages.module
+@@ -89,7 +89,10 @@ function securepages_form_alter(&$form, &$form_state, $form_id) {
+       return;
+     }
+ 
+-    if ($page_match && !$is_https) {
++    if (isset($form['#https'])) {
++      // if the #https is set don't reset it as module that set it knows better.
++    }
++    elseif ($page_match && !$is_https) {
+       $form['#https'] = TRUE;
+     }
+     elseif ($page_match === 0 && $is_https && variable_get('securepages_switch', FALSE)) {
+-- 
+1.7.11.1
+

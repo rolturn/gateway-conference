@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Default Admin UI feature.
+ */
+
+include_once 'opengate_default_admin_ui.features.inc';

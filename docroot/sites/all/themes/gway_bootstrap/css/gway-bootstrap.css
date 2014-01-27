@@ -1,0 +1,544 @@
+/* `XHTML, HTML4, HTML5 Reset
+----------------------------------------------------------------------------------------------------*/
+/* margin and padding values are reset for all these elements
+ * you could remove from there elements you do not used in your documents, but I don't think it'd worth it 
+ */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/* using height:100% on html and body allows to style containers with a 100% height
+ * the overflow declaration is to make sure there is a gutter for the scollbar in all browsers regardless of content
+ * note that there is no font-size declaration set in this rule. If you wish to include one,
+you should use font-size: 100.01% to prevent bugs in IE and Opera
+ */
+html {
+  height: 100%;
+  overflow-y: scroll; }
+
+/* not all browsers set white as the default background color 
+ * color is set to create not too much contrast with the background color
+ * line-height is to ensure that text is legible enough (that there is enough space between the upper and lower line) 
+ */
+body {
+  height: 100%;
+  background: #fff;
+  letter-spacing: .015em; }
+
+/* letter-spacing makes the font a bit more legible
+ */
+input, button, textarea, select, h1, h2, h3, h4, h5, h6 {
+  letter-spacing: .015em; }
+
+pre, tt, code, kbd, samp, var {
+  font-family: "Courier New", Courier, monospace; }
+
+/* Override the default (display: inline) for browsers that do not recognize HTML5 tags.
+ * IE8 (and lower) requires a shiv:http://ejohn.org/blog/html5-shiv
+ */
+article, aside, details, dialog, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* Keeps select list from having odd backgrounds
+ */
+select {
+  background-color: transparent; }
+
+/* styling for links and visited links as well as for links in a hovered, focus and active state 
+ * make sure to keep these rules in that order, with :active being last
+ * text-decoration: none is to make the links more legible while they are in a hovered, focus or active state
+ * a:focus and :focus are used to help keyboard users, you may change their styling, but make sure to give users a visual clue of the element's state.
+ * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
+ * note that these last rules do not do anything in IE as this browser does not support "outline"
+ */
+a:link, a:visited, a:hover {
+  text-decoration: none; }
+a:focus {
+  text-decoration: none;
+  outline: none; }
+
+:focus {
+  outline: none; }
+
+a:hover, a:active {
+  outline: none; }
+
+/* this is to prevent border from showing around fieldsets and images (i.e., images inside anchors)
+ */
+fieldset {
+  border: 0; }
+
+img {
+  border: 0;
+  color: transparent;
+  font-size: 0;
+  vertical-align: bottom;
+  /*
+    For IE.
+    http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+  */
+  -ms-interpolation-mode: bicubic; }
+
+/* to prevent a gap from showing below images in some browsers 
+ */
+/* Styling of list items
+ * This styles sheet contains a class to apply on lists to reset list-type and margin on LIs
+ */
+ol li {
+  list-style-type: decimal; }
+
+ul ol li {
+  list-style-type: decimal; }
+ul li {
+  list-style-type: disc; }
+ul ul li {
+  list-style-type: circle; }
+ul ul ul li {
+  list-style-type: square; }
+
+ol ol li {
+  list-style-type: lower-alpha; }
+ol ol ol li {
+  list-style-type: lower-roman; }
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-bottom: 0; }
+  ul ul ul, ol ol ul, ul ol ul, ol ul ul {
+    margin-bottom: 0; }
+    ul ul ul ul, ol ol ul ul, ul ol ul ul, ol ul ul ul {
+      margin-bottom: 0; }
+
+ul ol ul, ol ul ol {
+  margin-bottom: 0; }
+
+/* These should be self explanatory
+ * I believe *most* UAs style sub and sup like this by default so I am not sure there is value to include these rules here
+ * zeroing out line-height should prevent this from messing with the gap between lines
+ */
+sub {
+  line-height: 0;
+  vertical-align: sub;
+  font-size: .8em; }
+
+sup {
+  line-height: 0;
+  vertical-align: super;
+  font-size: .8em; }
+
+/* padding is used so Internet Explorer does not cut-off descenders in letters like p, g, etc.)
+ */
+legend {
+  padding-bottom: .5em; }
+
+/* according to Eric Meyer's reset: tables still need 'cellspacing="0"' in the markup
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+  table th {
+    text-align: left; }
+
+/* See Eric Meyer's article about Fixed Monospace Sizing 
+ * http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+ */
+code {
+  color: #06f;
+  font-family: "Courier New", monospace, serif;
+  font-size: 1em; }
+
+pre {
+  font-family: "Courier New", monospace, serif;
+  font-size: 1em; }
+
+/* to prevent some browsers from inserting quotes on "q" and "p" ("p" in blockquotes)
+ */
+blockquote p:before, blockquote p:after {
+  content: ''; }
+
+q:before, q:after {
+  content: ''; }
+
+/* These should be self explanatory
+ */
+th, strong, dt, b {
+  font-weight: bold; }
+
+ins {
+  text-decoration: none;
+  border-bottom: 3px double #333333; }
+
+del {
+  text-decoration: line-through; }
+
+abbr, acronym {
+  border-bottom: 1px dotted #333333;
+  font-variant: normal; }
+
+/* Creating white space (vertical gutters) via padding
+ * most authors do not set right/left padding or margin on these elements, they rather use an extra wrapper or style the container with padding to create the left and right gap/gutter they need
+ * I find that the latter creates less robust layouts because it leads authors to mix padding with width which creates issue with the broken box model (IE5 or IE6 in quirks mode) 
+ * so imho, setting this style using the child combinator (i.e., div > h1) should be the best way to do it, but unfortunately IE 6 does not support such syntax, so I have to go with the following + a reset (see next rule)  
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+ul,
+ol,
+dl,
+fieldset,
+address { 
+	padding:0 30px;
+} */
+/* this is to reset the left/right gaps (created by the previous and next rules) on nested elements
+ */
+dd p, dd pre, dd ul, dd ol, dd dl {
+  padding-right: 0;
+  padding-left: 0; }
+
+li p, li pre, li ul, li ol, li dl {
+  padding-right: 0;
+  padding-left: 0; }
+
+fieldset p, fieldset ul, fieldset ol {
+  padding-right: 0;
+  padding-left: 0; }
+
+/* These should be self explanatory
+ */
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 1em; }
+
+li {
+  margin-left: 1.5em; }
+
+hr {
+  border-top: 1px solid #444444;
+  border-bottom: 1px solid white; }
+  hr:before {
+    margin: 0; }
+
+/* line height helps to set the vertical alignment of radio buttons and check boxes (remember to group these in fieldsets) 
+ */
+fieldset {
+  line-height: 1; }
+
+/*removed his class elements as they are not a reset*/
+.input_tiny {
+  width: 50px; }
+
+.input_small {
+  width: 100px; }
+
+.input_medium {
+  width: 150px; }
+
+.input_large {
+  width: 200px; }
+
+.input_xlarge {
+  width: 250px; }
+
+.input_xxlarge {
+  width: 300px; }
+
+.input_full {
+  width: 100%; }
+
+.input_full_wrap {
+  display: block;
+  padding-right: 8px; }
+
+input[type="search"]::-webkit-search-decoration {
+  display: none; }
+
+input:invalid,
+button:invalid,
+a.button:invalid,
+select:invalid,
+textarea:invalid {
+  -webkit-box-shadow: nonepx 5px 10px black;
+  -moz-box-shadow: nonepx 5px 10px black;
+  box-shadow: nonepx 5px 10px black; }
+input:focus,
+button:focus,
+a.button:focus,
+select:focus,
+textarea:focus {
+  -webkit-box-shadow: #0066ff 0 0 5px 0px 5px 10px black;
+  -moz-box-shadow: #0066ff 0 0 5px 0px 5px 10px black;
+  box-shadow: #0066ff 0 0 5px 0px 5px 10px black;
+  z-index: 1; }
+
+input[type="file"]:focus, input[type="file"]:active,
+input[type="radio"]:focus,
+input[type="radio"]:active,
+input[type="checkbox"]:focus,
+input[type="checkbox"]:active {
+  -webkit-box-shadow: nonepx 5px 10px black;
+  -moz-box-shadow: nonepx 5px 10px black;
+  box-shadow: nonepx 5px 10px black; }
+
+button,
+a.button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -khtml-border-radius: 4px 4px 4px 4px;
+  border-radius: 4px 4px 4px 4px;
+  -o-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -khtml-background-clip: padding-box;
+  background-clip: padding-box;
+  background: #dddddd image-url("button.png") repeat-x;
+  border: 1px solid;
+  border-color: #dddddd #bbbbbb #999999;
+  cursor: pointer;
+  color: #333333;
+  display: inline-block;
+  font: bold 12px/1.3 "Helvetica Neue", Arial, "Liberation Sans", FreeSans, sans-serif;
+  outline: 0;
+  overflow: visible;
+  margin: 0;
+  padding: 3px 10px;
+  text-shadow: white 0 1px 1px;
+  text-decoration: none;
+  vertical-align: top;
+  width: auto;
+  *padding-top: 2px;
+  *padding-bottom: 0; }
+  button:hover,
+  a.button:hover,
+  input[type="reset"]:hover,
+  input[type="submit"]:hover,
+  input[type="button"]:hover {
+    text-decoration: none; }
+  button:active,
+  a.button:active,
+  input[type="reset"]:active,
+  input[type="submit"]:active,
+  input[type="button"]:active {
+    -webkit-box-shadow: inset rgba(0, 0, 0, 0.25) 0 1px 2px 0px 5px 10px black;
+    -moz-box-shadow: inset rgba(0, 0, 0, 0.25) 0 1px 2px 0px 5px 10px black;
+    box-shadow: inset rgba(0, 0, 0, 0.25) 0 1px 2px 0px 5px 10px black;
+    border-color: #999999 #bbbbbb #dddddd; }
+  button::-moz-focus-inner,
+  a.button::-moz-focus-inner,
+  input[type="reset"]::-moz-focus-inner,
+  input[type="submit"]::-moz-focus-inner,
+  input[type="button"]::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+a.button {
+  *padding-bottom: 3px; }
+
+button {
+  *padding-top: 1px;
+  *padding-bottom: 1px; }
+
+textarea,
+select,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+  -webkit-box-sizing: border-box;
+  /* content-box */
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -khtml-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-border-radius: 0 0 0 0;
+  -moz-border-radius: 0 0 0 0;
+  -khtml-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+  -webkit-appearance: none;
+  background-color: white;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: black;
+  outline: 0;
+  margin: 0;
+  padding: 2px 3px;
+  text-align: left;
+  font-size: 13px;
+  font-family: Arial, "Liberation Sans", FreeSans, sans-serif;
+  height: 1.8em;
+  vertical-align: top;
+  *padding-top: 2px;
+  *padding-bottom: 1px;
+  *height: auto; }
+  textarea[disabled],
+  select[disabled],
+  input[type="date"][disabled],
+  input[type="datetime"][disabled],
+  input[type="datetime-local"][disabled],
+  input[type="email"][disabled],
+  input[type="month"][disabled],
+  input[type="number"][disabled],
+  input[type="password"][disabled],
+  input[type="search"][disabled],
+  input[type="tel"][disabled],
+  input[type="text"][disabled],
+  input[type="time"][disabled],
+  input[type="url"][disabled],
+  input[type="week"][disabled] {
+    background-color: #eeeeee; }
+
+button[disabled],
+input[disabled],
+select[disabled],
+select[disabled] option,
+select[disabled] optgroup,
+textarea[disabled],
+a.button_disabled {
+  -webkit-box-shadow: nonepx 5px 10px black;
+  -moz-box-shadow: nonepx 5px 10px black;
+  box-shadow: nonepx 5px 10px black;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  color: #888888;
+  cursor: default; }
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #888888; }
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #888888; }
+
+input.placeholder_text,
+textarea.placeholder_text {
+  color: #888888; }
+
+textarea,
+select[size],
+select[multiple] {
+  height: auto; }
+
+select[size="0"],
+select[size="1"] {
+  height: 1.8em;
+  *height: auto; }
+
+@media (-webkit-min-device-pixel-ratio: 0) {
+  select[size],
+  select[multiple],
+  select[multiple][size] {
+    background-image: none;
+    padding-right: 3px; }
+
+  select,
+  select[size="0"],
+  select[size="1"] {
+    background-image: url(data:image/png;base64,R0lGODlhDQAEAIAAAAAAAP8A/yH5BAEHAAEALAAAAAANAAQAAAILhA+hG5jMDpxvhgIAOw==);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px; }
+
+  ::-webkit-validation-bubble-message {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666666), color-stop(1, black));
+    border: 0;
+    color: white;
+    font: 13px/17px "Lucida Grande", Arial, "Liberation Sans", FreeSans, sans-serif;
+    overflow: hidden;
+    padding: 15px 15px 17px;
+    text-shadow: black 0 0 1px;
+    min-height: 16px; }
+
+  ::-webkit-validation-bubble-arrow,
+  ::-webkit-validation-bubble-top-outer-arrow,
+  ::-webkit-validation-bubble-top-inner-arrow {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #666666;
+    border-color: #666666; } }
+textarea {
+  min-height: 40px;
+  overflow: auto;
+  resize: vertical;
+  width: 100%; }
+
+optgroup {
+  color: black;
+  font-style: normal;
+  font-weight: normal;
+  font-family: Arial, "Liberation Sans", FreeSans, sans-serif; }
+  optgroup::-moz-focus-inner {
+    border: 0;
+    padding: 0; }
+
+.ie6_button,
+* html button,
+* html a.button {
+  background: #dddddd image-url("button.png") repeat-x;
+  border: 1px solid;
+  border-color: #dddddd #bbbbbb #999999;
+  cursor: pointer;
+  color: #333333;
+  font: bold 12px/1.2 Arial, sans-serif;
+  padding: 2px 10px 0;
+  text-decoration: none;
+  overflow: visible;
+  vertical-align: top;
+  width: auto; }
+
+* html a.button {
+  position: relative;
+  top: 3px;
+  padding-bottom: 2px; }
+
+* html button {
+  padding-top: 1px;
+  padding-bottom: 1px; }
+
+.ie6_input,
+* html textarea,
+* html select {
+  background: white;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: black;
+  padding: 2px 3px 1px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  vertical-align: top; }
+
+* html select {
+  margin-top: 1px; }
+
+.placeholder_text,
+.ie6_input_disabled,
+.ie6_button_disabled {
+  color: #888888; }
+
+.ie6_input_disabled {
+  background: #eeeeee; }

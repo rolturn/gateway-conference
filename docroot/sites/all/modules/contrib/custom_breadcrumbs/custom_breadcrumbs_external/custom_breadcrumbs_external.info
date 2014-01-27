@@ -1,0 +1,7 @@
+name = Custom breadcrumbs for external URL paths
+description = Provides identifiers to allow for custom breadcrumbs for external paths.
+package = Custom breadcrumbs
+core = 7.x
+dependencies[] = custom_breadcrumbs
+dependencies[] = custom_breadcrumbs_identifiers
+files[] = custom_breadcrumbs_identifiers.module

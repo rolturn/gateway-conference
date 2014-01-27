@@ -1,0 +1,166 @@
+/* `TYPOGRAPHY
+----------------------------------------------------------------------------------------------------*/
+
+body {
+	line-height: 1.4em;
+	letter-spacing: .025em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	margin: 0;
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+h5 {
+	font-size: 1.1em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+h5 {
+	font-weight: bold;
+}
+
+h6 {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+p, ul, ol, dl {
+	line-height: 1.6em;
+	margin: 0 0 1em 0;
+}
+
+p:last-child {
+	margin: 0;
+}
+
+dt {
+	font-size: 1em;
+}
+
+blockquote {
+	padding: 0 0 0 1.5em;
+	border-left: 5px solid;
+}
+
+pre, code {
+	font-size: .9em;
+}
+
+// !Site ID ====================================================================
+
+h1#site-name {
+	text-indent: -9999999px;
+	font-size: 0;
+}
+
+/*FORM TYPOGRAPHY*/
+/*-------------------------------------------------------------------------------------*/
+
+textarea, select {
+	font-size: 1em;
+}
+
+input {
+	&[type="date"], &[type="datetime"], &[type="datetime-local"], &[type="email"], &[type="month"], &[type="number"], &[type="password"], &[type="search"], &[type="tel"], &[type="text"], &[type="time"], &[type="url"], &[type="week"] {
+		font-size: 1em;
+	}
+}
+
+.form-item label {
+	font-size: 1em;
+}
+
+button {
+	font-size: .8em;
+	line-height: 1em;
+}
+
+input {
+	&[type="reset"], &[type="submit"], &[type="button"] {
+		font-size: .8em;
+		line-height: 1em;
+	}
+}
+
+form h5,
+legend {
+	font-size: 1.4em;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	padding: 0 0 .25em 0;
+}
+
+.form-item label {
+	font-size: 1.1em;
+	font-weight: normal;
+	line-height: 1.6em;
+}
+
+.form-type-radio label, .form-type-checkbox label {
+	font-size: 1em;
+}
+
+fieldset fieldset {
+	legend {
+		font-size: 1.2em;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+	}
+	&.fieldset-wrapper {
+		margin: 0 0 1em 0;
+	}
+}
+
+.description {
+	clear: both;
+	font-style: italic;
+}
+
+.fieldset-description {
+	font-style: italic;
+	margin: 0 0 .5em 0;
+}
+
+/*Aside
+------------------------------------------------------------------------*/
+
+/*Sidebar First
+------------------------------------------------------------------------*/
+
+aside#sidebar-first {
+	font-size: .9em;
+	line-height: 1em;
+}
+
+/*Postscript
+------------------------------------------------------------------------*/
+
+/*Site Info
+------------------------------------------------------------------------*/
+
+#site-info {
+	font-size: .8em;
+}
+
+/*SPECIFIC TYPOGRAPHY*/
+/*-------------------------------------------------------------------------------------*/

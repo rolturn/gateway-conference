@@ -1,0 +1,16 @@
+name = Gateway Devotional API
+description = Feature for the devotional api.
+core = 7.x
+package = Gateway Church API
+php = 5.2.4
+version = 7.x-1.0-beta3
+project = gateway_devotional_api
+dependencies[] = ctools
+dependencies[] = services
+dependencies[] = views
+dependencies[] = views_json
+features[ctools][] = services:services:3
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[services_endpoint][] = api
+features[views_view][] = api_devotionals

@@ -1,0 +1,13 @@
+diff --git a/sites/all/modules/views/theme/theme.inc b/sites/all/modules/views/theme/theme.inc
+index 590d1eb..63b4b4f 100644
+--- a/sites/all/modules/views/theme/theme.inc
++++ b/sites/all/modules/views/theme/theme.inc
+@@ -113,7 +113,7 @@ function template_preprocess_views_view(&$vars) {
+     // we set up a hash with the current time, $dom_id, to issue a "unique" identifier for
+     // each view. This identifier is written to both Drupal.settings and the DIV
+     // wrapper.
+-    $vars['dom_id'] = $view->dom_id;
++    $vars['dom_id'] = isset($view->dom_id) ? $view->dom_id : md5($view->name.REQUEST_TIME.rand());
+     $vars['classes_array'][] = 'view-dom-id-' . $vars['dom_id'];
+   }
+ 

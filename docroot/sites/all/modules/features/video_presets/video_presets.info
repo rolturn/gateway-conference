@@ -1,0 +1,16 @@
+name = Video Presets
+description = Mange video presets for Video module
+core = 7.x
+package = Features
+php = 5.2.4
+version = 7.x-2.2
+project = video_presets
+dependencies[] = video
+dependencies[] = video_ui
+datestamp = 1315589807
+features[features_api][] = api:1
+features[video][] = FLV
+features[video][] = Mp4
+features[video][] = Ogg
+features[video][] = Ogv
+features[video][] = WebM

@@ -1,0 +1,96 @@
+
+
+// ! Registations Layout
+
+.registration-table {
+	margin: 1em 0;
+	overflow: hidden;
+}
+
+.registration-title,
+.registration-cost,
+.registration-link a span,
+.registration-link span, {
+	padding: 10px 0;
+	display: block;
+}
+
+.registration-title {
+	@include col(9,16,0);
+	text-transform: uppercase;
+	color: $c-primary;
+	@include box-sizing();
+	font-size: 1.2em;
+	font-weight: 400;
+	@include break(mobile) {
+		@include col(3,4,0);
+		padding-left: 20px;
+	}
+}
+
+.registration-cost {
+	@include col(3,16,0);
+	@include box-sizing();
+	padding-right: 15px;
+	text-align: right;
+	font-size: 1.2em;
+	@include break(mobile) {
+		@include col-last(1,4,0);
+		padding-right: 20px;
+	}
+}
+
+.registration-link {
+	@include col-last(4,16,0);
+	@include break(mobile) {
+		@include col(1,1,0);
+	}
+	a, span {
+		color: $c-primary;
+		font-family: $f-secondary;
+		font-size: 1.2em;
+		text-transform: uppercase;
+		text-align: center;
+		font-weight: 400;
+		letter-spacing: .015em;
+		@include b-shadow(2,2,10,#111);
+		@include trans-bg($c-secondary,.2);
+		&:hover {
+			color: lighten($c-secondary,20%);
+		}
+		&.not-available {
+			@include trans-bg($red,.2);
+			color: $light-grey;
+		}
+	}
+}
+
+.registration-list-row {
+	@include clearfix(after);
+	@include clearfix(before);
+	padding: 0 0 0 30px;
+	&:nth-child(1) {
+		@include border-radius(5px);
+	}
+	&:nth-of-type(even) {
+		@include trans-bg($c-secondary,.15);
+	}
+	&:nth-of-type(odd) {
+		@include trans-bg($c-secondary,.25);
+	}
+	&:hover {
+		@include trans-bg($c-primary,.15);
+	}
+	&.soldout {
+		@include trans-bg($red,.15);		
+	}
+	@include break(mobile) {
+		padding: 0;
+		margin: 0 0 .5em 0;
+	}
+}
+
+.disclaimer {
+	font-size: .9em;
+	font-style: italic;
+}

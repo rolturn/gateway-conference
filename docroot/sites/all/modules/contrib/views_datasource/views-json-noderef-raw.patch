@@ -1,0 +1,23 @@
+diff --git a/views_json.module b/views_json.module
+index 75222ab..5bac4b4 100644
+--- a/views_json.module
++++ b/views_json.module
+@@ -119,8 +119,16 @@ function _views_json_render_fields($view, $row) {
+     	$n = 0;
+     	if (is_array($field_output)) {
+     	  foreach ($field->field_values[$row->{$field->field_alias}] as $item) {
+-          $field_raw[++$n] = $item["value"];            		
+-    	  }
++    	    // Use 'value' as raw value if column name exists for this field.
++            if ($item['value']) {
++              $field_raw[++$n] = $item['value'];  
++            }
++            // Otherwise, use a combination of the available fields.
++            else {
++              unset($item['_nid'], $item['#delta']);
++              $field_raw[++$n] = implode('|', $item);
++            }
++          }
+     	  $field_is_multiple = TRUE;
+     	}
+     	else $field_raw = $view->field[$field->options['id']]->theme($row);

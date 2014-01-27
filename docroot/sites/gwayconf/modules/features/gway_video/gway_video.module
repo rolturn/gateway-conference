@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Gateway Video feature.
+ */
+
+include_once('gway_video.features.inc');

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Gateway Devotional API feature.
+ */
+
+include_once 'gateway_devotional_api.features.inc';

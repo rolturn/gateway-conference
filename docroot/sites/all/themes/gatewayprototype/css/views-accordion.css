@@ -1,0 +1,12 @@
+
+
+/* VIEWS SLIDESHOW OVERRIDES
+----------------------------------------------------------------------------------------------------*/
+/* This stylesheet should be used to edit the base layout.
+ * If you find that you have developed a system for better layout of pages please share your ideas and add lets add to Gateway Prototype.
+ * If you find that you have to override something from the base theme often let us know and we make the adjustments accordingly.
+----------------------------------------------------------------------------------------------------*/
+
+.ui-accordion {
+  font-size: 1em;
+}

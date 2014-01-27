@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function og_global_admin_install() {
+  node_access_needs_rebuild(TRUE);
+}

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Alpha Summit Core feature.
+ */
+
+include_once('alpha_summit_core.features.inc');

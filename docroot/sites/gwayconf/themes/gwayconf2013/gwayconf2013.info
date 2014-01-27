@@ -1,0 +1,75 @@
+
+; Theme Info -----------------------------------------------------------------
+; required information about the theme
+
+name = Gateway Conference 2013
+description = Child theme for Gateway Boot designed for Gateway Conference 2013
+core = 7.x
+engine = phptemplate
+base theme = gway_boot
+
+; Stylesheets  ---------------------------------------------------------------
+; We use [screen] instead of [all] to avoid browser styles affecting
+; other media types. IE stylesheets are loaded through template.php
+
+stylesheets[screen][] = css/site-id.css
+
+; Javascript  ---------------------------------------------------------------
+; html5.js is required for IE to understand the new elements like article
+; ref: http://remysharp.com/2009/01/07/html5-enabling-script/
+; ------------------------------
+; scripts[] = add your .js files here
+
+//scripts[] = js/jquery-1.8.3.min.js
+scripts[] = js/main.js
+
+; Regions --------------------------------------------------------------------
+; these content regions are available for block placement
+; some are special hidden regions: page_top, page_bottom, and help
+; please feel free to edit this list as necessary
+
+; these are the stock regions
+regions[mobile_nav] = Mobile Navigation
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[page_top] = Page top
+regions[header_top] = Header Top
+regions[header] = Header
+regions[search_bar] = Search Bar
+regions[main_nav] = Main Navigation
+regions[page_breadcrumb] = Breadcrumbs
+regions[sub_nav] = Sub Navigation
+regions[preface] = Preface
+regions[sidebar_first] = Sidebar First
+regions[sidebar_last] = Sidebar Last
+regions[content_preface] = Content Preface
+regions[content] = Content
+regions[content_postscript] = Content Postscript
+regions[content_footer] = Content Footer
+regions[postscript_top] = Postscript Top
+regions[postscript_bottom] = Postscript Bottom
+regions[postscript_bottom_col_one] = Postscript Bottom Column One
+regions[postscript_bottom_col_two] = Postscript Bottom Column Two
+regions[footer] = Footer
+regions[page_bottom] = Page bottom
+
+; Options --------------------------------------------------------------------
+; these are the checkboxes that are available on the theme settings page.
+
+; these are the stock options
+features[] = logo
+features[] = name
+features[] = slogan
+features[] = node_user_picture
+features[] = comment_user_picture
+features[] = comment_user_verification
+features[] = favicon
+features[] = main_menu
+features[] = secondary_menu
+
+; additional theme settings
+settings[breadcrumb_display]   = no
+settings[breadcrumb_separator] = ' ? '
+settings[breadcrumb_home]      = 1
+settings[breadcrumb_trailing]  = 0
+settings[breadcrumb_title]     = 0

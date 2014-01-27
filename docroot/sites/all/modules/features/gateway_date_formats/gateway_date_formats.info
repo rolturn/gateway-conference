@@ -1,0 +1,15 @@
+name = gateway_date_formats
+description = Date and Time formats
+core = 7.x
+package = Configurations
+version = 7.x-1.0
+project = gateway_date_formats
+dependencies[] = features_date_formats
+dependencies[] = features_date_formats
+features[features_api][] = api:1
+features[features_date_format][] = date_format_36
+features[features_date_format][] = date_format_37
+features[features_date_format][] = date_format_38
+features[features_date_type][] = date_type_date_without_time
+features[features_date_type][] = date_type_day_and_date
+features[features_date_type][] = date_type_time

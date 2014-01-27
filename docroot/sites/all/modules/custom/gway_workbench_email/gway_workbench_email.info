@@ -1,0 +1,9 @@
+;$Id$
+name = Gateway Workbench Email
+description = A module that emails editorial when content needs reviewing.
+package = Workbench
+core = 7.x
+files[] = gway_workbench_email.module
+version = "7.x-1.x-alpha"
+
+

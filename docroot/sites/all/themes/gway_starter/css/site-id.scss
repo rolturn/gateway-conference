@@ -1,0 +1,13 @@
+// SASS WATCH COMMAND
+// for dev: sass --watch site-id.scss:site-id.css
+	// for prod: sass --watch site-id.scss:site-id.css --style compressed
+
+@import 
+	"_fonts.scss",
+	"_variables.scss",
+	"../../../../all/themes/gway_bootstrap/css/_base-grid.scss",
+	"_generic-tags.scss",
+	"_forms.scss",
+	"_layout.scss",
+	"_navigation.scss",
+	"_typography.scss";

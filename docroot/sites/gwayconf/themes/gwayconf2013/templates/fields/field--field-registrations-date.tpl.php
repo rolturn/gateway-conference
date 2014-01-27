@@ -1,0 +1,1 @@
+<span class="<?php print $field_name_css; ?>"><?php foreach ($items as $delta => $item): ?><?php print render($item); ?><?php endforeach; ?></span>

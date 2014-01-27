@@ -1,0 +1,223 @@
+/*Forms*/
+/*--------------------------*/
+
+html.js {
+	fieldset.collapsible .fieldset-legend {
+		background-position: right;
+		padding-left: 0;
+	}
+}
+
+form {
+	margin: 0 0 2em 0;
+	.form-item, .form-actions {
+		margin: 0;
+	}
+	
+	.form-checkboxes, 
+	.form-radios {
+		display: block;
+		margin: 0;
+		.form-item {
+			display: inline-block;
+			padding: 0 10px 0 0;
+			&:last-child {
+				padding: 0;
+			}
+		}
+	}
+	.form-item,
+	.form-actions,
+	.form-checkboxes .form-item,
+	.form-radios .form-item {
+		margin: 0 0 .5em 0;
+	}
+	
+	.form-type-radio,
+	.form-type-checkboxes {
+		margin: 0 0 0 .5em;
+	}
+	
+	.description {
+		margin: .5em 0 0 0;
+		display: block;
+	}
+	
+	.webform-component-radios .description {
+		margin: -0.5em 0 0 0;
+	}
+	
+	.filter-wrapper {
+		padding: 0 0 .5em 0;
+	}
+	
+	table input {
+		&[type="radio"], &[type="checkbox"] {
+			top: 2px;
+		}
+	}
+	.fieldset-wrapper fieldset {
+		margin-bottom: 1em;
+		.fieldset-wrapper {
+			margin-bottom: 1em;
+		}
+		&:last-child {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	fieldset.collapsible.collapsed {
+		margin-bottom: 1em;
+	}
+	
+}
+
+
+/* Inline WebForm Components
+----------------------------------------------------------------------------------------------------*/
+
+.webform-container-inline {
+	select {
+		width: inherit;
+		max-width: 100%;
+		display: inline;
+		width: 75%;
+		float: right;
+	}
+	input {
+		&[type="text"], &[type="number"], &[type="password"], &[type="search"], &[type="email"] {
+			width: inherit;
+			max-width: 100%;
+			display: inline;
+			width: 75%;
+			float: right;
+		}
+	}
+	label {
+		margin-right: .5em;
+		bottom: 0;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	&.webform-component-webform_time .webform-container-inline, &.webform-component-date .webform-container-inline {
+		float: right;
+		clear: right;
+	}
+	&.webform-component-webform_time .webform-container-inline input, &.webform-component-date .webform-container-inline input {
+		width: inherit;
+	}
+	&.webform-component-managed_file input {
+		float: none;
+	}
+	.description {
+		text-align: right;
+	}
+}
+
+.webform-component-webform_time {
+	input,
+	select {
+		width: inherit;
+		float: none;
+		display: inline;
+	}
+}
+
+.webform-component-date {
+	select,
+	input,
+	button {
+		width: inherit;
+		float: none;
+		display: inline;
+	}
+}
+
+input {
+	&.year,
+	&[type="text"].year {
+		width: inherit;
+		float: none;
+		display: inline;
+	}
+}
+
+.webform-component-managed_file {
+	&.webform-container-inline {
+		.form-managed-file {
+			float: right;
+			clear: right;
+		}
+		input {
+			width: inherit;
+		}
+	}
+	.form-file {
+		margin: 0 10px 0 0;
+	}
+}
+
+
+/*Formalize Adjustments */
+/*--------------------------*/
+
+input {
+	&[type="text"], &[type="number"], &[type="password"], &[type="search"], &[type="email"] {
+		width: 100%;
+	}
+}
+
+textarea {
+	width: 100%;
+}
+
+select {
+	width: 100%;
+	&[multiple="multiple"] {
+		margin: 0 0 .5em 0;
+	}
+}
+
+/*ADVANCED SEARCH*/
+
+/* Search block
+----------------------------------------------------------------------------------------------------*/
+
+form#search-block-form {
+	margin: 0;
+	padding: 0;
+	display: block;
+	input[type="search"] {
+		background: none;
+		border: none;
+		box-shadow: none;
+		margin: 0;
+		padding: 0 0 0 10px;
+		vertical-align: center;
+	}
+	.form-item, .form-actions {
+		margin: 0;
+		padding: 0;
+	}
+	.form-type-textfield {
+		width: 80%;
+	}
+	.form-actions {
+		display: inline-block;
+		padding: 2px 10px 0 0;
+		float: right;
+		vertical-align: center;
+	}
+	input.form-submit {
+		padding: 0;
+		margin: 0;
+		border: none;
+		width: 100%;
+	}
+}
+
+/* Gabe's Robot catcher for forms */
+.form-item-special-name {
+	display: none;
+}

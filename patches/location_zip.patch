@@ -1,0 +1,36 @@
+From 265689fd6722c9106e1322b1a459648e3fa98d37 Mon Sep 17 00:00:00 2001
+From: Nic Rodriquez <nicryan@fragileinc.com>
+Date: Thu, 16 Jan 2014 10:33:30 -0600
+Subject: [PATCH] fixing location so zip is after province
+
+---
+ docroot/sites/all/modules/contrib/location/location.tpl.php | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docroot/sites/all/modules/contrib/location/location.tpl.php b/docroot/sites/all/modules/contrib/location/location.tpl.php
+index 116e5e2..629b3d6 100644
+--- a/docroot/sites/all/modules/contrib/location/location.tpl.php
++++ b/docroot/sites/all/modules/contrib/location/location.tpl.php
+@@ -13,9 +13,6 @@
+         <?php endif; ?>
+       </div>
+     <?php endif; ?>
+-    <?php if (!empty($postal_code)): ?>
+-      <span class="postal-code"><?php print $postal_code; ?></span>
+-    <?php endif; ?>
+     <?php if (!empty($city)): ?>
+       <span class="locality"><?php print $city; ?></span><?php if (!empty($province)) {
+         print ', ';
+@@ -24,6 +21,9 @@
+     <?php if (!empty($province)): ?>
+       <span class="region"><?php print $province_print; ?></span>
+     <?php endif; ?>
++    <?php if (!empty($postal_code)): ?>
++      <span class="postal-code"><?php print $postal_code; ?></span>
++    <?php endif; ?>
+     <?php if (!empty($country_name)): ?>
+       <div class="country-name"><?php print $country_name; ?></div>
+     <?php endif; ?>
+-- 
+1.7.12.4 (Apple Git-37)
+

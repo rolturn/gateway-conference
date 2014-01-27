@@ -1,0 +1,13 @@
+diff --git homebox_og/homebox_og.module homebox_og/homebox_og.module
+index aeaf0a4..9237d8d 100644
+--- homebox_og/homebox_og.module
++++ homebox_og/homebox_og.module
+@@ -102,7 +102,7 @@ function _homebox_og_user_access_view_homebox($page, $node) {
+       && _homebox_user_access_view_homebox($page)) {
+     // Check if the group tab is set to members only
+     if (variable_get('homebox_og_tab_membersonly', 0)) {
+-      if (og_is_group_member($node->nid)) {
++      if (og_is_member('node', $node->nid)) {
+         return TRUE;
+       }
+       else {

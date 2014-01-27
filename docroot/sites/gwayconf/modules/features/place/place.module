@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Place feature.
+ */
+
+include_once 'place.features.inc';

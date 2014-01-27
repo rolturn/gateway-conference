@@ -1,0 +1,437 @@
+
+
+ /* These settings will disppear or disperse thoughout the child theme stylesheets when site-id.css in child theme is uncommented out
+------------------------------------------------------------------------------------------------------------*/
+
+body {
+  font-size: 100%;
+  font-family: Helvetica, Geneva, sans-serif;
+  color: #444;
+	background: rgb(230,230,230);
+}
+
+a, a:visited {
+	color: #444;
+}
+
+a:link {
+}
+
+a:hover,
+a:active {
+	color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dt {
+
+}
+
+pre,
+code {
+  font-family: Menlo, Courier, monospace;
+}
+
+del {
+  color: #f00;
+}
+
+ins {
+  color: #00a;
+}
+
+blockquote {
+  border-left-color: #fff;
+}
+
+
+/**
+ * MAIN SECTION SITE-WIDE BACKGROUNDS =======================================================
+ */
+
+
+#header-top {
+}
+
+#header-top-bg {
+}
+
+#header-top-full-bg {
+	background: #555;
+}
+
+#branding {
+}
+
+#branding-bg {
+}
+
+#branding-full-bg {
+	background: #555;
+  box-shadow: 0 10px 10px #aaa;
+}
+
+#main-nav-top {
+}
+
+#main-nav-bg {
+}
+
+#main-nav-full-bg {
+	background: #555;
+  box-shadow: 0 10px 10px #aaa;
+}
+
+#preface-top {
+}
+
+#preface-bg {
+}
+
+#preface-full-bg {
+}
+
+
+#main-wrap {
+}
+
+#main-wrap-bg {
+}
+
+#main-wrap-full-bg {
+}
+
+#postscript-top {
+}
+
+#postscript-top-bg {
+}
+
+#postscript-top-full-bg {
+}
+
+#postscript-bottom {
+}
+
+#postscript-bottom-bg {
+}
+
+#postscript-bottom-full-bg {
+	background: #999;
+}
+
+
+
+
+/**
+ * HEADER STYLING =======================================================
+ */
+
+
+/**
+ * HEADER TOP STYLES =======================================================
+ */
+
+/**
+ * BRANDING STYLING =======================================================
+ */
+
+.site-title a {
+  display: block;
+  margin: 0 20% 0 0;
+}
+
+/**
+ * NAVIGATION STYLES =======================================================
+ */
+
+nav ul li a,
+.sf-vertical li a {
+	background: #eee;
+	border-radius: 2px;
+}
+
+nav.menu a.active-trail {
+	background: #555;
+	color: #fff;
+}
+
+/* Main-Menu */
+
+#main-nav li a {
+  background: transparent;
+  color: #aaa;
+}
+
+#main-nav li a:hover {
+  color: #000;
+}
+
+
+ 
+/**
+ * PREFACE STYLES =======================================================
+ */
+
+/**
+ * MAIN WRAPPER STYLES =======================================================
+ */
+
+
+/**
+ * FORM STYLES =======================================================
+ */
+
+
+form h5, legend { 
+	color: #555;
+	text-shadow: 1px 1px 1px #fff;
+}
+
+.form-item label { 
+	color: #333; 
+}
+
+.form-type-radio label,
+.form-type-checkbox label {
+  color: #555;
+}
+
+fieldset fieldset legend {
+	color: #555;
+}
+
+fieldset fieldset legend a {
+	color: #333;
+}
+
+fieldset fieldset legend a:hover {
+	color: #aaa;
+}
+  
+  
+textarea,
+select,
+input,
+input[type="date"],
+input[type="datetime"], 
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[type="file"] {
+  /*
+  Leaving out Helvetica Neue, to not throw off size="..."
+  on inputs. Arial is more reliable, on Windows and OS X.
+  */
+  font-family: Arial, 'Liberation Sans', FreeSans, sans-serif;
+  background-color: #eee;
+  border: 1px solid #ccc;
+}
+
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  color: #333;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #ddd url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ddd));
+  background: -moz-linear-gradient(top center, #fff 0%, #ddd 100%);
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  text-shadow: #fff 0 1px 1px;
+  /*
+  Helvetica Neue present, because it works better
+  for line-height on buttons than Arial, on OS X.
+  */
+  font-family: 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+}
+
+input:focus,
+input:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
+  color: #555;
+  -moz-box-shadow: #ccc 0 0 7px;
+  -webkit-box-shadow: #ccc 0 0 7px;
+  box-shadow: #ccc 0 0 7px;
+  background-color: #fff;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover {
+  color: #555;
+  background: #fff url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eee), color-stop(1, #fff));
+  background: -moz-linear-gradient(top center, #eee 0%, #fff 100%);
+}
+  
+.description {
+  color: #999;
+}
+
+/**
+ * SEARCH BLOCK =======================================================
+ */
+
+form#search-block-form {
+  background: #fff;
+  border-radius: 3px;
+}
+
+
+form#search-block-form input.form-submit {
+	background: url(../images/search2.png) no-repeat center;
+  border-radius: 3px;
+}
+
+form#search-block-form input.form-submit:hover {
+	background: url(../images/search.png) no-repeat center #fff;
+}
+
+
+
+/**
+ * Postscript Bottom =======================================================
+ */
+ 
+
+#postscript-bottom nav a {
+  background-color: ;
+}
+
+#postscript-bottom a:hover {
+  color: #fff;
+}
+
+#postscript-bottom label {
+  color: #111;
+}
+
+/**
+ * Site Footer =======================================================
+ */
+ 
+#site-info {
+  border-top: 1px #fff solid;
+}
+
+
+/**
+ * Header elements These are only here so it doesn't create styling when child theme is started =======================================================
+ */
+
+
+h1#site-name {
+	/* set to display none because of logo. Delete this if not using logo image. */
+  display: none;
+}
+
+/**
+ * Navigational elements These are only here so it doesn't create styling when child theme is started =======================================================
+ */
+
+
+nav.menu li nav.menu {
+  margin: 0 0 0 20px;
+}
+
+nav ul li a,
+.sf-vertical li a {
+	margin: 5px 0;
+	padding: 5px 0 0 10px;
+}
+
+#main-nav li a {
+  padding: 10px 30px 10px 0;
+}
+
+
+
+/**
+ * Page Layout elements These are only here so it doesn't create styling when child theme is started =======================================================
+ */
+ 
+
+/**
+ * Regional Padding =======================================================
+ */
+ 
+
+#main-nav-full-bg {
+  margin: 0 0 20px 0;
+  padding: 0 0 10px 0;
+}
+
+#postscript-bottom-full-bg {
+  margin: 30px 0;
+  padding: 15px 0;
+}
+
+#preface {
+  margin: 0 0 20px 0;
+}
+
+.region-sidebar-first {
+  margin-right: 20%;
+}
+
+.region-sidebar-last {
+  margin-left: 20%;
+}
+
+.region-postscript-bottom-col-one,
+.region-postscript-bottom-col-two {
+  padding: 0 10% 0 0;
+}
+
+aside section {
+	margin: 0 0 20px 0;
+}
+
+aside section:last-child {
+	padding: 0;
+	margin: 0;
+}
+
+
+
+/**
+ * Element Positioning =======================================================
+ */
+ 
+
+/* Header Elements ----------------------------*/
+
+.site-title {
+  margin: 60px 0 0 0;
+}
+
+
+/**
+ * Site Info =======================================================
+ */
+ 
+#site-info {
+  margin: 20px 0 0 0;
+  padding: 20px 0 0 0;
+}

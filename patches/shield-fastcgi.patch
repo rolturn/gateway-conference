@@ -1,0 +1,28 @@
+From 32926737ac43da9cfb51eaed2280ba9ee353b2d3 Mon Sep 17 00:00:00 2001
+From: Jimmy Berry <jimmy@boombatower.com>
+Date: Tue, 3 Jan 2012 16:56:23 -0600
+Subject: Issue #1343750: Shield doesn't work on fastcgi (and some other
+ configurations).
+
+---
+ .htaccess |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/.htaccess b/.htaccess
+index e59cd99..3554b86 100644
+--- a/.htaccess
++++ b/.htaccess
+@@ -56,6 +56,10 @@ DirectoryIndex index.php index.html index.htm
+ <IfModule mod_rewrite.c>
+   RewriteEngine on
+ 
++  # Shield doesn't work on fastcgi (and some other configurations),
++  # see http://drupal.org/node/1343750.
++  RewriteRule .* - [env=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
++
+   # Block access to "hidden" directories whose names begin with a period. This
+   # includes directories used by version control systems such as Subversion or
+   # Git to store control files. Files whose names begin with a period, as well
+-- 
+1.7.8
+

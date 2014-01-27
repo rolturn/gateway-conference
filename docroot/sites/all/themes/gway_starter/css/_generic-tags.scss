@@ -1,0 +1,49 @@
+a {
+	color: $c-primary;
+	&:hover {
+		border: none;
+		color: #000;
+	}
+}
+
+h1 {
+	font-family: $f-secondary;
+	font-size: 2em;
+	letter-spacing: -.0125em;
+	color: lighten($dark-grey, 40%);
+	&.title {
+		font-size: 2em;
+		text-transform: uppercase;
+		line-height: 1.2em;
+	}
+	@include break(v-tablet) {
+		font-size: 3em;
+	}
+	@include break(v-mobile) {
+		font-size: 2em;
+	}
+}
+
+h2 {
+	//font-weight: 100;
+	font-family: $f-secondary;
+	text-transform: uppercase;
+	&.sub-title {
+		color: lighten($c-primary, 10%);
+		font-weight: 100;
+		letter-spacing: -.025em;
+	}
+}
+
+h3 {
+	font-family: $f-secondary;
+	text-transform: uppercase;
+	//color: #fff;
+	font-size: 1em;
+}
+
+.responsive-img img, 
+img.responsive-img {
+	width: 100%;
+	height: auto;
+}

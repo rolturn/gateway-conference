@@ -1,0 +1,6 @@
+name = Total Moderation Control
+description = Workbench Moderation support for the Total Control Admin Dashboard
+dependencies[] = total_control
+dependencies[] = workbench_moderation
+package = Administration
+core = 7.x

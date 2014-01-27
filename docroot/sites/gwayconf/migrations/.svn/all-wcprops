@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations
+END
+002.create_administrators.sh
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/002.create_administrators.sh
+END
+alphasummit2012_20111114-Roland.sql.zip
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/alphasummit2012_20111114-Roland.sql.zip
+END
+alphasummit Roland 111118.sql.zip
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/alphasummit%20Roland%20111118.sql.zip
+END
+alphasummit2012_20111116.sql.gz
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/alphasummit2012_20111116.sql.gz
+END
+20111220_alphab_drupal.sql
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/20111220_alphab_drupal.sql
+END
+.gitkeep
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/.gitkeep
+END
+001.enable_modules.sh
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/001.enable_modules.sh
+END
+20111214_alphab_drupal_2.sql.gz
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/20111214_alphab_drupal_2.sql.gz
+END
+20111216_alphab_drupal.sql.gz
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/20111216_alphab_drupal.sql.gz
+END
+.htaccess
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/.htaccess
+END
+000.initialize_site.sh
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/000.initialize_site.sh
+END
+2011-12-11_alphab_drupal.sql.gz
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/2011-12-11_alphab_drupal.sql.gz
+END
+alphasummit2012_20111207_roland_111207.sql.gz
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/migrations/alphasummit2012_20111207_roland_111207.sql.gz
+END

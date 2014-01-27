@@ -1,0 +1,120 @@
+@import "_mixin.scss";
+
+body {
+	background: #D7DCDE;
+	background-image: url(images/body_bg.jpg);
+	font-family: $f-primary;
+}
+
+a {
+	color: #666;
+	text-decoration: none;
+}
+
+#wrapper {
+	// Video Player: 640x395	
+	width: 900px;
+	margin: 50px auto 0;
+}
+
+.block {
+	@include trans-bg(#FFFFFF,0.3);
+	@include border-radius(15px, 15px, 15px, 15px);
+	padding: 25px;
+	margin-top: 15px;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: 200;
+	margin: 0;
+	padding: 0;
+	//color: $c-primary;
+}
+
+.logo {
+	height: 52px;
+	width: 241px;
+	background-image: url(http://dgmybz8fruyju.cloudfront.net/cdn/farfuture/nUqsOlJh2yQ6L8xNon8WuBB7Oe3QyRhJwWBv2uDEig0/mtime:1353367252/sites/devos/themes/loveexpresseddevo/images/gway-logo.png);
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+}
+
+p {
+	margin: 0;
+	padding: 10px 0;
+	&.subtle {
+		color: #999;
+	}
+}
+
+#playerContent {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding: 28.1% 0;
+	object {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+ul.social {
+	@include box-sizing();
+	display: inline-block;
+	text-align: center;
+	margin: 15px 0;
+	padding: 0;
+	li {
+		margin: 0;
+		padding: 0;
+		background-image: url(images/social-sprite.png);
+		background-repeat: no-repeat;
+		margin-right: 5px;
+		list-style-type: none;
+		display: inline-block;
+		a {
+			text-indent: -999999px;
+			height: 32px;
+			width: 32px;
+			display: inline-block;
+		}
+		
+		&.email {
+			background-position: -1px 0;
+			&:hover {
+				background-position: -1px -32px;
+			}
+		}
+		&.facebook {
+			background-position: -33px 0;
+			&:hover {
+				background-position: -33px -32px;
+			}
+		}
+		&.twitter {
+			background-position: -65px 0;
+			&:hover {
+				background-position: -65px -32px;
+			}
+		}
+		&.gateway-prayer {
+			background-position: -97px 0;
+			&:hover {
+				background-position: -97px -32px;	
+			}
+		}
+		&.devotional {
+			background-position: -129px 0;
+			&:hover {
+				background-position: -129px -32px;	
+			}
+		}
+		&.last {
+			margin-right: 0px;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+***************
+*** 119,126 ****
+      	$n = 0;
+      	if (is_array($field_output)) {
+      	  foreach ($field->field_values[$row->{$field->field_alias}] as $item) {
+-           $field_raw[++$n] = $item["value"];            		
+-     	  }
+      	  $field_is_multiple = TRUE;
+      	}
+  
+--- 119,134 ----
+      	$n = 0;
+      	if (is_array($field_output)) {
+      	  foreach ($field->field_values[$row->{$field->field_alias}] as $item) {
++     	    // Use 'value' as raw value if column name exists for this field.
++             if ($item['value']) {
++               $field_raw[++$n] = $item['value'];  
++             }
++             // Otherwise, use a combination of the available fields.
++             else {
++               unset($item['_nid'], $item['#delta']);
++               $field_raw[++$n] = implode('|', $item);
++             }
++           }
+      	  $field_is_multiple = TRUE;
+      	}
+  

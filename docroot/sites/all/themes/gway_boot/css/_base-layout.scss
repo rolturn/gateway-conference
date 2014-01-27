@@ -1,0 +1,120 @@
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+hr {
+  margin: 1.5em;
+}
+
+/* `Code
+----------------------------------------------------------------------------------------------------*/
+
+pre!, .notice! {}
+
+pre {
+  background: #0F0;
+  color: #000;
+  width: 100%;
+  display: block;
+  overflow: scroll;
+}
+
+code! {}
+
+/**
+ * Tables =============================================================
+ */
+
+table {
+  margin: 0px 0px 10px;
+  width: 100%;
+  caption {
+    font-style: italic;
+    text-transform: capitalize;
+  }
+}
+
+.fieldset table {
+  margin: 0px;
+}
+
+table {
+  td {
+    vertical-align: top;
+    border-width: 0px 0px;
+    padding: .5em .75em;
+  }
+  th {
+    vertical-align: top;
+    border-width: 0px 0px;
+    padding: .5em .75em;
+    padding: .5em .75em .5em 0;
+  }
+  thead {
+    color: #000;
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+  tbody tr {
+    &:nth-child(2n-1) {
+      background: rgba(255, 255, 255, 0.35);
+    }
+    &:nth-child(2n) {
+      background: rgba(0, 0, 0, 0.025);
+    }
+  }
+  tfoot tr {
+    color: #aaa;
+    text-transform: uppercase;
+    font-size: .7em;
+    font-weight: normal;
+  }
+}
+
+/* Header
+----------------------------------------------------------------------------------------------------*/
+
+#header-top {
+  display: block;
+  p {
+    margin: 0;
+    padding: 0;
+    line-height: 1em;
+  }
+}
+
+header #identity {
+  border-bottom: none;
+  text-transform: uppercase;
+}
+
+
+/* content-main
+----------------------------------------------------------------------------------------------------*/
+
+.messages {
+  border-radius: 3px;
+}
+
+.help, .tab {
+  margin: 12.5px;
+}
+
+
+/*Aside
+------------------------------------------------------------------------*/
+
+/*Sidebar First
+------------------------------------------------------------------------*/
+
+/*Sidebar Last
+------------------------------------------------------------------------*/
+
+
+/**
+ * Postscript Bottom =======================================================
+ */
+
+/**
+ * Site Info aka Footer =======================================================
+ */
+

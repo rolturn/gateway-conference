@@ -1,0 +1,104 @@
+
+
+// ! Bio List
+
+.view-display-id-speaker_list {
+	.views-row {
+		margin-bottom: 3em;
+	}
+}
+
+.speaker-aside {
+	@include col(1,3,4);
+	@include break(v-mobile) {
+		@include col(1,2,0);
+	}
+}
+
+.indiv-image img {
+	@include border-radius(50%);
+	overflow: hidden;
+	width: 100%;
+}
+
+.speaker-content {
+	h2 {
+		font-family: $f-primary;
+		a {
+			color: lighten($c-secondary,20%);
+			&:hover {
+				color: $c-primary;				
+			}
+		}		
+	}
+	h3 {
+		font-family: $f-secondary;
+		font-weight: 200;
+		text-transform: uppercase;
+		font-size: 2em;
+	}
+	@include col-last(2,3,4);
+	@include break(mobile) {
+		@include col-last(1,1,0);
+	}
+}
+
+// ! Bio Home List
+
+.view-id-speaker {
+	width: 100%;
+	margin: 0 auto;
+	.views-row {
+		@include grids(desk,5,2);
+		@include grids(tablet-desk,5,2);
+		@include grids(v-tablet-tablet,4,2);
+		@include grids(mobile-v-tablet,3,2);
+		@include grids(v-mobile-mobile,1,0);
+		margin-bottom: percentage($gut-med/100);
+	}
+	a.speaker {
+		//@include border-radius(50%);
+		color: $c-primary;
+		//@include trans-bg($c-primary,.4);
+		display: block;
+		overflow: hidden;
+		@include transitions();
+		h2 {
+			font-family: $f-primary;
+			font-weight: 400;
+			font-style: italic;
+			text-transform: inherit;
+			font-size: 1.2em;
+			color: lighten($c-secondary,10%);
+			letter-spacing: 0;
+			
+		}
+		h3 {
+			font-size: .8em;
+			font-family: $f-secondary;
+			text-transform: uppercase;
+			color: $grey;
+		}
+		.speaker-image-single {
+			height: 0;
+			padding: 50%;
+			@include border-radius(50%);
+			background-position: center center;
+			display: block;
+			background-repeat: no-repeat;
+			background-size: cover;
+			@include transitions();
+			
+			//@include b-shadow(2,3,15,darken($c-primary,35%));
+		}
+		.speaker-title {
+			text-align: center;
+			padding: .5em .5em;
+			@include box-sizing();
+		}
+		&:hover {
+			//@include filter(saturate(80%) hue-rotate(25deg));
+			//@include filter(brightness, 85%);
+		}
+	}
+}

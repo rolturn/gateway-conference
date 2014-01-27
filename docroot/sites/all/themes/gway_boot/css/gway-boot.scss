@@ -1,0 +1,7 @@
+// SASS WATCH COMMAND
+// for dev: sass --watch site-id.scss:site-id.css
+// for prod: sass --watch site-id.scss:site-id.css --style compressed
+
+// for dev: sass --watch gway-boot.scss:gway-boot.css
+
+@import "_base-reset.scss", "_base-formalize.scss", "_base-layout.scss", "_base-misc.scss", "_base-navigation.scss", "_base-typography.scss";

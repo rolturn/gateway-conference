@@ -1,0 +1,228 @@
+$slider-height: 700px;
+$slider-height-mobile: 18%;
+$slider-height-percent: 20%;
+
+
+/*
+#block-views-sliding-banners-sliding-banner {
+	@include break(mobile) {
+		display: none;
+	}
+}
+*/
+
+.views-slideshow-cycle-main-frame,
+.views_slideshow_cycle_slide {
+	width: 100% !important;
+}
+
+.views_slideshow_cycle_slide {
+	//@include b-shadow(0,10,20,#000);
+}
+
+.views-slideshow-controls-bottom {
+	//@include trans-bg(darken($c-secondary,30%),.6);
+}
+
+.views-slideshow-pager-field-item {
+	@include col(1,8,0);
+	@include transitions(1500);
+	.pager-item {
+		position: relative;
+		@include border-radius(5px,bottom);
+		overflow: hidden;
+		font-family: $f-secondary;
+		font-size: 1.2em;
+		font-weight: 300;
+		.pager-body {
+			position: absolute;
+			bottom: 0;
+			padding: .35em 5%;
+			width: 90%;
+			@include trans-bg($black,.3);
+			color: darken($grey,0%);
+			text-shadow: 3px 2px 5px $black;
+		}
+		.img-fill {
+			width: 100%;
+			height: 100px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			bottom: 0;
+			display: block;
+			overflow: hidden;
+			@include grayscale(100);
+			@include opacity(.3);
+		}
+	}
+	&.active {
+		.pager-item {
+			.pager-body {
+				color: #fff;
+				@include trans-bg(darken($c-primary,60%),.6);
+			}
+			.img-fill {
+				@include grayscale(0);
+				@include opacity(1);
+			}
+		}
+	}
+}
+
+.slider-contents {
+	width: 100%;
+	padding: $slider-height/2 0;
+	@include break(tablet) {
+		padding: $slider-height-mobile 0;
+	}
+	position: relative;
+	.img-fill {
+		width: 100%;
+		height: auto;
+		background-repeat: no-repeat;
+		background-size: cover;
+		bottom: 0;
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;	
+	}
+	.wrapper {
+		position: relative;
+		height: 100%;
+		display: block;
+	}
+/*
+	.slider-info {
+		position: relative;
+		display: block;
+		padding: 1em 0;
+		width: 65%
+	}
+	h2 {
+		color: lighten($c-primary,20%);
+		text-shadow: -1px 2px 5px darken($c-primary,60%);
+		line-height: 1em;
+		@include break(v-tablet) {
+			font-family: $f-secondary;
+		}
+	}
+*/
+/*
+	.content-bg {
+		z-index: 100;
+		@include break-contain(desk) {
+			margin-top: -$slider-height/2;
+			.content {
+				height: $slider-height;
+				@include col(4,12,0);
+				@include trans-bg(#000,.5);
+				@include box-sizing();
+				padding: 1em 2em;
+				.slider-link a {
+					display: block;
+					width: 100%;
+					@include box-sizing();
+				}
+			}
+		}
+		bottom: 0;
+		position: absolute;
+		@include trans-bg(darken($c-primary,40%),.7);
+		width: 100%;
+		.content {
+			width: 100%;
+			position: relative;
+		}
+		&:hover {
+			span {
+				color: $c-primary;
+				@include trans-bg($black,.5);
+			}	
+		}
+	}
+*/
+/*
+	.teaser {
+		padding: 0 0 1em 0;
+		p {
+			font-size: 1em;
+			line-height: 1.2em;
+			color: $light-grey;
+		}
+	}
+	.slider-link {
+		padding: 0;
+		position: relative;
+		display: block;
+		text-align: center;
+		@include col-last(2,7,3);
+		@include break(v-tablet) {
+			@include col-last(3,7,3);
+		}
+		span {	
+			@include transitions();
+			color: $black;
+			text-transform: uppercase;
+			font-weight: 600;
+			font-family: $f-secondary;
+			display: block;
+			position: absolute;
+			padding: 15px 10%;
+			@include trans-bg($c-primary,.7);
+			@include border-radius(5px,5px,0,0);
+			@include b-shadow(2,5,10,darken($c-primary,40%));
+			font-size: 1.4em;
+			width: 80%;
+			bottom: 0;
+		}
+	}
+*/
+}
+/*
+.view-sliding-banners { //Pushes object down the correct distance to make for responsive slider
+	padding: #{$slider-height}px 0;
+	margin-top: -#{$slider-height}px;
+	@include transitions();
+	height: 0;
+	@include break(tablet) {
+		padding: percentage(($slider-height-percent *2) / 100) 0;
+		position: relative;
+		margin-top: percentage(- $slider-height-percent*2 / 100);
+	}
+}
+
+*/
+/*
+.slider-contents {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding: #{$slider-height/2}px 0; //using padding for height of object works best when creating responsive slider using Views Slideshow
+	@include transitions();
+	@include break(tablet) {
+		padding: percentage($slider-height-percent / 100) 0; //establishes a percentage base height to the slider image
+	}
+	.img-fill {
+		width: 100%;
+		height: auto;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center center;
+		bottom: 0;
+		display: block;
+		overflow: hidden;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;	
+	}
+	.wrapper {
+		position: relative;
+		height: 100%;
+		display: block;
+	}
+}
+*/

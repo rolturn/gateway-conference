@@ -1,0 +1,13 @@
+name = Sponsor
+description = Feature for sponsors for a ministry, event or conference
+core = 7.x
+package = Features
+php = 5.2.4
+version = 7.x-1.0-beta1
+project = sponsor
+dependencies[] = features
+dependencies[] = image
+dependencies[] = list
+dependencies[] = location
+dependencies[] = location_phone
+features[features_api][] = api:1

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Product Display & Importer feature.
+ */
+
+include_once 'product_display_importer.features.inc';

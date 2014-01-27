@@ -1,0 +1,275 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/usvn/svn/gwayconf/!svn/ver/228/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates
+END
+field--field-registrations-stdnt-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-stdnt-spec.tpl.php
+END
+field--field-registrations-stdnt-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-stdnt-link.tpl.php
+END
+field--field-registrations-vol-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-vol-spec.tpl.php
+END
+field--field-registrations-child-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-child-cost.tpl.php
+END
+html.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/usvn/svn/gwayconf/!svn/ver/227/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/html.tpl.php
+END
+field--field-speaker-quote.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-speaker-quote.tpl.php
+END
+field--field-registrations-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-spec.tpl.php
+END
+field--field-registrations-vol-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-vol-link.tpl.php
+END
+field--field-registrations-sch-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-sch-title.tpl.php
+END
+Xpage--front.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/Xpage--front.tpl.php
+END
+field--field-registrations-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-link.tpl.php
+END
+field--field-speaker-twitter.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-speaker-twitter.tpl.php
+END
+node--registration.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/node--registration.tpl.php
+END
+field--field-speaker-position.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-speaker-position.tpl.php
+END
+field--field-speaker-organization.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-speaker-organization.tpl.php
+END
+field--field-registrations-stdnt-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-stdnt-cost.tpl.php
+END
+node--page.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/node--page.tpl.php
+END
+field--field-registrations-early-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-early-spec.tpl.php
+END
+field--field-registrations-late-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-late-title.tpl.php
+END
+field--field-registrations-sch-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-sch-spec.tpl.php
+END
+field--field-registrations-vol-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-vol-cost.tpl.php
+END
+field--field-speaker-facebook.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-speaker-facebook.tpl.php
+END
+field--field-registrations-early-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-early-link.tpl.php
+END
+field--field-registrations-sch-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-sch-link.tpl.php
+END
+field--field-registrations-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-cost.tpl.php
+END
+field--field-registrations-stdnt-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-stdnt-title.tpl.php
+END
+field--field-registrations-late-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-late-spec.tpl.php
+END
+field--field-speaker-links.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-speaker-links.tpl.php
+END
+field--field-registrations-vol-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-vol-title.tpl.php
+END
+field--field-registrations-late-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-late-link.tpl.php
+END
+field--field-registrations-grp-spec.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/192/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-grp-spec.tpl.php
+END
+field--field-registrations-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-title.tpl.php
+END
+field--field-registrations-early-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-early-cost.tpl.php
+END
+field--field-registrations-grp-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/192/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-grp-link.tpl.php
+END
+field--field-registrations-sch-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-sch-cost.tpl.php
+END
+field--field-registrations-early-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-early-title.tpl.php
+END
+field--field-registrations-late-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-late-cost.tpl.php
+END
+field--field-registrations-grp-cost.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/usvn/svn/gwayconf/!svn/ver/192/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-grp-cost.tpl.php
+END
+page.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/usvn/svn/gwayconf/!svn/ver/228/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/page.tpl.php
+END
+field--field-registrations-child-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-child-title.tpl.php
+END
+field--field-registrations-grp-title.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/usvn/svn/gwayconf/!svn/ver/192/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-grp-title.tpl.php
+END
+node--venue.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/node--venue.tpl.php
+END
+node--session.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/node--session.tpl.php
+END
+field--field-registrations-child-link.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/usvn/svn/gwayconf/!svn/ver/194/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/field--field-registrations-child-link.tpl.php
+END
+node--speaker.tpl.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/usvn/svn/gwayconf/!svn/ver/8/trunk/sites/gatewayconference.com/themes/gwayconf2012/templates/node--speaker.tpl.php
+END

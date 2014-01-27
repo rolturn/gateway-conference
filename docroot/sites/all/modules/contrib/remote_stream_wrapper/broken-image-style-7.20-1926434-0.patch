@@ -1,0 +1,42 @@
+From f16cd5614b6356bd1195b3ab48f9509845caa0da Mon Sep 17 00:00:00 2001
+From: Darren Oh <darren@oh.name>
+Date: Mon, 10 Jun 2013 15:26:31 -0400
+Subject: [PATCH] Issue #1926434 by Darren Oh: Fixed double encoding of image
+ derivative tokens.
+
+---
+ remote_stream_wrapper.module | 17 ++++++-----------
+ 1 file changed, 6 insertions(+), 11 deletions(-)
+
+diff --git a/remote_stream_wrapper.module b/remote_stream_wrapper.module
+index c671e5f..eb1bc6a 100644
+--- a/remote_stream_wrapper.module
++++ b/remote_stream_wrapper.module
+@@ -104,18 +104,13 @@ function file_is_scheme_remote($scheme) {
+ }
+ 
+ /**
+- * Implements hook_preprocess_image().
++ * Implements hook_file_url_alter().
+  */
+-function remote_stream_wrapper_preprocess_image(&$variables) {
+-  static $regex;
+-
+-  if (!empty($variables['style_name'])) {
+-    if (!isset($regex)) {
+-      $wrappers = file_get_remote_stream_wrappers();
+-      $schemes = implode('|', array_keys($wrappers));
+-      $regex = "#^($schemes)://styles/#";
+-    }
+-    $variables['path'] = preg_replace($regex, file_default_scheme() . '://styles/', $variables['path'], 1);
++function remote_stream_wrapper_file_url_alter(&$uri) {
++  $scheme = file_uri_scheme($uri);
++  $wrappers = file_get_remote_stream_wrappers();
++  if ($scheme && isset($wrappers[$scheme]) && strpos($uri, "$scheme://styles/") === 0) {
++    $uri = file_default_scheme() . '://' . file_uri_target($uri);
+   }
+ }
+ 
+-- 
+1.8.2
+

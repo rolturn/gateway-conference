@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Speaker feature.
+ */
+
+include_once 'gway_conference_speakers.features.inc';

@@ -1,0 +1,19 @@
+diff --git docroot/sites/all/modules/contrib/ds/ds.module docroot/sites/all/modules/contrib/ds/ds.module
+index 42d22b7..0b55fb0 100644
+--- docroot/sites/all/modules/contrib/ds/ds.module
++++ docroot/sites/all/modules/contrib/ds/ds.module
+@@ -524,6 +524,9 @@ function ds_get_fields($entity_type, $cache = TRUE) {
+ 
+   static $static_fields, $fields_cached = array();
+   static $loaded = FALSE;
++  
++  //added module load due to custom code fields not loading, http://drupal.org/node/1822168 #5
++   module_load_include('inc', 'ds', 'ds.ds_fields_info');
+ 
+   // Get fields from cache.
+   if (!$loaded) {
+diff --git patches/ds_fix_fields_load.patch patches/ds_fix_fields_load.patch
+index 946f24c..e69de29 100644
+--- patches/ds_fix_fields_load.patch
++++ patches/ds_fix_fields_load.patch
+@@ -1,14 +0,0 @@

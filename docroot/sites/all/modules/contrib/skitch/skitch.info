@@ -1,0 +1,14 @@
+name = Skitch
+description = "Filters Skitch links in content and replaces with Skitch images"
+dependencies[] = filter
+dependencies[] = libraries
+package = Input filters
+core = 7.x
+configure = admin/config/content/formats
+
+; Information added by drupal.org packaging script on 2011-09-13
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "skitch"
+datestamp = "1315874834"
+

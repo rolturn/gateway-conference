@@ -1,0 +1,206 @@
+<?php
+
+/**
+ * Implements hook_help().
+ */
+function commerce_reports_tax_help($path, $arg) {
+  switch ($path) {
+    case 'admin/commerce/reports/tax':
+      return '<p>' . t('Here you can create, manage and generate tax reports. These reports are a snapshot of the state of your store when it was last generated, they do not necessarily represent the current state of your store.') . '</p>';
+      
+    case 'admin/commerce/reports/tax/%':
+      return '<p>' . t('Here you can see the details of your tax report. If you wish you can <a href="@generation-url">re-generate</a> it or <a href="@edit-url">edit</a> its parameters.', array('@generation-url' => url('admin/commerce/reports/tax/manage/' . $arg[4] . '/generate'), '@edit-url' => url('admin/commerce/reports/tax/manage/' . $arg[4]))) . '</p>';
+      
+    case 'admin/commerce/reports/tax/%/%':
+      return '<p>' . t('These are the individual orders that have contributed to your tax report. You can see what type of tax and the exact amount that was charged.') . '</p>';
+      
+  }
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function commerce_reports_tax_menu_alter(&$items) {
+  $items['admin/commerce/reports/tax']['title'] = 'Tax';
+  $items['admin/commerce/reports/tax']['type'] = MENU_LOCAL_TASK;
+  $items['admin/commerce/reports/tax']['weight'] = 50;
+  
+  if (empty($items['admin/commerce/reports'])) {
+    $items['admin/commerce/reports'] = array(
+      'title' => 'Reports',
+      'description' => 'View reports for your store.',
+      'access arguments' => array('access commerce tax reports'),
+      'page callback' => 'drupal_goto',
+      'page arguments' => array('admin/commerce/reports/tax'),
+      'weight' => 50,
+    );
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function commerce_reports_tax_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'commerce_reports_tax') . '/includes/views',
+  );
+}
+
+/**
+ * Implements hook_entity_info().
+ */
+function commerce_reports_tax_entity_info() {
+  return array(
+    'commerce_reports_tax' => array(
+      'label' => t('tax report'),
+      'plural label' => t('Tax reports'),
+      'controller class' => 'CommerceReportsTaxEntityController',
+      'base table' => 'commerce_reports_tax',
+      'uri callback' => 'commerce_reports_tax_uri',
+      'entity keys' => array(
+        'id' => 'report_id',
+        'label' => 'title',
+      ),
+      'access callback' => 'commerce_reports_tax_access',
+      'module' => 'commerce_reports_tax',
+      'admin ui' => array(
+        'path' => 'admin/commerce/reports/tax',
+        'file' => 'commerce_reports_tax.admin.inc',
+        'controller class' => 'CommerceReportsTaxUIController',
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_permission().
+ */
+function commerce_reports_tax_permission() {
+  return array(
+    'access commerce tax reports' => array(
+      'title' => t('Access commerce tax reports'),
+    ),
+    'manage commerce tax reports' => array(
+      'title' => t('Manage commerce tax reports'),
+    ),
+  );
+}
+
+/**
+ * Callback for Entity API access.
+ */
+function commerce_reports_tax_access($op, $type = NULL, $account = NULL) {
+  if ($op = "view") {
+    return user_access('access commerce tax reports', $account);
+  }
+  else {
+    return user_access('manage commerce tax reports', $account);
+  }
+}
+
+/**
+ * URI callback for commerce_reports_tax entity.
+ */
+function commerce_reports_tax_uri($report) {
+  return array(
+    'path' => 'admin/commerce/reports/tax/' . $report->report_id,
+  );
+}
+
+/**
+ * Create a new commerce_reports_tax entity.
+ */
+function commerce_reports_tax_new($title = '', $start = NULL, $end = REQUEST_TIME, $order_statuses = array('completed', 'pending'), $detailled = FALSE) {
+  if (!isset($end)) {
+    $end = REQUEST_TIME;
+  }
+  
+  return entity_get_controller('commerce_reports_tax')->create(array(
+    'title' => $title,
+    'start' => $start,
+    'end' => $end,
+    'order_statuses' => $order_statuses,
+    'detailled' => $detailled,
+  ));
+}
+
+/**
+ * Update a commerce_reports_tax entity.
+ */
+function commerce_reports_tax_save($report) {
+  return entity_get_controller('commerce_reports_tax')->save($report);
+}
+
+/**
+ * Loads a single commerce_reports_tax entity.
+ */
+function commerce_reports_tax_load($report_id) {
+  $reports = commerce_reports_tax_load_multiple(array($report_id), array());
+  return $reports ? reset($reports) : FALSE;
+}
+
+/**
+ * Loads multiple commerce_reports_tax entity.
+ */
+function commerce_reports_tax_load_multiple($report_ids = array(), $conditions = array(), $reset = FALSE) {
+  return entity_load('commerce_reports_tax', $report_ids, $conditions, $reset);
+}
+
+/**
+ * Delete a single commerce_reports_tax entity.
+ */
+function commerce_reports_tax_delete($report_id) {
+  return commerce_reports_tax_delete_multiple(array($report_id));
+}
+
+/**
+ * Delete multiple commerce_reports_tax entity.
+ */
+function commerce_reports_tax_delete_multiple($report_ids) {
+  return entity_get_controller('commerce_reports_tax')->delete($report_ids);
+}
+
+/**
+ * Clears all generated information about a single commerce_reports_tax entity.
+ */
+function commerce_reports_tax_report_clear($report) {
+  commerce_reports_tax_report_clear_multiple(array($report->report_id => $report));
+  
+  // Update last changed timestamp.
+  commerce_reports_tax_save($report);
+}
+
+/**
+ * Clears all generated information about multiple commerce_reports_tax entity.
+ */
+function commerce_reports_tax_report_clear_multiple($ids) {
+  db_delete('commerce_reports_tax_rate_aggregate')
+    ->condition('report_id', array_keys($ids), 'IN')
+    ->execute();
+    
+  db_delete('commerce_reports_tax_rate_orders')
+    ->condition('report_id', array_keys($ids), 'IN')
+    ->execute();
+    
+  db_delete('commerce_reports_tax_rate')
+    ->condition('report_id', array_keys($ids), 'IN')
+    ->execute();
+}
+
+/**
+ * Generate information about a commerce_reports_tax entity.
+ */
+function commerce_reports_tax_generate($report) {
+  $batch = array(
+    'title' => t('Generating tax report'),
+    'operations' => array(
+      array('_commerce_reports_tax_create', array($report)),
+      array('_commerce_reports_tax_generate', array()),
+    ),
+    'finished' => '_commerce_reports_tax_finished',
+    'file' => drupal_get_path('module', 'commerce_reports_tax') . '/commerce_reports_tax.batch.inc',
+  );
+  
+  batch_set($batch);
+}

@@ -1,0 +1,29 @@
+<?php
+/**
+ * Implements hook_schema().
+ */
+function domain_tax_schema() {
+  $schema['domain_tax'] = array(
+    'description' => 'Domain specific taxonomy terms',
+    'fields' => array(
+      'tid' => array(
+        'description' => 'Drupal taxonomy term id',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'vid' => array(
+        'description' => 'Drupal taxonomy vocabulary id',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'domain_id' => array(
+        'description' => 'Domain Access domain id',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('tid', 'domain_id'),
+  );
+
+  return $schema;
+}

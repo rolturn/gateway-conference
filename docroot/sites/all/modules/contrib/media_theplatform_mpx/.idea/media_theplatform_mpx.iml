@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../devel" />
+          <root url="file://$MODULE_DIR$/../background_process" />
+          <root url="file://$MODULE_DIR$/../media" />
+          <root url="file://$MODULE_DIR$/../ultimate_cron" />
+          <root url="file://$MODULE_DIR$/../../../../includes" />
+          <root url="file://$MODULE_DIR$/../libraries" />
+          <root url="file://$MODULE_DIR$/../ctools" />
+          <root url="file://$MODULE_DIR$/../entity" />
+          <root url="file://$MODULE_DIR$/../brightcove" />
+          <root url="file://$MODULE_DIR$/../../../../modules" />
+          <root url="file://$MODULE_DIR$/../ooyala" />
+          <root url="file://$MODULE_DIR$/../views" />
+          <root url="file://$MODULE_DIR$/../httprl" />
+          <root url="file://$MODULE_DIR$/../progress" />
+          <root url="file://$MODULE_DIR$/../file_entity" />
+          <root url="file://$MODULE_DIR$/../jquery_update" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../devel" />
+          <root url="file://$MODULE_DIR$/../background_process" />
+          <root url="file://$MODULE_DIR$/../media" />
+          <root url="file://$MODULE_DIR$/../ultimate_cron" />
+          <root url="file://$MODULE_DIR$/../../../../includes" />
+          <root url="file://$MODULE_DIR$/../libraries" />
+          <root url="file://$MODULE_DIR$/../ctools" />
+          <root url="file://$MODULE_DIR$/../entity" />
+          <root url="file://$MODULE_DIR$/../brightcove" />
+          <root url="file://$MODULE_DIR$/../../../../modules" />
+          <root url="file://$MODULE_DIR$/../ooyala" />
+          <root url="file://$MODULE_DIR$/../views" />
+          <root url="file://$MODULE_DIR$/../httprl" />
+          <root url="file://$MODULE_DIR$/../progress" />
+          <root url="file://$MODULE_DIR$/../file_entity" />
+          <root url="file://$MODULE_DIR$/../jquery_update" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

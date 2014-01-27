@@ -1,0 +1,200 @@
+// Wrapper Defines with of site
+.wrapper {
+	width: $desk;
+	margin-left: auto;
+	margin-right: auto;
+	@include break(tablet) { 
+		width: 100% - $wrap-pad*2;
+		padding: 0 $wrap-pad;
+	}
+}
+
+.clearfix {
+	@include clearfix(before);
+	@include clearfix(after);
+}
+
+//Code that builds css for columing system
+
+//Column Number is used to determine to total amount of columns you desire to generate
+$col-number: 4;
+
+@include break-contain(desk) {
+	@include col-build(desk,$col-number);
+}
+
+@include break-contain(tablet-desk) {
+	@include col-build(tablet,$col-number);
+}
+
+@include break-contain(v-tablet-tablet) {
+	@include col-build(v-tablet,$col-number);
+}
+
+@include break-contain(mobile-v-tablet) {
+	@include col-build(mobile,$col-number);
+}
+
+@include break-contain(v-mobile-mobile) {
+	@include col-build(v-mobile,$col-number);
+}
+
+// ! Mobile Elements ===================================================
+
+
+// ! Header-top Layout ===================================================
+
+
+// ! Header Layout ===================================================
+
+
+// Preface ===================================================
+
+#preface-bg {
+	@include break(mobile) {
+		display: none;
+	}
+	#preface {
+		margin: 0 0 20px;
+	}
+}
+
+// Main ===================================================
+
+#user-login {
+	.form-item-name {
+		@include col(1,2,4);
+		@include break(mobile) {
+			@include col(1,1,0);
+		}
+	}
+	.form-item-pass {
+		@include col-last(1,2,4);
+		@include break(mobile) {
+			@include col(1,1,0);
+		}
+	}
+}
+
+#content-area {
+	&.include-side-last {
+		@include break-contain(desk) {
+			@include col(11,16,2);
+		}
+		@include break-contain(tablet-desk) {
+			@include col(11,16,2);
+		}
+	}
+}
+
+
+.ds-2col-stacked.node-ministry-partner {
+	.group-left {
+		@include col(1,3,5);
+		@include break(tablet) {
+			@include col(2,5,5);
+		}	
+		@include break(mobile) {
+			@include col(1,1,0);
+		}	
+	}
+	.group-right {
+		@include col-last(2,3,5);
+		@include break(tablet) {
+			@include col-last(3,5,5);
+		}	
+		@include break(mobile) {
+			@include col-last(1,1,0);
+		}	
+	}
+}
+
+.ds-2col-stacked.node-webform {
+	#webform-component-name {
+		@include col(1,2,5);
+		@include break(v-tablet) {
+			@include col(1,1,0);
+		}	
+	}
+	#webform-component-email-address {
+		@include col-last(1,2,5);
+		@include break(v-tablet) {
+			@include col-last(1,1,0);
+		}	
+	}
+	.group-left {
+		@include col(1,3,5);
+		@include break(mobile) {
+			@include col(1,1,0);
+		}	
+	}
+	.group-right {
+		@include col-last(2,3,5);
+		@include break(mobile) {
+			@include col-last(1,1,0);
+		}	
+	}
+}
+
+// Sidebar ===================================================
+
+#sidebar-last {
+	@include break-contain(desk) {
+		@include col-last(5,16,5);
+	}
+	@include break-contain(tablet-desk) {
+		@include col-last(5,16,5);
+	}
+}
+
+// Postscript ===================================================
+
+
+#webform-component-your-name {
+	@include col(1,2,2);
+	@include break-contain(v-tablet-tablet) {
+		@include col(1,1,0);
+		float: none;
+	}
+	@include break(v-mobile) {
+		@include col(1,1,0);
+		float: none;
+	}
+}
+
+#webform-component-your-email-address {
+	@include col-last(1,2,2);
+	@include break-contain(v-tablet-tablet) {
+		@include col-last(1,1,0);
+		float: none;
+	}
+	@include break(v-mobile) {
+		@include col(1,1,0);
+		float: none;
+	}
+}
+
+#webform-component-friends-name {
+	@include col(1,2,2);
+	@include break-contain(v-tablet-tablet) {
+		@include col(1,1,0);
+		float: none;
+	}
+	@include break(v-mobile) {
+		@include col(1,1,0);
+		float: none;
+	}
+}
+
+#webform-component-friends-email-address {
+	@include col-last(1,2,2);
+	@include break-contain(v-tablet-tablet) {
+		@include col-last(1,1,0);
+		float: none;
+	}
+	@include break(v-mobile) {
+		@include col(1,1,0);
+		float: none;
+	}
+}
+

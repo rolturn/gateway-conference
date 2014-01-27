@@ -1,0 +1,14 @@
+name = Domain Access Taxonomy
+description = Assign taxonomy vocabularies and terms to domains created by the Domain Access module.
+package = Domain Access
+core = 7.x
+dependencies[] = domain
+dependencies[] = taxonomy
+files[] = domain_tax.views.inc
+
+; Information added by drupal.org packaging script on 2012-03-21
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "domain_tax"
+datestamp = "1332288684"
+

@@ -1,0 +1,44 @@
+From 6a6d50868e5f3c3f8b264965df69eacf7f3e00e5 Mon Sep 17 00:00:00 2001
+From: "roland.turner" <roland.turner@gatewaystaff.com>
+Date: Wed, 24 Oct 2012 23:07:06 -0500
+Subject: [PATCH 1/1] edited jquery_countdown module for easier design
+
+---
+ .../jquery_countdown/jquery.countdown.js           |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/docroot/sites/all/modules/contrib/jquery_countdown/jquery_countdown/jquery.countdown.js b/docroot/sites/all/modules/contrib/jquery_countdown/jquery_countdown/jquery.countdown.js
+index 4f333f4..957234c 100644
+--- a/docroot/sites/all/modules/contrib/jquery_countdown/jquery_countdown/jquery.countdown.js
++++ b/docroot/sites/all/modules/contrib/jquery_countdown/jquery_countdown/jquery.countdown.js
+@@ -444,9 +444,9 @@ $.extend(Countdown.prototype, {
+ 		var showFull = function(period) {
+ 			var labelsNum = $.countdown._get(inst, 'labels' + periods[period]);
+ 			return (inst._show[period] ?
+-				'<span class="countdown_section"><span class="countdown_amount">' +
+-				periods[period] + '</span><br/>' +
+-				(labelsNum ? labelsNum[period] : labels[period]) + '</span>' : '');
++				'<div class="time-group"><div class="time-amount clearfix"><span>' +
++				periods[period] + '</span></div><div class="time-name"><span>' +
++				(labelsNum ? labelsNum[period] : labels[period]) + '</span></div></div>' : '');
+ 		};
+ 		return (layout ? this._buildLayout(inst, layout, compact) :
+ 			((compact ? // Compact version
+@@ -459,11 +459,11 @@ $.extend(Countdown.prototype, {
+ 			(inst._show[S] ? (inst._show[H] || inst._show[M] ? timeSeparator : '') +
+ 			this._minDigits(periods[S], 2) : '') :
+ 			// Full version
+-			'<span class="countdown_row countdown_show' + showCount +
++			'<div class="countdown-show-' + showCount +
+ 			(inst._hold ? ' countdown_holding' : '') + '">' +
+ 			showFull(Y) + showFull(O) + showFull(W) + showFull(D) +
+-			showFull(H) + showFull(M) + showFull(S)) + '</span>' +
+-			(description ? '<span class="countdown_row countdown_descr">' + description + '</span>' : '')));
++			showFull(H) + showFull(M) + showFull(S)) + '</div><div class="clearfix"></div>' +
++			(description ? '<div class="countdowndescr">' + description + '</div>' : '')));
+ 	},
+ 
+ 	/* Construct a custom layout.
+-- 
+1.7.9.6 (Apple Git-31.1)
+

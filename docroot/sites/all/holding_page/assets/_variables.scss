@@ -1,0 +1,45 @@
+//@import "_fonts.scss";
+
+// !GLOBAL RESPONSIVE VARIABLES
+
+$desk: 1300px;
+$tablet: 1400px;
+$v-tablet: 1020px;
+$mobile: 760px;
+$v-mobile: 500px;
+$sm-mobile: 500px;
+
+// !GLOBAL GUTTER VARIABLES
+//column gutter variables we now how four options if using gutter space
+$gut-no: 0;
+$gut-sm: .1;
+$gut-med: 3;
+$gut-lg: 20;
+
+
+// !GLOBAL COLORS
+$cream: #fffbf8;
+//$c-primary: #b5121b;
+$c-primary: #15437A;
+$c-secondary: #ffc600;
+$c-tertiary: #666666;
+$c-shadows: #9d646b;
+
+$black: #000;
+$red: #c91818;
+$blue: #6a818a;
+
+$dark-grey: #3d3e3f;
+$grey: #ced0d1;
+$light-grey: #f8f8f8;
+
+
+// !PADDING VARIABLES
+$wrap-pad: 6%; 
+
+// !BORDER RADIUS
+$b-radius: 6px;
+
+$f-primary: "source-sans-pro", "Trebuchet MS", Tahoma, Verdana, sans-serif;
+$f-secondary: "Pacifico", Cursive;
+$f-special: "proxima-nova-alt-ext-cond", "Trebuchet MS", Tahoma, Verdana, sans-serif;

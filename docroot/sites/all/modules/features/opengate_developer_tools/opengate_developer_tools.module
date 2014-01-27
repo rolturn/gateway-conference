@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Developer Tools feature.
+ */
+
+include_once 'opengate_developer_tools.features.inc';

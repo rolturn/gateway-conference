@@ -1,0 +1,63 @@
+
+; Theme Info -----------------------------------------------------------------
+; required information about the theme
+
+name = gwayconf2012
+description = Sub theme for Gateway Prototype
+core = 7.x
+engine = phptemplate
+base theme = gatewayprototype
+
+; Stylesheets  ---------------------------------------------------------------
+; We use [screen] instead of [all] to avoid browser styles affecting
+; other media types. IE stylesheets are loaded through template.php
+
+stylesheets[screen][] = css/fonts.css
+stylesheets[screen][] = css/style.css
+stylesheets[screen][] = css/navigation.css
+
+
+; Javascript  ---------------------------------------------------------------
+; html5.js is required for IE to understand the new elements like article
+; ref: http://remysharp.com/2009/01/07/html5-enabling-script/
+; ------------------------------
+
+
+
+; Regions --------------------------------------------------------------------
+; these content regions are available for block placement
+; some are special hidden regions: page_top, page_bottom, and help
+
+; these are the stock regions
+regions[highlighted] = Highlighted
+regions[page_top] = Page top
+regions[page_bottom] = Page bottom
+regions[help] = Help
+
+
+regions[home_col_1] = Home Column One
+regions[home_col_2] = Home Column Two
+
+
+regions[header_top] = Header Top
+regions[secondary_nav] = Secondary Navigation
+regions[header] = Header
+regions[main_nav] = Main Navigation
+regions[preface] = Preface
+regions[add_this] = Add This
+regions[content_top] = Content Top
+regions[content] = Content
+regions[content_bottom] = Content Bottom
+regions[sidebar_first] = Sidebar First
+regions[sidebar_last] = Sidebar Last
+regions[postscript_top] = Postscript Top
+regions[postscript_bottom_col_one] = Postscript Bottom Column One
+regions[postscript_bottom_col_two] = Postscript Bottom Column Two
+regions[postscript_bottom_col_three] = Postscript Bottom Column Three
+regions[footer] = Footer
+
+
+; Options --------------------------------------------------------------------
+; these are the checkboxes that are available on the theme settings page.
+
+

@@ -1,0 +1,180 @@
+<?php
+
+/**
+ * @file
+ * Filters Skitch links in content and replaces with Skitch images
+ */
+
+/**
+ * Implements hook_help().
+ */
+function skitch_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#skitch':
+      $output = file_get_contents(drupal_get_path('module', 'skitch') . '/README.txt');
+      return '<pre>' . check_plain($output) . '</pre>';
+  }
+}
+
+/**
+ * Implements hook_init()
+ */
+function skitch_init() {
+  drupal_add_css(drupal_get_path('module', 'skitch') . '/skitch.css');
+}
+
+/**
+ * Implements hook_theme()
+ */
+function skitch_theme() {
+  return array(
+    'skitch_image' => array(
+      'variables' => array('image_path' => NULL, 'skitch_link' => NULL),
+    ),
+  );
+}
+
+/**
+ * Implements hook_filter_info()
+ */
+function skitch_filter_info() {
+  $filters['filter_skitch'] = array(
+    'title' => t('Skitch filter'),
+    'description' =>  t('Filter Skitch links and replace with inline images.'),
+    'process callback' => '_skitch_filter',
+    'tips callback' => '_skitch_filter_tips',
+    'settings callback' => '_skitch_filter_settings',
+    'weight' => -10,
+  );
+  
+  return $filters;
+}
+
+function _skitch_filter_tips($delta, $format, $long = FALSE) {
+  return t('Skitch links will be converted to Skitch images.');
+}
+
+function _skitch_filter($text, $filter) {
+  //we assume that a skitch link is in the form of https://skitch.com/username/xxx/xxxx
+  $pattern = '/http[s]?\:\/\/skitch.com\/[a-zA-Z0-9-]*\/[a-zA-Z0-9-]*\/[a-zA-Z0-9\.-]*/';
+  
+  if (file_exists(libraries_get_path('simplehtmldom') . '/simple_html_dom.php')) {
+    if (preg_match_all($pattern, $text, $matches)) {
+      foreach ($matches[0] as $match) {
+        $replace = _skitch_get_image($match, $filter->settings['skitch_image_style']);
+        $text = str_replace($match, $replace, $text);
+      }
+    }
+    //$text = preg_replace_callback($pattern, '_skitch_get_image', $text);
+  }
+  
+  return $text;
+}
+
+function _skitch_filter_settings($form, &$form_state, $filter, $format, $defaults, $filters) {
+  $filter->settings += $defaults;
+  
+  $elements = array();
+  
+  $elements['skitch_image_style'] = array(
+    '#markup' => t('Skitch can use image styles to render images. You need to enable the image module.')
+  );
+  
+  if (module_exists('image')) {
+    $image_styles = array();
+    $image_styles[] = t('None');
+    foreach (image_styles() as $name => $style) {
+      $image_styles[$name] = $style['name'];
+    }
+    
+    $elements['skitch_image_style'] = array(
+      '#type' => 'select',
+      '#title' => t('Image style'),
+      '#description' => t('Select an image style to use for Skitch images.'),
+      '#options' => $image_styles,
+      '#default_value' => $filter->settings['skitch_image_style'],
+    );
+  }
+  
+  return $elements;
+}
+
+/**
+ * Helper function to process link and find Skitch's original image
+ */
+function _skitch_get_image($link, $image_style = NULL) {
+  //add the required simplehtmldom library
+  require_once(skitch_simplehtmldom_path());
+  
+  //hash the url to use as a caching id
+  $hash = md5($link);
+  if ($cache = cache_get('skitch_' . $hash)) {
+      $data = unserialize($cache->data);
+  }
+  else {
+    $html = file_get_html($link);
+    if ($html) {
+      foreach ($html->find('img') as $e) {
+        //the skitch image tag always has the id skitch-image
+        if ($e->id == 'skitch-image') {
+          $path = $e->src;
+          break;
+        }
+      }
+      
+      //if an image style is set, we cache the remote image and apply the image style to it
+      if (module_exists('image') && $image_style) {
+        $path = image_style_url($image_style, _skitch_cache_remote_image($path));
+      }
+      
+    }
+    $data['skitch_link'] = $link;
+    $data['image_path'] = $path;
+    cache_set('skitch_' . $hash, serialize($data), 'cache');
+  }
+  
+  if ($data['image_path'])  { 
+    return theme('skitch_image', array('image_path' => $data['image_path'], 'skitch_link' => $data['skitch_link']));
+  }
+  
+  return $link;
+}
+
+/**
+ * Theme function for skitch_image
+ */
+function theme_skitch_image($variables) {
+  $image = l('<img src="' . $variables['image_path'] .'" />', $variables['skitch_link'], array('html' => TRUE));
+  return '<div class="skitch-image">' . $image . $variables['skitch_link'] . '</div>';
+}
+
+/**
+ * Returns the path to the Simple HTML DOM library
+ */
+function skitch_simplehtmldom_path() {
+  $path = libraries_get_path('simplehtmldom');
+  
+  if (file_exists($path . '/simple_html_dom.php')) {
+    return $path . '/simple_html_dom.php';
+  }
+
+  return FALSE;
+}
+
+/**
+ * Caches a remote image url
+ *
+ * @param string $url a url to an image
+ */
+function _skitch_cache_remote_image($url) { 
+  $external_image_path = file_default_scheme() . '://';
+  $image = file_get_contents($url);
+
+  $cut_url = str_ireplace("http://", "", $url);
+  $cut_url = preg_replace("/^[^\/]*\//", "", $cut_url);
+  $image_name = str_ireplace("/", "-", $cut_url);
+
+  $image_path = $external_image_path . '/' . $image_name;
+ 
+  return file_unmanaged_save_data($image, $image_path, FILE_EXISTS_REPLACE);
+}

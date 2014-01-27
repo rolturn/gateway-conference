@@ -1,0 +1,55 @@
+
+
+
+.view-faq .views-row {
+	border-bottom: 1px dotted darken($grey,60%);
+	.views-accordion-header {
+		&.ui-state-default {
+			a {
+				font-size: .85em;
+				line-height: 1.1em;
+				display: block;
+				padding: .5em 0 .6em 0;
+				text-transform: none;
+				background: url(../images/ico-accordion-closed.png) no-repeat 0 1em;
+				color: lighten($c-primary, 30%);
+				&:hover {
+					color: lighten($c-secondary,30%);
+				}
+				@include break(mobile) {
+					font-family: $f-secondary;
+				}
+			}
+		}
+		&.ui-state-active {
+			a {
+				font-size: .85em;
+				display: block;
+				padding: .5em 0 .6em 0;
+				background: url(../images/ico-accordion-open.png) no-repeat 0 1em;
+				color: lighten($c-secondary,30%);
+				@include break(mobile) {
+					font-family: $f-secondary;
+				}
+			}
+		}
+	}
+	.views-accordion-header.ui-state-active a {
+		display: block;
+		padding: .5em 0 0 0;
+		line-height: 1.1em;
+		background: url(../images/ico-accordion-open.png) no-repeat 0 1em;
+	}
+	
+	.views-accordion-header.ui-state-default.ui-state-active a,
+	.views-accordion-header.ui-state-default a,
+	.views-accordion-header.ui-state-active a,
+	.ui-state-active .accordion-header a {
+		padding-left: 20px;
+	}
+	
+	.ui-accordion-content-active {
+		padding: 0 0 .5em 20px !important;
+	}
+
+}

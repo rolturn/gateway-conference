@@ -1,0 +1,444 @@
+<?php
+/**
+ * @file
+ * Functions for media_theplatform_mpx.module.
+ */
+
+// A registry of variable_get defaults.
+include_once ('includes/media_theplatform_mpx.variables.inc');
+// Hooks and callbacks for integrating with File Entity module for display.
+include_once ('includes/media_theplatform_mpx.formatters.inc');
+
+// Helper functions.
+include_once ('media_theplatform_mpx.admin.inc');
+include_once ('media_theplatform_mpx.browser.inc');
+include_once ('media_theplatform_mpx.helpers.php');
+include_once ('media_theplatform_mpx.player.php');
+include_once ('media_theplatform_mpx.video.php');
+include_once ('media_theplatform_mpx.version.inc');
+include_once ('media_theplatform_mpx.taxonomy.inc');
+include_once ('media_theplatform_mpx.fields.inc');
+
+// Base URLs for mpx endpoints
+// Media data
+define('MPX_MD_BASE', 'http://data.media.theplatform.com');
+// File management
+define('MPX_FM_BASE', 'http://fms.theplatform.com');;
+// Access/auth
+define('MPX_AC_BASE', 'http://access.auth.theplatform.com');
+// Publish
+define('MPX_PUB_BASE', 'http://publish.theplatform.com');
+// Publishing data
+define('MPX_PD_BASE', 'http://data.publish.theplatform.com');
+// Workflow
+define('MPX_WF_BASE', 'http://data.workflow.theplatform.com');
+
+/**
+ * Implements hook_page_build().
+ */
+function media_theplatform_mpx_page_build(&$page) {
+  // This is now only used if the HTML+JS embed method is enabled
+  if(media_theplatform_mpx_variable_get('embed_method', 0) == 0) {
+    $page_array_text = print_r($page, TRUE);
+    // Sometimes the page array contains recursion, like on the node edit form.
+    $infinite = strpos($page_array_text, '*RECURSION*');
+    // Only extract file ID's if we're on a page array with no recursion.
+    if ($infinite === FALSE) {
+      array_walk_recursive($page, 'media_theplatform_mpx_add_player_head_recursive');
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_panels_pane().
+ */
+function media_theplatform_mpx_preprocess_panels_pane(&$vars) {
+  // This is now only used if the HTML+JS embed method is enabled
+  if(media_theplatform_mpx_variable_get('embed_method', 0) == 0) {
+    // This will add MPX JS/CSS for any nodes displayed as "full" in Panels panes that have MPX Files embedded.
+    array_walk_recursive($vars, 'media_theplatform_mpx_add_player_head_recursive');
+  }
+}
+
+/**
+ * Searches $item => $key for Media Files and calls MPX add_player_head for all found Files.
+ *
+ * @param $item
+ *   The value of the array element.  Could be a String, Array, or anything.
+ * @param String $key
+ *   The key of the array element.
+ */
+function media_theplatform_mpx_add_player_head_recursive($item, $key) {
+  $fids = array();
+  // Check $item for embedded media markup:
+  if ($key == 'value' && is_string($item) && $item != '') {
+    $fids = media_theplatform_mpx_extract_fids($item);
+  }
+  // Else check if this is a file object:
+  elseif ($key == '#file' && is_object($item) && isset($item->filename) && ($item->filemime == 'video/mpx' || $item->filemime == 'player/mpx')) {
+    $fids[] = $item->fid;
+  }
+  // If we found files:
+  if (count($fids) > 0) {
+    media_theplatform_mpx_add_player_head($fids);
+  }
+}
+
+/**
+ * Adds mpxPlayer CSS, JS, Meta tags into Drupal <head> for each mpx Media File Entity in $fids.
+ *
+ * @param Array $fids
+ *   Array of File id's.
+ */
+function media_theplatform_mpx_add_player_head($fids) {
+  // Remove duplicate fids.
+  $fids = array_unique($fids);
+
+  foreach ($fids as $fid) {
+    $file = file_load($fid);
+
+    // If its a mpx file, get player data and add it into Drupal <head>.
+    if ($file && $file->filemime == 'video/mpx') {
+      $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+      $parts = $wrapper->get_parameters();
+
+      // Load the mpx_player data.
+      $player = media_theplatform_mpx_get_mpx_player_by_fid($parts['player_fid']);
+      $player_data = media_theplatform_mpx_get_player_data($player);
+
+      // Replace css selectors with #mpx_id selectors.
+      $player_css = media_theplatform_mpx_replace_css_ids($player_data['css'], $parts['mpx_id']);
+      // Add mpxPlayer CSS.
+      drupal_add_css($player_css, 'inline');
+
+      // Add mpxPlayer inline JS.
+      if (isset($player_data['js']['inline'])) {
+        foreach ($player_data['js']['inline'] as $script) {
+          drupal_add_js($script, 'inline');
+        }
+      }
+      // Add mpxPlayer external JS files.
+      if (isset($player_data['js']['external'])) {
+        foreach ($player_data['js']['external'] as $src) {
+          drupal_add_js($src, 'external');
+        }
+      }
+
+      // Add mpxPlayer meta tags.
+      if (isset($player_data['meta'])) {
+        foreach ($player_data['meta'] as $key => $value) {
+          $element = array(
+            '#tag' => 'meta',
+            '#attributes' => array(
+              'property' => $key,
+              'content' => $value,
+            ),
+          );
+          drupal_add_html_head($element, $key);
+        }
+      }
+
+      // Add mpxPlayer seek JS
+      drupal_add_js(drupal_get_path('module', 'media_theplatform_mpx').'/js/media_theplatform_mpx.deeplink.js');
+    }
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function media_theplatform_mpx_menu() {
+  $items = array();
+  $items[MPX_PATH_ADMIN] = array(
+    'title' => 'Media: thePlatform mpx settings',
+    'description' => 'Configure thePlatForm mpx integration settings.',
+    'page callback' => 'media_theplatform_mpx_page_account',
+    'type' => MENU_NORMAL_ITEM,
+    'access arguments' => array('administer mpx account'),
+  );
+  $items[MPX_PATH_ADMIN.'/settings'] = array(
+    'title' => t('Import Settings'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10
+  );
+  $items[MPX_PATH_ADMIN.'/file-mapping'] = array(
+    'title' => 'Video Field Mapping',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('media_theplatform_mpx_page_mpx_file_mapping_form'),
+    'type' => MENU_LOCAL_TASK,
+    'access arguments' => array('administer media'),
+    'weight' => 10,
+  );
+  $items[MPX_PATH_PLAYER] = array(
+    'title' => 'mpxPlayers',
+    'page callback' => 'media_theplatform_mpx_page_mpx_players',
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => '_media_theplatform_mpx_access',
+    'weight' => 30,
+  );
+  $items[MPX_PATH_VIDEO] = array(
+    'title' => 'mpxMedia',
+    'page callback' => 'media_theplatform_mpx_page_mpx_videos',
+    'type' => MENU_LOCAL_TASK,
+    'access callback' => '_media_theplatform_mpx_access',
+    'weight' => 40,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_init().
+ */
+function media_theplatform_mpx_init() {
+  // Add module CSS.
+  drupal_add_css(drupal_get_path('module', 'media_theplatform_mpx') . '/css/media_theplatform_mpx.css', array(
+    'group' => CSS_DEFAULT,
+    'type' => 'file',
+    'every_page' => TRUE)
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function media_theplatform_mpx_theme($existing, $type, $theme, $path) {
+  return array(
+    'media_theplatform_mpx_video' => array(
+      'variables' => array(
+        'uri' => NULL,
+      ),
+      'file' => 'media_theplatform_mpx.theme.inc',
+      'path' => $path . '/includes/themes',
+      'template' => 'media-theplatform-mpx-video',
+    ),
+    'media_theplatform_mpx_file_map_table' => array(
+      'file' => 'media_theplatform_mpx.theme.inc',
+      'path' => $path . '/includes/themes',
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Implements hook_media_internet_providers().
+ */
+function media_theplatform_mpx_media_internet_providers() {
+  return array(
+    'MediaInternetThePlatformMpxHandler' => array(
+      'title' => 'All media from thePlatform mpx must be imported and cannot be added on this tab.',
+    ),
+  );
+}
+
+/**
+ * Implements hook_stream_wrappers().
+ */
+function media_theplatform_mpx_stream_wrappers() {
+  return array(
+    'mpx' => array(
+      'name' => t('mpx videos'),
+      'class' => 'MediaThePlatformMpxStreamWrapper',
+      'description' => t('Videos provided by ThePlatform.'),
+      'type' => STREAM_WRAPPERS_READ_VISIBLE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function media_theplatform_mpx_ctools_plugin_api($owner, $api) {
+  static $api_versions = array(
+    'file_entity' => array(
+      'file_default_displays' => 1,
+    ),
+  );
+  if (isset($api_versions[$owner][$api])) {
+    return array('version' => $api_versions[$owner][$api]);
+  }
+}
+
+/**
+ * Implements hook_media_parse().
+ *
+ * @todo This hook should be deprecated. Refactor Media module to not call it
+ *   any more, since media_internet should be able to automatically route to the
+ *   appropriate handler.
+ */
+function media_theplatform_mpx_media_parse($embed_code) {
+  module_load_include('media_theplatform_mpx', 'inc', 'includes/MediaInternetThePlatformMpxHandler');
+  $handler = new MediaInternetThePlatformMpxHandler($embed_code);
+  return $handler->parse($embed_code);
+}
+
+
+/**
+ * Implements hook_file_delete().
+ */
+function media_theplatform_mpx_file_delete($file) {
+  // If its a mpx file, delete its record in mpx_player or mpx_video.
+  if ($file->filemime == 'video/mpx' || $file->filemime == 'player/mpx') {
+    $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+    $parts = $wrapper->get_parameters();
+
+    // Deleting a mpxPlayer:
+    // This is assuming that you know you're doing.
+    // If a user tries to delete through the Media forms, they can't submit if the mpxPlayer is referenced by other mpxMedia.
+    // If they're just deleting this record in the database or thru PHP, well, it could kill other mpxMedia Files that reference it and then good luck to you.
+    if ($parts['mpx_type'] == 'player') {
+      $player = media_theplatform_mpx_get_mpx_player_by_fid($file->fid);
+      db_delete('mpx_player')->condition('fid', $file->fid)->execute();
+      $deleted_id = $player['player_id'];
+    }
+
+    // Deleting a Video:
+    elseif ($parts['mpx_type'] == 'video') {
+      // Check for other mpxMedia Files that also reference this mpx_video.
+      $guid = $parts['mpx_id'];
+      $files = db_select('file_managed', 'f')
+        ->fields('f')
+        ->condition('fid', $file->fid, '!=')
+        ->condition('uri', 'mpx://m/' . $guid . '/%', 'LIKE')
+        ->execute()
+        ->fetchAll();
+
+      // If other files exist:
+      if ($files) {
+        // Update mpx_video record with the next fid.
+        $update = db_update('mpx_video')
+          ->fields(array(
+            'fid' => $files[0]->fid,
+          ))
+          ->condition('guid', $guid, '=')
+          ->execute();
+      }
+      // Else no other files exist:
+      else {
+        // @todo - store video_id
+        // Delete the mpx_video record.
+        $deleted_id = db_delete('mpx_video')->condition('guid', $guid)->execute();
+        // Log deletion.
+        global $user;
+        $log = array(
+          'uid' => $user->uid,
+          'type' => $parts['mpx_type'],
+          'type_id' => $deleted_id,
+          'action' => 'deleted',
+          'details' => 'deleted file id' . $file->fid,
+        );
+        media_theplatform_mpx_insert_log($log);
+      }
+    }
+
+  }
+}
+/**
+ * Implements hook_file_save().
+ *
+ */
+function media_theplatform_mpx_file_update($file) {
+  if($file->type == 'video') {
+    // Make sure this is an MPX video
+    if(strpos($file->uri, 'mpx') === 0) {
+      $mpx_video = media_theplatform_mpx_get_mpx_video_by_field('fid', $file->fid);
+      $mapped_fields = media_theplatform_mpx_process_file_form_fields($file);
+      if(count($mapped_fields))
+        media_theplatform_mpx_update_fields_in_mpx($mpx_video['id'], $mapped_fields);
+    }
+  }
+}
+
+/**
+ * Write data from given array $data into the mpx_log table.
+ */
+function media_theplatform_mpx_insert_log($data) {
+  $insert = db_insert('mpx_log')
+  ->fields(array(
+    'uid' => $data['uid'],
+    'type' => $data['type'],
+    'type_id' => $data['type_id'],
+    'action' => $data['action'],
+    'timestamp' => REQUEST_TIME,
+    'details' => $data['details'],
+  ))
+  ->execute();
+}
+
+/**
+ * Implements hook_cron().
+ */
+function media_theplatform_mpx_cron() {
+  $import_account = media_theplatform_mpx_variable_get('import_account');
+  // Don't do anything if we don't have signIn token or import account.
+  if (media_theplatform_mpx_check_token() && $import_account) {
+    // Sync taxonomy first, so video objects have real terms to associate
+    if(media_theplatform_mpx_variable_get('sync_vocabulary')) {
+      media_theplatform_mpx_taxonomy_sync();
+    }
+    if (media_theplatform_mpx_variable_get('cron_players')) {
+      media_theplatform_mpx_import_all_players('cron');
+    }
+    if (media_theplatform_mpx_variable_get('cron_videos') && media_theplatform_mpx_is_valid_player_for_account(media_theplatform_mpx_variable_get('default_player_fid'), $import_account)) {
+      media_theplatform_mpx_import_all_videos('cron');
+    }
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function media_theplatform_mpx_permission() {
+  return array(
+    'administer mpx account' => array(
+      'title' => t('Administer mpx Account'),
+      'description' => t('Can enter administrator login for thePlatform, set mpx Import Account'),
+    ),
+    'sync mpx_player' => array(
+      'title' => t('Sync mpxPlayers manually'),
+      'description' => t('Can access mpxPlayers Sync form.'),
+    ),
+    'sync mpx_video' => array(
+      'title' => t('Sync mpxMedia manually'),
+      'description' => t('Can access Sync mpxMedia form.'),
+    ),
+  );
+}
+
+/**
+ * Access callback for videos / players listing
+ */
+function _media_theplatform_mpx_access() {
+  if (user_access('administer media') || user_access('administer files')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_update().
+ * @param $term
+ */
+function media_theplatform_mpx_taxonomy_term_update($term) {
+  if($term->vid == media_theplatform_mpx_variable_get('sync_vocabulary', NULL)) {
+    db_update('mpx_categories')
+      ->fields(array('status' => 'updated', 'updated' => time()))
+      ->condition('tid', $term->tid)
+      ->condition('vid', $term->vid)
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_delete().
+ * @param $term
+ */
+function media_theplatform_mpx_taxonomy_term_delete($term) {
+  if($term->vid == media_theplatform_mpx_variable_get('sync_vocabulary', NULL)) {
+    db_update('mpx_categories')
+      ->fields(array('status' => 'deleted', 'updated' => time()))
+      ->condition('tid', $term->tid)
+      ->condition('vid', $term->vid)
+      ->execute();
+  }
+}

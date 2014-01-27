@@ -1,0 +1,167 @@
+<?php
+/**
+ * @file
+ * Code for the Gateway Smart App Module
+ * 
+ */
+function gwp_smart_app_menu() {
+  // create a main configuration menu of mobile, so when we add other modules we can easily get to all modules coniguring mobile.
+  $items['admin/config/mobile'] = array(
+    'title' => t('Mobile'),
+    'description' => t("This allows you to configure various options that will affect a user's mobile experience"),
+    'position' => 'right',
+    'weight' => -5,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer site configuration'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );  
+  // create the menu item for the configuration page of the gwp_smart_app module
+  $items['admin/config/mobile/gwp_smart_app'] = array(
+    'title' => t('Gateway Smart App'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('gwp_smart_app_settings'),
+    'access arguments' => array('configure gwp smart app'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'gwp_smart_app.admin.inc',
+  );
+return $items;
+}
+
+
+/**
+ *  Implementation of hook_perm
+ * 
+ *  This creates a permission for configuring the gwp_smart_app module
+ */
+function gwp_smart_app_permission() {
+  return array('configure gwp smart app' => array(t('Configure Gateway Church Smart App'), 'description' => t('Allows a user to configure the smart app for the various devices.')));  
+}
+
+
+/**
+ *  Implementation of hook_block_info()
+ * 
+ *  Defines a block for the gwp_smart_app banner, and gwp_smart_app_block_view creates the block.
+ */
+function gwp_smart_app_block_info() {
+  return array('gwp_smart_app_block' => array('info' => 'Gateway Smart App Banner Block', 'cache' => DRUPAL_CACHE_PER_PAGE, 'region' => 'footer'));
+}
+
+
+/**
+ *  Implementation of hook_block_view
+ * 
+ *  Creates the block for the gwp_smart_app banner, that was defined in gwp_smart_app_block_info().
+ */
+function gwp_smart_app_block_view($block_name = '') {
+  if ($block_name == 'gwp_smart_app_block') {   
+    //first get the app_argument value, if it was not specified on the settings page, we will use the drupal path.
+    $str_app_argument = variable_get('gwp_smart_app__app_argument', '');
+    if (empty($str_app_argument)) {
+      $str_app_argument = $GLOBALS['base_url'] . '/' . request_path();
+    }
+    //determine which devices this is enabled for
+    $ios_enabled = variable_get('gwp_smart_app__ios_enabled', false);
+    $android_enabled = variable_get('gwp_smart_app__android_enabled', false);
+    $windows_enabled = variable_get('gwp_smart_app__windows_enabled', false);
+    //if smart app banners are not enabled for any device, then there is no need to proceed
+    if ($ios_enabled == true OR $android_enabled == true OR $windows_enabled == true) {
+      //IOS - add necessary meta tag and link tags, if enabled
+      if ($ios_enabled == true) {
+        //add the necessary metatags
+        $ary_tag = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'apple-itunes-app', 
+            'content' => t('app-id=@app_id, affiliate-data=myAffiliateData, app_argument=@app_argument', array('@app_id' => variable_get('gwp_smart_app__ios_id', ''), '@app_argument' => $str_app_argument)),
+          ),
+        );
+        drupal_add_html_head($ary_tag, 'gwp_smart_app_ios');
+        //add the image
+        drupal_add_html_head_link(array('rel' => 'apple-touch-icon', 'href' => variable_get('gwp_smart_app__ios_icon_path')));    
+      }
+      //Android - add necessary meta tag and link tags, if enabled
+      if ($android_enabled == true) {
+        //add the necessary metatags
+        $ary_tag = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'google-play-app', 
+            'content' => t('app-id=@app_id, app_argument=@app_argument', array('@app_id' => variable_get('gwp_smart_app__android_id', ''), '@app_argument' => $str_app_argument)),
+          ),
+        );
+        drupal_add_html_head($ary_tag, 'gwp_smart_app_android');
+        drupal_add_html_head_link(array('rel' => 'google-play-icon', 'href' => variable_get('gwp_smart_app__android_icon_path')));    
+      }
+      //Windows - add necessary meta tag and link tags, if enabled
+      if ($windows_enabled == true) {  
+        //add the necessary metatags
+        $ary_tag = array(
+          '#type' => 'html_tag',
+          '#tag' => 'meta',
+          '#attributes' => array(
+            'name' => 'windows-phone-app', 
+            'content' => t('app-id=@app_id, app_argument=@app_argument', array('@app_id' => variable_get('gwp_smart_app__windows_id', ''), '@app_argument' => $str_app_argument)),
+          ),
+        );
+        drupal_add_html_head($ary_tag, 'gwp_smart_app_windows');
+        //add the image
+        drupal_add_html_head_link(array('rel' => 'windows-phone-icon', 'href' => variable_get('gwp_smart_app__windows_icon_path')));    
+      }
+      //Add Additional - tags, css, etc. to the header
+      $ary_tag = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array(
+          'name' => 'viewport', 
+          'content' => 'width=device-width, initial-scale=1.0',
+        ),
+      );
+      drupal_add_html_head($ary_tag, 'gwp_smart_app_viewport');
+      drupal_add_css(drupal_get_path('module', 'gwp_smart_app') . '/css/gwp_smart_app.css');
+      $ary_tag = array(
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#attributes' => array('src' => 'http://html5shiv.googlecode.com/svn/trunk/html5.js'),
+        '#prefix' => '<!--[if lt IE 9]>',
+        '#suffix' => '<![endif]-->',      
+      );
+      drupal_add_html_head($ary_tag, 'gwp_smart_app_ie');        
+      //Display Block
+      $str_app_title = variable_get('gwp_smart_app__title', '');
+      $str_app_author = variable_get('gwp_smart_app__author', '');
+      $str_app_price = variable_get('gwp_smart_app__price', '');
+      $str_app_language = variable_get('gwp_smart_app__language', '');
+      $str_ios_price_text = variable_get('gwp_smart_app__ios_price', 'On the App Store');
+      $str_android_price_text = variable_get('gwp_smart_app__android_price', 'In Google Play');
+      $str_windows_price_text = variable_get('gwp_smart_app__windows_price', 'Windows Phone Store');
+      $str_data = theme('gwp_smart_app_body', array('app_title' => $str_app_title, 'app_author' => $str_app_author, 'app_price' => $str_app_price, 'app_language' => $str_app_language, 
+                        'ios_enabled' => $ios_enabled, 'android_enabled' => $android_enabled, 'windows_enabled' => $windows_enabled,
+                        'ios_price_text' => $str_ios_price_text, 'android_price_text' => $str_android_price_text, 'windows_price_text' => $str_windows_price_text));
+      return array(
+        'subject' => '',
+        'content' => $str_data,
+      );      
+    }
+  }
+}
+
+
+/**
+ * Implementation of hook_theme
+ * 
+ * Used to theme the smart app banner.
+ * @return type
+ */
+function gwp_smart_app_theme() {
+  return array( 
+    'gwp_smart_app_body' => array(
+      'template' => 'templates/gwp_smart_app_body',
+      'variables' => array('app_title' => NULL, 'app_author' => NULL, 'app_price' => NULL, 'app_language' => NULL, 'ios_enabled' => NULL, 'android_enabled' => NULL, 'windows_enabled' => NULL, 
+                           'ios_price_text' => NULL, 'android_price_text' => NULL, 'windows_price_text' => NULL)
+    )
+  );  
+}

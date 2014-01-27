@@ -1,0 +1,50 @@
+//$img-folder: '/sites/gwp/themes/gwp_campus/images/';
+
+// !GLOBAL RESPONSIVE VARIABLES
+
+$desk: 1200px;
+$tablet: 1200px; // This number needs to be the same as $desk to prevent a "no-mans-land" in breakpoints
+$v-tablet: 1020px;
+$mobile: 760px;
+$v-mobile: 500px;
+$sm-mobile: 500px;
+
+// !GLOBAL GUTTER VARIABLES
+//column gutter variables we now how four options if using gutter space
+$gut-no: 0;
+$gut-sm: .1;
+$gut-med: 3;
+$gut-lg: 20;
+
+
+// !GLOBAL COLORS
+$cream: #fffbf8;
+//$c-primary: #b5121b;
+$c-primary: #3896c0;
+$c-secondary: #ffc600;
+$c-tertiary: #ffe052;
+$c-accent: #ffd14e;
+$c-footer: #3a3332;
+$c-shadows: #9d646b;
+
+$black: #000;
+$red: #be1e2d;
+$blue: #6a818a;
+$yellow: #ffd14e;
+
+$dark-grey: #3a3332;
+$grey: #999595;
+$light-grey: #f8f8f8;
+
+
+// !PADDING VARIABLES
+$wrap-pad: 6%; 
+
+// !BORDER RADIUS
+$b-radius: 6px;
+
+$speed: 1500ms;
+
+$f-primary: "kepler-std", "Trebuchet MS", Tahoma, Verdana, sans-serif;
+$f-secondary: "brandon-grotesque";
+$f-special: "proxima-nova-alt-ext-cond", "Trebuchet MS", Tahoma, Verdana, sans-serif;

@@ -1,0 +1,22 @@
+diff --git a/jstimer.field.inc b/jstimer.field.inc
+index 8d1f606..f497f8c 100644
+--- a/jstimer.field.inc
++++ b/jstimer.field.inc
+@@ -85,15 +85,8 @@ function jstimer_field_formatter_view($entity_type, $entity, $field, $instance,
+       }
+       else {
+         $dates = date_formatter_process('date_default', $entity_type, $entity, $field, $instance, $langcode, $item, $display);
+-        if (empty($item['value2']) || $item['value'] == $item['value2']) {
+-          $widget_args = _jstimer_date_to_widget($dates['value']['formatted_iso'], $display['type'], $settings);
+-          $element[$delta] = array('#markup' => theme('jstimer', $widget_args));
+-        }
+-        else {
+-          $widget_val = _jstimer_date_to_widget($dates['value']['formatted_iso'], $display['type'], $settings);
+-          $widget_val2 = _jstimer_date_to_widget($dates['value2']['formatted_iso'], $display['type'], $settings);
+-          $element[$delta] = array('#markup' => t('!start-date to !end-date', array('!start-date' => theme('jstimer', $widget_val), '!end-date' => theme('jstimer', $widget_val2))));
+-        }
++        $widget_args = _jstimer_date_to_widget($dates['value']['formatted_iso'], $display['type'], $settings);
++        $element[$delta] = array('#markup' => theme('jstimer', $widget_args));
+       }
+     }
+   }

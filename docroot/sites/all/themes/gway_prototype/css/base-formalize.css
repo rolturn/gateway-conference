@@ -1,0 +1,532 @@
+
+/* `UI Consistency
+----------------------------------------------------------------------------------------------------*/
+
+::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+input[type="search"]::-webkit-search-decoration {
+  display: none;
+}
+
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  vertical-align: middle;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  position: relative;
+  vertical-align: top;
+  top: .75em;
+  /* IE8, IE9, IE10 */
+  top: 0\0;
+  /* IE7 */
+  *top: -3px;
+}
+
+input[type="checkbox"] {
+  top: .55em;
+}
+
+/* iPad */
+@media (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 1024px) {
+  input[type="radio"],
+  input[type="checkbox"] {
+  vertical-align: baseline;
+  top: 2px;
+}
+}
+
+/* iPhone 3 */
+@media (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 480px) {
+  input[type="radio"],
+  input[type="checkbox"] {
+  vertical-align: baseline;
+  top: 0;
+}
+}
+
+/* iPhone 4 */
+@media (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 480px) {
+  input[type="radio"],
+  input[type="checkbox"] {
+  vertical-align: baseline;
+  top: 0;
+}
+}
+
+button,
+input[type="reset"],
+input[type="submit"],
+input[type="button"] {
+  -webkit-appearance: none;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  cursor: pointer;
+  padding: 3px 10px;
+  width: auto;
+  margin-right: 10px;
+  outline: 0;
+  overflow: visible;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 0px;
+}
+
+button {
+  /* IE7 */
+  *padding-top: 1px;
+  *padding-bottom: 1px;
+}
+
+textarea,
+select,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+input[type="file"] {
+  -webkit-appearance: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  outline: 0;
+  padding: .3em .5em .2em .5em;
+  height: 1.8em;
+
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 1px;
+  *height: auto;
+}
+
+select {
+  cursor: pointer;
+}
+
+
+
+/*
+  Separate rule for Firefox.
+  Separate rule for IE, too.
+  Cannot stack with WebKit's.
+*/
+::-webkit-input-placeholder {
+  color: #888;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #888;
+}
+
+input.placeholder_text,
+textarea.placeholder_text {
+  color: #888;
+}
+
+:invalid {
+  /*
+  Suppress red glow that Firefox
+  adds to form fields by default,
+  even when user is still typing.
+  */
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+input[type="file"]:focus,
+input[type="file"]:active,
+input[type="radio"]:focus,
+input[type="radio"]:active,
+input[type="checkbox"]:focus,
+input[type="checkbox"]:active {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+select[disabled],
+textarea[disabled],
+input[type="date"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="email"][disabled],
+input[type="month"][disabled],
+input[type="number"][disabled],
+input[type="password"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="text"][disabled],
+input[type="time"][disabled],
+input[type="url"][disabled],
+input[type="week"][disabled] {
+  background-color: #eee;
+}
+
+button[disabled],
+input[disabled],
+select[disabled],
+select[disabled] option,
+select[disabled] optgroup,
+textarea[disabled] {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: #888;
+  cursor: default;
+}
+
+textarea,
+select[size],
+select[multiple] {
+  height: auto;
+}
+
+/* Tweaks for Safari + Chrome. */
+@media (-webkit-min-device-pixel-ratio: 0) {
+  select {
+  background-image: url(../images/select_arrow.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+  select[size],
+  select[multiple] {
+  background-image: none;
+  padding: 0;
+}
+
+  ::-webkit-validation-bubble-message {
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666), color-stop(1, #000));
+  border: 1px solid;
+  border-color: #747474 #5e5e5e #4f4f4f;
+  color: #fff;
+  font: 1em/1 'Lucida Grande', Arial, 'Liberation Sans', FreeSans, sans-serif;
+  padding: 15px 15px 17px;
+  text-shadow: #000 0 0 1px;
+}
+
+  ::-webkit-validation-bubble-arrow,
+  ::-webkit-validation-bubble-top-outer-arrow,
+  ::-webkit-validation-bubble-top-inner-arrow {
+  display: none;
+}
+}
+
+textarea {
+  min-height: 30px;
+  overflow: auto;
+  resize: vertical;
+  width: 100%;
+}
+
+optgroup {
+  color: #000;
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* `IE6
+----------------------------------------------------------------------------------------------------*/
+
+/*
+  Everything below this line is for IE6.
+  Delete it if you don't support it! :)
+
+  Classes are added dynamically via JS,
+  because IE6 doesn't support attribute
+  selectors: .ie6_button, .ie6_input, etc.
+
+  Note: These style rules are somewhat
+  duplicated because IE6 bombs out when
+  it sees attribute selectors. Example:
+
+  .ie6_button {
+  This works in IE6.
+}
+
+  .ie6_button,
+  input[type=submit] {
+  This doesn't work.
+}
+*/
+
+* html button {
+  background: #ddd url(../images/button.png) repeat-x;
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  cursor: pointer;
+  color: #333;
+  font: bold 12px/1.2 Arial, sans-serif;
+  padding: 2px 10px 0px;
+  overflow: visible;
+  width: auto;
+}
+
+* html button {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+* html textarea,
+* html select {
+  background: #fff;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: #000;
+  padding: 2px 3px 1px;
+  font-family: Arial, sans-serif;
+  vertical-align: top;
+}
+
+* html select {
+  margin-top: 1px;
+}
+
+/* Override adjustments for all forms below
+----------------------------------------------------------------------------------------------------*/
+
+/*Forms*/
+/*--------------------------*/
+
+form {
+  margin: 0 0 2em 0;
+}
+
+html.js fieldset.collapsible .fieldset-legend {
+  background-position: right;
+  padding-left: 0;
+}
+
+.fieldset-wrapper fieldset:last-child {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset.collapsible.collapsed,
+.fieldset-wrapper fieldset,
+.fieldset-wrapper fieldset .fieldset-wrapper {
+  margin-bottom: 1em;
+}
+
+.form-item, .form-actions {
+  margin: 0;
+}
+
+.form-checkboxes, 
+.form-radios {
+	display: block;
+	margin: 0;
+}
+
+
+.form-checkboxes .form-item,
+.form-radios .form-item {
+	display: inline-block;
+  padding: 0 10px 0 0;
+}
+
+.form-checkboxes .form-item:last-child,
+.form-radios .form-item:last-child {
+  padding: 0;
+}
+
+.form-item,
+.form-actions,
+.form-checkboxes .form-item,
+.form-radios .form-item {
+  margin: 0 0 .5em 0;
+}
+
+.form-type-radio,
+.form-type-checkboxes {
+  margin: 0 0 0 .5em;
+}
+
+.description {
+  margin: .5em 0 0 0;
+  display: block;
+}
+
+.webform-component-radios .description {
+  margin: -.5em 0 0 0;
+}
+
+
+.filter-wrapper {
+    padding: 0 0 .5em 0;
+}
+
+table input[type="radio"], 
+table input[type="checkbox"] {
+  top: 2px;
+}
+
+
+/* Inline WebForm Components
+----------------------------------------------------------------------------------------------------*/
+.webform-container-inline select,
+.webform-container-inline input[type="text"],
+.webform-container-inline input[type="number"],
+.webform-container-inline input[type="password"],
+.webform-container-inline input[type="search"],
+.webform-container-inline input[type="email"] {
+  width: inherit;
+  max-width: 100%;
+  display: inline;
+  width: 75%;
+  float: right;
+}
+
+.webform-container-inline label {
+  margin-right: .5em;
+  bottom: 0;
+}
+
+.webform-container-inline label:last-child {
+  margin-right: 0;
+}
+
+.webform-component-webform_time input,
+.webform-component-webform_time select,
+.webform-component-date select,
+.webform-component-date input,
+.webform-component-date button,
+input.year,
+input[type="text"].year {
+  width: inherit;
+  float: none;
+  diaplay: inline;
+}
+
+.webform-component-managed_file.webform-container-inline .form-managed-file,
+.webform-container-inline.webform-component-webform_time .webform-container-inline,
+.webform-container-inline.webform-component-date .webform-container-inline {
+  float: right;
+  clear: right;
+}
+
+.webform-component-managed_file.webform-container-inline input,
+.webform-container-inline.webform-component-webform_time .webform-container-inline input,
+.webform-container-inline.webform-component-date .webform-container-inline input {
+  width: inherit;
+}
+
+.webform-container-inline.webform-component-managed_file input {
+  float: none;
+}
+
+.webform-component-managed_file .form-file {
+  margin: 0 10px 0 0;
+}
+
+.webform-container-inline .description {
+	text-align: right;
+}
+
+
+/*Formalize Adjustments */
+/*--------------------------*/
+
+
+input[type="text"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+}
+
+
+select[multiple="multiple"] {
+  margin: 0 0 .5em 0;
+}
+
+html.js input.form-autocomplete {
+  background-position: 100% 10px;
+}
+
+/*ADVANCED SEARCH*/
+
+/* Search block
+----------------------------------------------------------------------------------------------------*/
+
+form#search-block-form {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+form#search-block-form input[type="search"] {
+	background: none;
+	border: none;
+	box-shadow: none;
+	margin: 0;
+  padding: 0 0 0 10px;
+  vertical-align: center;
+}
+
+form#search-block-form .form-item, 
+form#search-block-form .form-actions {
+  margin: 0;
+  padding: 0;
+}
+
+form#search-block-form .form-type-textfield {
+  width: 80%%;
+}
+
+form#search-block-form .form-actions {
+  display: inline-block;
+	padding: 2px 10px 0 0;
+  float: right;
+  vertical-align: center;
+}
+
+form#search-block-form input.form-submit {
+	padding: 0;
+  margin: 0;
+  border: none;
+  width: 100%;
+}
+
+
+/* Gabe's Robot catcher for forms */
+.form-item-special-name {
+  display: none;
+}
+
+

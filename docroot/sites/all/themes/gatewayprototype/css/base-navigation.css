@@ -1,0 +1,309 @@
+
+
+#admin-menu {
+	/* I couldn't stand it, I had to make this smaller */
+	font-size: 0.7em;
+}
+
+p a,
+table a {
+	/* Adds a element to help people recognize it's a link */
+  display: inline-block;
+  border-bottom: 1px dotted #666;
+  line-height: 1em;
+}
+
+#skip-link {
+	/* for people using screenreaders */
+	display: none;
+}
+
+nav.menu ul {
+  margin: 0;
+}
+
+nav.item-list li,
+nav.menu li {
+	/* overrides drupal menu styling */
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.filter-help p a {
+	border: none;
+}
+
+
+nav ul li a {
+  display: block;
+	border-bottom: none;
+}
+
+
+
+/* Main-Menu (named this because of Drupal 7)
+----------------------------------------------------------------------------------------------------*/
+
+/* Override style on Menus
+----------------------------------------------------------------------------------------------------*/
+
+#main-nav {
+	display: block;
+  margin: 0;	
+	padding: 0;
+}
+
+#main-nav li {
+  padding: 0;
+	display: inline-block;
+}
+
+#main-nav li a {
+	display: inline-block;
+	margin: 0;
+  padding: 0; 
+	text-decoration: none;
+}
+
+#main-nav li ul li {
+	margin: 0;
+  padding: 0; 
+}
+
+#main-nav li ul a {
+	margin: 0;
+  padding: 0; 
+  background: #fff;
+}
+
+
+#secondary-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+#secondary-nav li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#secondary-nav li a {
+  display: inline-block;
+  margin: 0;
+  white-space-collapse: discard;
+}
+
+
+/* Override Superfish Menus
+----------------------------------------------------------------------------------------------------*/
+
+.sf-menu {
+	line-height: 1.6em;
+}
+
+.sf-menu li {
+  float: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sf-menu a {
+	padding: 0 0 0 10px;
+ }
+
+.sf-vertical, .sf-vertical li {
+  width: 100%;
+}
+
+.sf-vertical li a {
+  display: block;
+  width: 100%;
+}
+
+#main-nav-mobile {
+	/* this is for mobile devices. If using a different method we can override or if we are no longer using this method it can be removed. */
+  display: none;
+}
+
+#header-top {
+  font-size: .8em;
+}
+#header-top div,
+#header-top p,
+#header-top nav.menu,
+#header-top nav.menu ul {
+  display: inline-block;
+}
+
+#header-top nav li,
+#site-info nav li {
+  display: inline;
+}
+
+#header-top p,
+#header-top nav li a,
+#site-info nav li a {
+  display: inline-block;
+}
+
+a img {
+	border-bottom: none;
+}
+
+
+/* OVERRIDE FOR DRUPAL TABS 
+----------------------------------------------------------------------------------------------------*/
+
+ul.links,
+ul.tabs,
+ul.primary {
+  width: 100%;
+  margin: .25em 0 0 0;
+}
+
+ul.links li,
+ul.tabs li,
+ul.primary li {
+  display: inline-block;
+  margin: 0 2px 0 0;
+  padding: 0 ;
+  list-style: none;
+}
+
+ul.tabs li,
+ul.primary li {
+  margin: 0 2px 10px 0;
+}
+
+ul.links a,
+ul.tabs a,
+ul.primary a {
+  display: inline-block;
+  font-size: .7em;
+  letter-spacing: .05em;
+  padding: 3px 8px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #ddd url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ddd));
+  background: -moz-linear-gradient(top center, #fff 0%, #ddd 100%);
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  text-shadow: #fff 0 1px 1px;
+
+}
+
+ul.links a:hover,
+ul.tabs a:hover,
+ul.primary a:hover {
+  background: #333;
+  color: #fff;
+  text-shadow: none;
+}
+
+ul.tabs li.active a,
+ul.primary li.active a {
+  background: #eee;
+  color: #999;
+  cursor: auto;
+}
+
+ul.tabs li.active a:hover,
+ul.primary li.active a:hover {
+  color: #999;
+}
+
+
+/* content-main
+----------------------------------------------------------------------------------------------------*/
+
+
+article header h2 a {
+	border-bottom: none;
+}
+
+article footer li a {
+	border-bottom: none;
+}
+
+
+/**
+ Aside Menus =======================================================
+ */
+  
+
+
+aside nav.menu ul li.expanded {
+}
+
+aside nav.menu ul li.expanded a {
+}
+
+aside nav.menu ul li.expanded nav.menu ul li {
+}
+
+aside nav.menu ul li.expanded nav.menu ul li a {
+}
+
+
+/**
+ More Buttons =======================================================
+ */
+
+.more-link {
+  text-align: left;
+}
+
+.more a,
+a.more,
+.more-link a,
+a.more-link {
+  display: inline-block;
+  font-size: .7em;
+  letter-spacing: .05em;
+  padding: 3px 8px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #ddd url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #ddd));
+  background: -moz-linear-gradient(top center, #fff 0%, #ddd 100%);
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  text-shadow: #fff 0 1px 1px;
+  margin-bottom: 1em;
+}
+
+.more-link a,
+a.more-link {
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: .7em;
+}
+
+aside .more-link a {
+  display: block;
+}
+
+.more a:hover,
+a.more:hover,
+.more-link a:hover,
+a.more-link:hover {
+  background: #333;
+  color: #fff;
+  text-shadow: none;
+}
+
+
+
+

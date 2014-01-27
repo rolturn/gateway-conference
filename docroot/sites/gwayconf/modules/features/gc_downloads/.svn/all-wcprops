@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads
+END
+gc_downloads.strongarm.inc
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.strongarm.inc
+END
+gc_downloads.module
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.module
+END
+gc_downloads.features.inc
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.features.inc
+END
+gc_downloads.field_group.inc
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.field_group.inc
+END
+gc_downloads.features.field.inc
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.features.field.inc
+END
+gc_downloads.views_default.inc
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.views_default.inc
+END
+gc_downloads.info
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/usvn/svn/gwayconf/!svn/ver/4/trunk/sites/gatewayconference.com/modules/features/gc_downloads/gc_downloads.info
+END

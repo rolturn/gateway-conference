@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the local_listings_widget feature.
+ */
+
+include_once 'local_listings_widget.features.inc';

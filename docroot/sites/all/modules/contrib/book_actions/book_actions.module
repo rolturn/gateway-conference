@@ -1,0 +1,92 @@
+<?php
+
+/** 
+ * Implements hook_action_info()
+ *
+ * Note: Previously the second action was called remove_book, but in D7 there is a CSS bug which prevented 
+ *       actions with 'remove' in them from being displayed: http://drupal.org/node/1193742
+ */
+
+function book_actions_action_info() {
+  if (!module_exists('book')) return array();
+  return array(
+    'book_actions_move_book_action' => array(
+      'type' => 'node',
+      'label' => t('Move to book'),
+      'configurable' => TRUE,
+      'behavior' => array('changes_property'),
+      'tiggers' => array('any'),
+    ),
+    'book_actions_drop_book_action' => array(
+      'type' => 'node',
+      'label' => t('Remove from book'),
+      'configurable' => FALSE,
+      'tiggers' => array('any'),
+    ),
+  );
+}
+
+/** 
+ * Creates the form to select which book to move the node(s) to 
+ */
+
+function book_actions_move_book_action_form($context) {
+  $form = array();
+  if (!isset($context['book'])) {
+    $context['book'] = '';
+  }
+  $options = array();
+  $books = book_get_books();
+  foreach ($books as $value) {
+    $options[$value['nid']] = $value['title'];
+  }
+
+  if (empty($options)) {
+    drupal_set_message(t('You have no books.'), 'error');
+    return array();
+  }
+
+  $form['book'] = array(
+    '#type' => 'select',
+    '#title' => t('Choose a parent book'),
+    '#options' => $options,
+    '#description' => t('Select the parent book page you wish to move the book page into'),
+  );
+  return $form;
+}
+
+function book_actions_move_book_action_submit($form, $form_state) {
+  return array('book' => $form_state['values']['book']);
+}
+
+
+/** 
+ * Adds the action 'Move book to new parent'
+ */
+
+function book_actions_move_book_action($node, $context = array()) {
+  if (isset($context['book'])) {
+    $book_node = node_load($context['book']);
+    $mlid = db_select('menu_links' , 'ml')
+    ->condition('ml.link_path' , 'node/' . $node->nid)
+    ->fields('ml' , array('mlid'))
+    ->execute()
+    ->fetchField();
+    $node->book['mlid'] = $mlid;
+    $node->book['bid'] = $book_node->nid;
+    $node->book['plid'] = $book_node->book['mlid'];
+    $node->book['module'] = 'book';
+    node_save($node);
+    drupal_set_message(t('Book page %node was successfully added to %book_node.', array('%node' => $node->title, '%book_node' =>$book_node->title)));
+  }
+}
+
+/** 
+ * Adds the action 'Remove node from a parent book'
+ */
+
+function book_actions_drop_book_action($node, $context) {
+  $book = $node->book['mlid'];
+  book_node_delete($node);
+  drupal_set_message(t('%node was removed from outline.', array('%node' => $node->title, '%mlid' => $book)));
+}

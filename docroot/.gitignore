@@ -1,0 +1,12 @@
+.DS_Store
+
+# Ignore configuration files that may contain sensitive information.
+sites/*/settings.*.php
+
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
+sites/*/themes/*/.sass-cache
+sites/*/themes/*/css/.sass-cache
+sites/*/themes/*/scss/.sass-cache
+sites/*/themes/*/sass/.sass-cache

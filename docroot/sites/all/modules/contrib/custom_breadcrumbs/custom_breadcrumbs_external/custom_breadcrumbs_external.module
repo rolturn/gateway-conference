@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Provides a special identifier for custom breadcrumbs to allow for external
+ * links.
+ */
+
+/**
+ * Implements hook_cb_identifier_list().
+ *
+ * @return
+ *   An array of text strings describing special identifier behavoir.
+ */
+function custom_breadcrumbs_external_cb_identifier_list() {
+  $identifiers = array();
+  $identifiers['<external>'] = t('Produces a link to an external site.');
+  return $identifiers;
+}
+
+/**
+ * Implements hook_cb_identifier_values().
+ *
+ * This function prepares an array of crumb items to replace an identifier.
+ * The identifier should be a string starting with '<' and ending with '>'.
+ * The function also requires an object to make the substitution. Usually,
+ * this object will include the crumb title and path, but may contain other
+ * properties that can be used.
+ *
+ * This function returns an array of crumb items. Each crumb item is an
+ * associative array with keys
+ *   'crumb' = the html crumb to use in the breadcrumb
+ *   'title' = the title of the crumb
+ *   'href'  = the link path
+ */
+function custom_breadcrumbs_external_cb_identifier_values($identifier, $obj) {
+  $crumb_items = NULL;
+  switch ($identifier) {
+    case '<external>':
+
+      // Add double slashes to links.
+      $extpath = preg_replace('/:\//', '://', $obj['path']);
+      $crumb = l($obj['title'], $extpath, $obj['attributes']);
+      $crumb_item = array(
+        'crumb' => $crumb,
+        'title' => $obj['title'],
+        'href'  => $extpath,
+      );
+      $crumb_items[] = $crumb_item;
+      break;
+  }
+  return $crumb_items;
+}

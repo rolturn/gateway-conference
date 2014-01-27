@@ -1,0 +1,321 @@
+/* `XHTML, HTML4, HTML5 Reset
+----------------------------------------------------------------------------------------------------*/
+
+/* margin and padding values are reset for all these elements
+ * you could remove from there elements you do not used in your documents, but I don't think it'd worth it 
+ */
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* using height:100% on html and body allows to style containers with a 100% height
+ * the overflow declaration is to make sure there is a gutter for the scollbar in all browsers regardless of content
+ * note that there is no font-size declaration set in this rule. If you wish to include one,
+you should use font-size: 100.01% to prevent bugs in IE and Opera
+ */
+
+html {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+/* not all browsers set white as the default background color 
+ * color is set to create not too much contrast with the background color
+ * line-height is to ensure that text is legible enough (that there is enough space between the upper and lower line) 
+ */
+
+body {
+  height: 100%;
+  background: #fff;
+  letter-spacing: .015em;
+}
+
+/* letter-spacing makes the font a bit more legible
+ */
+
+input, button, textarea, select, h1, h2, h3, h4, h5, h6 {
+  letter-spacing: .015em;
+}
+
+pre, tt, code, kbd, samp, var {
+  font-family: "Courier New", Courier, monospace;
+}
+
+/* Override the default (display: inline) for browsers that do not recognize HTML5 tags.
+ * IE8 (and lower) requires a shiv:http://ejohn.org/blog/html5-shiv
+ */
+
+article, aside, details, dialog, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* Keeps select list from having odd backgrounds
+ */
+
+select {
+  background-color: transparent;
+}
+
+/* styling for links and visited links as well as for links in a hovered, focus and active state 
+ * make sure to keep these rules in that order, with :active being last
+ * text-decoration: none is to make the links more legible while they are in a hovered, focus or active state
+ * a:focus and :focus are used to help keyboard users, you may change their styling, but make sure to give users a visual clue of the element's state.
+ * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
+ * note that these last rules do not do anything in IE as this browser does not support "outline"
+ */
+
+a {
+  &:link, &:visited, &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+:focus {
+  outline: none;
+}
+
+a {
+  &:hover, &:active {
+    outline: none;
+  }
+}
+
+/* this is to prevent border from showing around fieldsets and images (i.e., images inside anchors)
+ */
+
+fieldset {
+  border: 0;
+}
+
+img {
+  border: 0;
+  color: transparent;
+  font-size: 0;
+  vertical-align: bottom;
+  /*
+    For IE.
+    http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+  */
+  -ms-interpolation-mode: bicubic;
+}
+
+/* to prevent a gap from showing below images in some browsers 
+ */
+
+/* Styling of list items
+ * This styles sheet contains a class to apply on lists to reset list-type and margin on LIs
+ */
+
+
+ol li {
+	list-style-type: decimal;
+}
+
+ul {
+	ol li {
+		list-style-type: decimal;
+	}
+	li {
+		list-style-type: disc;
+	}
+	ul {
+	li {
+		 list-style-type: circle;
+	}
+	ul li {
+		 list-style-type: square;
+	}
+	}
+}
+
+ol ol {
+  li {
+    list-style-type: lower-alpha;
+  }
+  ol li {
+    list-style-type: lower-roman;
+  }
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-bottom: 0;
+  ul {
+    margin-bottom: 0;
+    ul {
+      margin-bottom: 0;
+    }
+  }
+}
+
+ul ol ul, ol ul ol {
+  margin-bottom: 0;
+}
+
+/* These should be self explanatory
+ * I believe *most* UAs style sub and sup like this by default so I am not sure there is value to include these rules here
+ * zeroing out line-height should prevent this from messing with the gap between lines
+ */
+
+sub {
+  line-height: 0;
+  vertical-align: sub;
+  font-size: .8em;
+}
+
+sup {
+  line-height: 0;
+  vertical-align: super;
+  font-size: .8em;
+}
+
+/* padding is used so Internet Explorer does not cut-off descenders in letters like p, g, etc.)
+ */
+
+legend {
+  padding-bottom: .5em;
+}
+
+/* according to Eric Meyer's reset: tables still need 'cellspacing="0"' in the markup
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  th {
+    text-align: left;
+  }
+}
+
+/* See Eric Meyer's article about Fixed Monospace Sizing 
+ * http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+ */
+
+code {
+  color: #06f;
+  font-family: "Courier New", monospace, serif;
+  font-size: 1em;
+}
+
+pre {
+  font-family: "Courier New", monospace, serif;
+  font-size: 1em;
+}
+
+/* to prevent some browsers from inserting quotes on "q" and "p" ("p" in blockquotes)
+ */
+
+blockquote p {
+  &:before, &:after {
+    content: '';
+  }
+}
+
+q {
+  &:before, &:after {
+    content: '';
+  }
+}
+
+/* These should be self explanatory
+ */
+
+th, strong, dt, b {
+  font-weight: bold;
+}
+
+ins {
+  text-decoration: none;
+  border-bottom: 3px double #333;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted #333;
+  font-variant: normal;
+}
+
+/* Creating white space (vertical gutters) via padding
+ * most authors do not set right/left padding or margin on these elements, they rather use an extra wrapper or style the container with padding to create the left and right gap/gutter they need
+ * I find that the latter creates less robust layouts because it leads authors to mix padding with width which creates issue with the broken box model (IE5 or IE6 in quirks mode) 
+ * so imho, setting this style using the child combinator (i.e., div > h1) should be the best way to do it, but unfortunately IE 6 does not support such syntax, so I have to go with the following + a reset (see next rule)  
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+ul,
+ol,
+dl,
+fieldset,
+address { 
+	padding:0 30px;
+} */
+
+/* this is to reset the left/right gaps (created by the previous and next rules) on nested elements
+ */
+
+dd {
+  p, pre, ul, ol, dl {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+li {
+  p, pre, ul, ol, dl {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+fieldset {
+  p, ul, ol {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/* These should be self explanatory
+ */
+
+dt! {}
+
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-left: 1.5em;
+}
+
+hr {
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #fff;
+  &:before {
+    margin: 0;
+  }
+}
+
+/* line height helps to set the vertical alignment of radio buttons and check boxes (remember to group these in fieldsets) 
+ */
+
+fieldset {
+  line-height: 1;
+}
+
+/*removed his class elements as they are not a reset*/

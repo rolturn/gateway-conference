@@ -1,0 +1,80 @@
+; Packaging information for genesis
+name = "Genesis"
+description = "An initial profile for Gateway Sites"
+core = "7.x"
+; ----------
+; Dependencies
+; ----------
+; Administration
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
+dependencies[] = admin_views
+; Chaos tool suite
+dependencies[] = ctools
+; Core
+dependencies[] = block
+dependencies[] = color
+dependencies[] = comment
+dependencies[] = contextual
+dependencies[] = dashboard
+dependencies[] = dblog
+dependencies[] = field
+dependencies[] = field_sql_storage
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = filter
+dependencies[] = help
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = node
+dependencies[] = number
+dependencies[] = options
+dependencies[] = overlay
+dependencies[] = path
+dependencies[] = rdf
+dependencies[] = search
+dependencies[] = shortcut
+dependencies[] = system
+dependencies[] = taxonomy
+dependencies[] = text
+dependencies[] = update
+dependencies[] = user
+; Gateway Church
+dependencies[] = opengate_default_admin_ui
+; Other
+dependencies[] = entity
+dependencies[] = module_filter
+dependencies[] = strongarm
+; UUID
+dependencies[] = uuid
+dependencies[] = uuid_path
+; Views
+dependencies[] = views
+dependencies[] = views_bulk_operations
+dependencies[] = views_ui
+; Features
+dependencies[] = features
+dependencies[] = features_override
+
+; ----------
+; Variables
+; ----------
+variables[admin_theme] = 'blessed_admin'
+variables[date_default_timezone] = 'America/Chicago'
+variables[features_ignored_orphans][image] = 'image'
+variables[features_ignored_orphans][file] = 'file'
+variables[features_ignored_orphans][options] = 'options'
+variables[features_ignored_orphans][taxonomy] = 'taxonomy'
+variables[features_ignored_orphans][list] = 'list'
+variables[filter_fallback_format] = 'plain_text'
+variables[node_admin_theme] = '1'
+variables[node_options_page][0] = 'status'
+variables[theme_default] = 'bartik'
+variables[update_last_email_notification] = 1360768136
+variables[user_pictures] = '1'
+variables[user_picture_dimensions] = '1024x1024'
+variables[user_picture_file_size] = '800'
+variables[user_picture_style] = 'thumbnail'
+variables[user_register] = 2
+

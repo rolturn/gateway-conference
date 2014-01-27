@@ -1,0 +1,113 @@
+
+/*Forms
+------------------------------------------------------------------------*/
+
+.form-item label {
+	color: $c-secondary;
+	font-size: .9em;
+	font-weight: normal;
+	letter-spacing: .075em;
+	line-height: 1.2em;
+	padding: 10px 0 5px 0;
+	text-transform: uppercase;
+}
+
+input {
+	&[type="date"], &[type="datetime"], &[type="datetime-local"], &[type="email"], &[type="month"], &[type="number"], &[type="password"], &[type="search"], &[type="tel"], &[type="text"], &[type="time"], &[type="url"], &[type="week"] {
+		@include gradient-trans(darken($grey,50%),.2,$grey,.15);
+		border: none;
+		@include border-radius();
+		//border: 2px solid transparentize($grey,.95);
+		color: lighten($dark-grey, 70%);
+		font-size: 1em;
+		outline: 0 none;
+		padding: 5px 12px;
+		&:active, &:focus {
+			color: $light-grey;
+			z-index: 1;
+		}
+	}
+	&[type="checkbox"] {
+		background: transparent;
+		list-style: none;
+	}
+	&[type="reset"], &[type="submit"], &[type="button"] {
+		@include border-radius(5px);
+		background: darken($c-primary,30%);
+		border: none;
+		color: $c-primary;
+		font-size: .9em;
+		letter-spacing: .015em;
+		padding: 10px 15px;
+		text-transform: uppercase;
+		margin: 0 0 1em 0;
+		/* IE7 */
+		*padding-top: 2px;
+		*padding-bottom: 0px;
+		&:hover {
+			background: darken($c-secondary,30%);
+			color: #fff;
+		}
+	}
+}
+
+textarea, select {
+	@extend input[type="date"];
+}
+
+
+button {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	background: #111;
+	border: #222 solid 2px;
+	color: #6C7975;
+	font-size: .9em;
+	font-weight: normal;
+	letter-spacing: .15em;
+	/*
+	Helvetica Neue present, because it works better
+	for line-height on buttons than Arial, on OS X.
+	*/
+	padding: 10px 15px;
+	text-shadow: none;
+	text-transform: uppercase;
+	margin: 0 0 1em 0;
+	/* IE7 */
+	*padding-top: 2px;
+	*padding-bottom: 0px;
+	&:hover {
+		background: #333D3A;
+		color: #fff;
+	}
+}
+
+
+
+.resizable-textarea .grippie {
+	background: #222;
+	border: none;
+}
+
+.form-required {
+	color: $c-primary;
+	font-size: .8em;
+}
+
+
+
+// !FORM STYLES =======================================================
+
+.messages.error {
+	color: black;
+}
+.description {
+	color: #999;
+}
+
+#webform-component-comment .grippie {
+	display: none;
+}
+
+

@@ -1,0 +1,11 @@
+/**
+ * @file
+ * Skitch image styling
+ */
+.skitch-image {
+  margin:1em 0;
+}
+
+.skitch-image a{
+  display:block;
+}

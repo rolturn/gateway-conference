@@ -1,0 +1,1142 @@
+/* `XHTML, HTML4, HTML5 Reset
+----------------------------------------------------------------------------------------------------*/
+/* margin and padding values are reset for all these elements
+ * you could remove from there elements you do not used in your documents, but I don't think it'd worth it 
+ */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, meter, nav, object, ol, output, p, pre, progress, q, rp, rt, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video, xmp {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/* using height:100% on html and body allows to style containers with a 100% height
+ * the overflow declaration is to make sure there is a gutter for the scollbar in all browsers regardless of content
+ * note that there is no font-size declaration set in this rule. If you wish to include one,
+you should use font-size: 100.01% to prevent bugs in IE and Opera
+ */
+html {
+  height: 100%;
+  overflow-y: scroll; }
+
+/* not all browsers set white as the default background color 
+ * color is set to create not too much contrast with the background color
+ * line-height is to ensure that text is legible enough (that there is enough space between the upper and lower line) 
+ */
+body {
+  height: 100%;
+  background: #fff;
+  letter-spacing: .015em; }
+
+/* letter-spacing makes the font a bit more legible
+ */
+input, button, textarea, select, h1, h2, h3, h4, h5, h6 {
+  letter-spacing: .015em; }
+
+pre, tt, code, kbd, samp, var {
+  font-family: "Courier New", Courier, monospace; }
+
+/* Override the default (display: inline) for browsers that do not recognize HTML5 tags.
+ * IE8 (and lower) requires a shiv:http://ejohn.org/blog/html5-shiv
+ */
+article, aside, details, dialog, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* Keeps select list from having odd backgrounds
+ */
+select {
+  background-color: transparent; }
+
+/* styling for links and visited links as well as for links in a hovered, focus and active state 
+ * make sure to keep these rules in that order, with :active being last
+ * text-decoration: none is to make the links more legible while they are in a hovered, focus or active state
+ * a:focus and :focus are used to help keyboard users, you may change their styling, but make sure to give users a visual clue of the element's state.
+ * outline:none used with the pseudo-class :hover is to avoid outline when a user clicks on links
+ * note that these last rules do not do anything in IE as this browser does not support "outline"
+ */
+a:link, a:visited, a:hover {
+  text-decoration: none; }
+a:focus {
+  text-decoration: none;
+  outline: none; }
+
+:focus {
+  outline: none; }
+
+a:hover, a:active {
+  outline: none; }
+
+/* this is to prevent border from showing around fieldsets and images (i.e., images inside anchors)
+ */
+fieldset {
+  border: 0; }
+
+img {
+  border: 0;
+  color: transparent;
+  font-size: 0;
+  vertical-align: bottom;
+  /*
+    For IE.
+    http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+  */
+  -ms-interpolation-mode: bicubic; }
+
+/* to prevent a gap from showing below images in some browsers 
+ */
+/* Styling of list items
+ * This styles sheet contains a class to apply on lists to reset list-type and margin on LIs
+ */
+ol li {
+  list-style-type: decimal; }
+
+ul ol li {
+  list-style-type: decimal; }
+ul li {
+  list-style-type: disc; }
+ul ul li {
+  list-style-type: circle; }
+ul ul ul li {
+  list-style-type: square; }
+
+ol ol li {
+  list-style-type: lower-alpha; }
+ol ol ol li {
+  list-style-type: lower-roman; }
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-bottom: 0; }
+  ul ul ul, ol ol ul, ul ol ul, ol ul ul {
+    margin-bottom: 0; }
+    ul ul ul ul, ol ol ul ul, ul ol ul ul, ol ul ul ul {
+      margin-bottom: 0; }
+
+ul ol ul, ol ul ol {
+  margin-bottom: 0; }
+
+/* These should be self explanatory
+ * I believe *most* UAs style sub and sup like this by default so I am not sure there is value to include these rules here
+ * zeroing out line-height should prevent this from messing with the gap between lines
+ */
+sub {
+  line-height: 0;
+  vertical-align: sub;
+  font-size: .8em; }
+
+sup {
+  line-height: 0;
+  vertical-align: super;
+  font-size: .8em; }
+
+/* padding is used so Internet Explorer does not cut-off descenders in letters like p, g, etc.)
+ */
+legend {
+  padding-bottom: .5em; }
+
+/* according to Eric Meyer's reset: tables still need 'cellspacing="0"' in the markup
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+  table th {
+    text-align: left; }
+
+/* See Eric Meyer's article about Fixed Monospace Sizing 
+ * http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+ */
+code {
+  color: #06f;
+  font-family: "Courier New", monospace, serif;
+  font-size: 1em; }
+
+pre {
+  font-family: "Courier New", monospace, serif;
+  font-size: 1em; }
+
+/* to prevent some browsers from inserting quotes on "q" and "p" ("p" in blockquotes)
+ */
+blockquote p:before, blockquote p:after {
+  content: ''; }
+
+q:before, q:after {
+  content: ''; }
+
+/* These should be self explanatory
+ */
+th, strong, dt, b {
+  font-weight: bold; }
+
+ins {
+  text-decoration: none;
+  border-bottom: 3px double #333; }
+
+del {
+  text-decoration: line-through; }
+
+abbr, acronym {
+  border-bottom: 1px dotted #333;
+  font-variant: normal; }
+
+/* Creating white space (vertical gutters) via padding
+ * most authors do not set right/left padding or margin on these elements, they rather use an extra wrapper or style the container with padding to create the left and right gap/gutter they need
+ * I find that the latter creates less robust layouts because it leads authors to mix padding with width which creates issue with the broken box model (IE5 or IE6 in quirks mode) 
+ * so imho, setting this style using the child combinator (i.e., div > h1) should be the best way to do it, but unfortunately IE 6 does not support such syntax, so I have to go with the following + a reset (see next rule)  
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+ul,
+ol,
+dl,
+fieldset,
+address { 
+	padding:0 30px;
+} */
+/* this is to reset the left/right gaps (created by the previous and next rules) on nested elements
+ */
+dd p, dd pre, dd ul, dd ol, dd dl {
+  padding-right: 0;
+  padding-left: 0; }
+
+li p, li pre, li ul, li ol, li dl {
+  padding-right: 0;
+  padding-left: 0; }
+
+fieldset p, fieldset ul, fieldset ol {
+  padding-right: 0;
+  padding-left: 0; }
+
+/* These should be self explanatory
+ */
+dd {
+  margin-left: 1.5em;
+  margin-bottom: 1em; }
+
+li {
+  margin-left: 1.5em; }
+
+hr {
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #fff; }
+  hr:before {
+    margin: 0; }
+
+/* line height helps to set the vertical alignment of radio buttons and check boxes (remember to group these in fieldsets) 
+ */
+fieldset {
+  line-height: 1; }
+
+/*removed his class elements as they are not a reset*/
+/* `UI Consistency
+----------------------------------------------------------------------------------------------------*/
+::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input {
+  margin: 0;
+  vertical-align: middle; }
+  input[type="search"]::-webkit-search-decoration {
+    display: none; }
+
+button, select, textarea {
+  margin: 0;
+  vertical-align: middle; }
+
+input[type="radio"] {
+  position: relative;
+  vertical-align: top;
+  top: .75em;
+  /* IE8, IE9, IE10 */
+  top: 0\0;
+  /* IE7 */
+  *top: -3px; }
+input[type="checkbox"] {
+  position: relative;
+  vertical-align: top;
+  top: .75em;
+  /* IE8, IE9, IE10 */
+  top: 0\0;
+  /* IE7 */
+  *top: -3px;
+  top: .55em; }
+
+/* iPad */
+@media (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 1024px) {
+  input[type="radio"], input[type="checkbox"] {
+    vertical-align: baseline;
+    top: 2px; } }
+/* iPhone 3 */
+@media (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 480px) {
+  input[type="radio"], input[type="checkbox"] {
+    vertical-align: baseline;
+    top: 0; } }
+/* iPhone 4 */
+@media (-webkit-min-device-pixel-ratio: 2) and (max-device-width: 480px) {
+  input[type="radio"], input[type="checkbox"] {
+    vertical-align: baseline;
+    top: 0; } }
+button {
+  -webkit-appearance: none;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  cursor: pointer;
+  padding: 3px 10px;
+  width: auto;
+  margin-right: 10px;
+  outline: 0;
+  overflow: visible;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 0px; }
+
+input[type="reset"], input[type="submit"], input[type="button"] {
+  -webkit-appearance: none;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  cursor: pointer;
+  padding: 3px 10px;
+  width: auto;
+  margin-right: 10px;
+  outline: 0;
+  overflow: visible;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 0px; }
+
+button {
+  /* IE7 */
+  *padding-top: 1px;
+  *padding-bottom: 1px; }
+
+textarea, select {
+  -webkit-appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  outline: 0;
+  padding: .3em .5em .2em .5em;
+  height: 1.8em;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 1px;
+  *height: auto; }
+
+input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input[type="file"] {
+  -webkit-appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+  outline: 0;
+  padding: .3em .5em .2em .5em;
+  height: 1.8em;
+  /* IE7 */
+  *padding-top: 2px;
+  *padding-bottom: 1px;
+  *height: auto; }
+
+select {
+  cursor: pointer; }
+
+/*
+  Separate rule for Firefox.
+  Separate rule for IE, too.
+  Cannot stack with WebKit's.
+*/
+::-webkit-input-placeholder, input:-moz-placeholder, textarea:-moz-placeholder, input.placeholder_text, textarea.placeholder_text {
+  color: #888; }
+
+:invalid {
+  /*
+  Suppress red glow that Firefox
+  adds to form fields by default,
+  even when user is still typing.
+  */
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+input[type="file"]:focus, input[type="file"]:active {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+input[type="radio"]:focus, input[type="radio"]:active {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+input[type="checkbox"]:focus, input[type="checkbox"]:active {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+select[disabled], textarea[disabled] {
+  background-color: #eee; }
+
+input[type="date"][disabled], input[type="datetime"][disabled], input[type="datetime-local"][disabled], input[type="email"][disabled], input[type="month"][disabled], input[type="number"][disabled], input[type="password"][disabled], input[type="search"][disabled], input[type="tel"][disabled], input[type="text"][disabled], input[type="time"][disabled], input[type="url"][disabled], input[type="week"][disabled] {
+  background-color: #eee; }
+
+button[disabled], input[disabled] {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: #888;
+  cursor: default; }
+
+select[disabled] {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  color: #888;
+  cursor: default; }
+  select[disabled] option, select[disabled] optgroup {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    color: #888;
+    cursor: default; }
+
+textarea {
+  height: auto; }
+  textarea[disabled] {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    color: #888;
+    cursor: default; }
+
+select[size], select[multiple] {
+  height: auto; }
+
+/* Tweaks for Safari + Chrome. */
+@media (-webkit-min-device-pixel-ratio: 0) {
+  select {
+    background-image: url(../images/select_arrow.gif);
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
+    cursor: pointer; }
+    select[size], select[multiple] {
+      background-image: none;
+      padding: 0; }
+
+  ::-webkit-validation-bubble-message {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #666666), color-stop(1, black));
+    border: 1px solid;
+    border-color: #747474 #5e5e5e #4f4f4f;
+    color: #fff;
+    font: 1em/1 "Lucida Grande", Arial, "Liberation Sans", FreeSans, sans-serif;
+    padding: 15px 15px 17px;
+    text-shadow: #000 0 0 1px; }
+
+  ::-webkit-validation-bubble-arrow, ::-webkit-validation-bubble-top-outer-arrow, ::-webkit-validation-bubble-top-inner-arrow {
+    display: none; } }
+textarea {
+  min-height: 30px;
+  overflow: auto;
+  resize: vertical;
+  width: 100%; }
+
+optgroup {
+  color: #000;
+  font-style: normal;
+  font-weight: normal; }
+
+/* `IE6
+----------------------------------------------------------------------------------------------------*/
+/*
+  Everything below this line is for IE6.
+  Delete it if you don't support it! :)
+
+  Classes are added dynamically via JS,
+  because IE6 doesn't support attribute
+  selectors: .ie6_button, .ie6_input, etc.
+
+  Note: These style rules are somewhat
+  duplicated because IE6 bombs out when
+  it sees attribute selectors. Example:
+
+  .ie6_button {
+  This works in IE6.
+}
+
+  .ie6_button,
+  input[type=submit] {
+  This doesn't work.
+}
+*/
+* html button {
+  background: #dddddd url(../images/button.png) repeat-x;
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  cursor: pointer;
+  color: #333;
+  font: bold 12px/1.2 Arial, sans-serif;
+  padding: 2px 10px 0px;
+  overflow: visible;
+  width: auto;
+  padding-top: 1px;
+  padding-bottom: 1px; }
+* html textarea {
+  background: #fff;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: #000;
+  padding: 2px 3px 1px;
+  font-family: Arial, sans-serif;
+  vertical-align: top; }
+* html select {
+  background: #fff;
+  border: 1px solid;
+  border-color: #848484 #c1c1c1 #e1e1e1;
+  color: #000;
+  padding: 2px 3px 1px;
+  font-family: Arial, sans-serif;
+  vertical-align: top;
+  margin-top: 1px; }
+
+/* Override adjustments for all forms below
+----------------------------------------------------------------------------------------------------*/
+/*Forms*/
+/*--------------------------*/
+form {
+  margin: 0 0 2em 0; }
+
+html.js fieldset.collapsible .fieldset-legend {
+  background-position: right;
+  padding-left: 0; }
+
+.fieldset-wrapper fieldset:last-child {
+  margin: 0;
+  padding: 0; }
+
+fieldset.collapsible.collapsed {
+  margin-bottom: 1em; }
+
+.fieldset-wrapper fieldset {
+  margin-bottom: 1em; }
+  .fieldset-wrapper fieldset .fieldset-wrapper {
+    margin-bottom: 1em; }
+
+.form-item, .form-actions {
+  margin: 0; }
+
+.form-checkboxes, .form-radios {
+  display: block;
+  margin: 0; }
+
+.form-checkboxes .form-item, .form-radios .form-item {
+  display: inline-block;
+  padding: 0 10px 0 0; }
+
+.form-checkboxes .form-item:last-child, .form-radios .form-item:last-child {
+  padding: 0; }
+
+.form-item, .form-actions, .form-checkboxes .form-item, .form-radios .form-item {
+  margin: 0 0 .5em 0; }
+
+.form-type-radio, .form-type-checkboxes {
+  margin: 0 0 0 .5em; }
+
+.description {
+  margin: .5em 0 0 0;
+  display: block; }
+
+.webform-component-radios .description {
+  margin: -0.5em 0 0 0; }
+
+.filter-wrapper {
+  padding: 0 0 .5em 0; }
+
+table input[type="radio"], table input[type="checkbox"] {
+  top: 2px; }
+
+/* Inline WebForm Components
+----------------------------------------------------------------------------------------------------*/
+.webform-container-inline select {
+  width: inherit;
+  max-width: 100%;
+  display: inline;
+  width: 75%;
+  float: right; }
+.webform-container-inline input[type="text"], .webform-container-inline input[type="number"], .webform-container-inline input[type="password"], .webform-container-inline input[type="search"], .webform-container-inline input[type="email"] {
+  width: inherit;
+  max-width: 100%;
+  display: inline;
+  width: 75%;
+  float: right; }
+.webform-container-inline label {
+  margin-right: .5em;
+  bottom: 0; }
+  .webform-container-inline label:last-child {
+    margin-right: 0; }
+
+.webform-component-webform_time input, .webform-component-webform_time select {
+  width: inherit;
+  float: none;
+  diaplay: inline; }
+
+.webform-component-date select, .webform-component-date input, .webform-component-date button {
+  width: inherit;
+  float: none;
+  diaplay: inline; }
+
+input.year, input[type="text"].year {
+  width: inherit;
+  float: none;
+  diaplay: inline; }
+
+.webform-component-managed_file.webform-container-inline .form-managed-file {
+  float: right;
+  clear: right; }
+
+.webform-container-inline.webform-component-webform_time .webform-container-inline, .webform-container-inline.webform-component-date .webform-container-inline {
+  float: right;
+  clear: right; }
+
+.webform-component-managed_file.webform-container-inline input {
+  width: inherit; }
+
+.webform-container-inline.webform-component-webform_time .webform-container-inline input, .webform-container-inline.webform-component-date .webform-container-inline input {
+  width: inherit; }
+.webform-container-inline.webform-component-managed_file input {
+  float: none; }
+
+.webform-component-managed_file .form-file {
+  margin: 0 10px 0 0; }
+
+.webform-container-inline .description {
+  text-align: right; }
+
+/*Formalize Adjustments */
+/*--------------------------*/
+input[type="text"], input[type="number"], input[type="password"], input[type="search"], input[type="email"] {
+  width: 100%; }
+
+textarea {
+  width: 100%; }
+
+select {
+  width: 100%; }
+  select[multiple="multiple"] {
+    margin: 0 0 .5em 0; }
+
+/*ADVANCED SEARCH*/
+/* Search block
+----------------------------------------------------------------------------------------------------*/
+form#search-block-form {
+  margin: 0;
+  padding: 0;
+  display: block; }
+  form#search-block-form input[type="search"] {
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+    vertical-align: center; }
+  form#search-block-form .form-item, form#search-block-form .form-actions {
+    margin: 0;
+    padding: 0; }
+  form#search-block-form .form-type-textfield {
+    width: 80%; }
+  form#search-block-form .form-actions {
+    display: inline-block;
+    padding: 2px 10px 0 0;
+    float: right;
+    vertical-align: center; }
+  form#search-block-form input.form-submit {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 100%; }
+
+/* Gabe's Robot catcher for forms */
+.form-item-special-name {
+  display: none; }
+
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+hr {
+  margin: 1.5em; }
+
+/* `Code
+----------------------------------------------------------------------------------------------------*/
+pre {
+  background: #0F0;
+  color: #000;
+  width: 100%;
+  display: block;
+  overflow: scroll; }
+
+/**
+ * Tables =============================================================
+ */
+table {
+  margin: 0px 0px 10px;
+  width: 100%; }
+  table caption {
+    font-style: italic;
+    text-transform: capitalize; }
+
+.fieldset table {
+  margin: 0px; }
+
+table td {
+  vertical-align: top;
+  border-width: 0px 0px;
+  padding: .5em .75em; }
+table th {
+  vertical-align: top;
+  border-width: 0px 0px;
+  padding: .5em .75em;
+  padding: .5em .75em .5em 0; }
+table thead {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: normal; }
+table tbody tr:nth-child(2n-1) {
+  background: rgba(255, 255, 255, 0.35); }
+table tbody tr:nth-child(2n) {
+  background: rgba(0, 0, 0, 0.025); }
+table tfoot tr {
+  color: #aaa;
+  text-transform: uppercase;
+  font-size: .7em;
+  font-weight: normal; }
+
+/* Header
+----------------------------------------------------------------------------------------------------*/
+#header-top {
+  display: block; }
+  #header-top p {
+    margin: 0;
+    padding: 0;
+    line-height: 1em; }
+
+header #identity {
+  border-bottom: none;
+  text-transform: uppercase; }
+
+/* content-main
+----------------------------------------------------------------------------------------------------*/
+.messages {
+  border-radius: 3px; }
+
+.help, .tab {
+  margin: 12.5px; }
+
+/*Aside
+------------------------------------------------------------------------*/
+/*Sidebar First
+------------------------------------------------------------------------*/
+/*Sidebar Last
+------------------------------------------------------------------------*/
+/**
+ * Postscript Bottom =======================================================
+ */
+/**
+ * Site Info aka Footer =======================================================
+ */
+/* DatePicker
+----------------------------------------------------------------------------------------------------*/
+/* styles for datepicker which Webform uses, didn't think they really fit with the forms pages */
+#ui-datepicker-div {
+  background: #fff; }
+
+.ui-datepicker td span {
+  color: #fff;
+  background: #999;
+  border-bottom: none;
+  border-radius: 3px;
+  margin: 1px;
+  padding: 2px 5px; }
+.ui-datepicker td a {
+  color: #fff;
+  background: #999;
+  border-bottom: none;
+  border-radius: 3px;
+  margin: 1px;
+  padding: 2px 5px; }
+  .ui-datepicker td a:hover {
+    color: #fff;
+    background: #000; }
+
+.ui-icon {
+  background-repeat: no-repeat;
+  display: block;
+  overflow: hidden;
+  text-indent: 0;
+  font-size: .6em;
+  cursor: pointer; }
+
+.ui-datepicker th {
+  border: 0 none;
+  font-weight: normal;
+  padding: inherit;
+  text-align: center; }
+
+/* Hide tabledrag markers */
+table tr.draggable span.tabledrag-changed {
+  display: none; }
+
+/* `Data Table
+----------------------------------------------------------------------------------------------------*/
+.data {
+  border-style: solid;
+  border-color: #ddd;
+  border-width: 0 1px 1px;
+  width: 100%; }
+  .data th, .data td {
+    border-style: solid;
+    border-color: #ddd; }
+  .data caption {
+    padding: 0 10px 5px;
+    text-transform: uppercase; }
+  .data th, .data td {
+    border-top-width: 1px;
+    padding: 5px 10px; }
+  .data th {
+    white-space: nowrap; }
+  .data thead th {
+    background: #eee;
+    font-weight: bold;
+    text-shadow: #fff 0 1px 0; }
+  .data tbody th {
+    width: 1px; }
+  .data tr th:first-child {
+    text-align: right; }
+
+#admin-menu {
+  /* I couldn't stand it, I had to make this smaller */
+  font-size: 0.7em;
+  margin: 0;
+  padding: 0; }
+
+p a, table a {
+  /* Adds a element to help people recognize it's a link */
+  display: inline-block;
+  border-bottom: 1px dotted #666;
+  line-height: 1em; }
+
+#skip-link {
+  /* for people using screenreaders */
+  display: none; }
+
+nav.menu ul {
+  margin: 0; }
+nav.item-list li, nav.menu li {
+  /* overrides drupal menu styling */
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.filter-help p a {
+  border: none; }
+
+nav ul li a {
+  display: block;
+  border-bottom: none; }
+
+/* Main-Menu (named this because of Drupal 7)
+----------------------------------------------------------------------------------------------------*/
+/* Override style on Menus
+----------------------------------------------------------------------------------------------------*/
+#main-nav {
+  display: block;
+  margin: 0;
+  padding: 0; }
+  #main-nav li {
+    padding: 0;
+    display: inline; }
+    #main-nav li a {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      text-decoration: none; }
+    #main-nav li ul li {
+      margin: 0;
+      padding: 0; }
+    #main-nav li ul a {
+      margin: 0;
+      padding: 0;
+      background: #fff; }
+
+#secondary-nav ul {
+  margin: 0;
+  padding: 0; }
+#secondary-nav li {
+  display: inline;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  #secondary-nav li a {
+    display: inline-block;
+    margin: 0;
+    white-space-collapse: discard; }
+
+/* Override Superfish Menus
+----------------------------------------------------------------------------------------------------*/
+.sf-menu {
+  line-height: 1.6em; }
+  .sf-menu li {
+    float: none;
+    padding: 0;
+    margin: 0; }
+  .sf-menu a {
+    padding: 0 0 0 10px; }
+
+.sf-vertical {
+  width: 100%; }
+  .sf-vertical li {
+    width: 100%; }
+    .sf-vertical li a {
+      display: block;
+      width: 100%; }
+
+#main-nav-mobile {
+  /* this is for mobile devices. If using a different method we can override or if we are no longer using this method it can be removed. */
+  display: none; }
+
+#header-top nav.menu {
+  display: inline-block; }
+  #header-top nav.menu ul {
+    display: inline-block; }
+#header-top nav li {
+  display: inline; }
+
+#site-info nav li {
+  display: inline; }
+
+#header-top p, #header-top nav li a {
+  display: inline-block; }
+
+#site-info nav li a {
+  display: inline-block; }
+
+a img {
+  border-bottom: none; }
+
+/* OVERRIDE FOR DRUPAL TABS 
+----------------------------------------------------------------------------------------------------*/
+ul.links, ul.tabs, ul.primary {
+  width: 100%;
+  margin: .25em 0 1em 0; }
+ul.links li, ul.tabs li, ul.primary li {
+  display: inline;
+  margin: 0 2px 0 0;
+  padding: 0;
+  list-style: none; }
+ul.tabs li, ul.primary li {
+  margin: 0 2px 10px 0; }
+ul.links a, ul.tabs a, ul.primary a {
+  display: inline-block;
+  font-size: .7em;
+  letter-spacing: .05em;
+  padding: 3px 8px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #dddddd url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #dddddd));
+  background: -moz-linear-gradient(top center, white 0%, #dddddd 100%);
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  text-shadow: #fff 0 1px 1px; }
+ul.links a:hover, ul.tabs a:hover, ul.primary a:hover {
+  background: #333;
+  color: #fff;
+  text-shadow: none;
+  border-color: #333 #222 #000; }
+ul.tabs li.active a, ul.primary li.active a {
+  background: #eee;
+  color: #999;
+  cursor: auto; }
+ul.tabs li.active a:hover, ul.primary li.active a:hover {
+  color: #999;
+  border-color: #ddd #bbb #999; }
+
+/* content-main
+----------------------------------------------------------------------------------------------------*/
+article header h2 a, article footer li a {
+  border-bottom: none; }
+
+/**
+ Aside Menus =======================================================
+ */
+/**
+ More Buttons =======================================================
+ */
+.more a, a.more, .more-link a, a.more-link {
+  display: inline-block;
+  font-size: .7em;
+  letter-spacing: .05em;
+  padding: 3px 8px 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #dddddd url(../images/button.png) repeat-x;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #dddddd));
+  background: -moz-linear-gradient(top center, white 0%, #dddddd 100%);
+  border: 1px solid;
+  border-color: #ddd #bbb #999;
+  text-shadow: #fff 0 1px 1px;
+  margin-bottom: 1em; }
+  .more a:hover, a.more:hover, .more-link a:hover, a.more-link:hover {
+    background: #333;
+    color: #fff;
+    text-shadow: none; }
+
+/* `TYPOGRAPHY
+----------------------------------------------------------------------------------------------------*/
+body {
+  line-height: 1.4em;
+  letter-spacing: .025em; }
+
+h1 {
+  font-size: 1.5em; }
+
+h2 {
+  font-size: 1.4em; }
+
+h3 {
+  font-size: 1.3em; }
+
+h4 {
+  font-size: 1.2em; }
+
+h5 {
+  font-size: 1.1em; }
+
+h6 {
+  font-size: 1em; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  line-height: 1.2em; }
+
+h4 {
+  font-style: italic; }
+
+h5 {
+  font-weight: bold; }
+
+h6 {
+  font-weight: bold;
+  text-transform: uppercase; }
+
+p, ul, ol, dl {
+  line-height: 1.6em;
+  margin: 0 0 1em 0; }
+
+p:last-child {
+  margin: 0; }
+
+dt {
+  font-size: 1em; }
+
+blockquote {
+  padding: 0 0 0 1.5em;
+  border-left: 5px solid; }
+
+pre, code {
+  font-size: .9em; }
+
+h1#site-name {
+  text-indent: -9999999px;
+  font-size: 0; }
+
+/*FORM TYPOGRAPHY*/
+/*-------------------------------------------------------------------------------------*/
+textarea, select {
+  font-size: 1em; }
+
+input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"] {
+  font-size: 1em; }
+
+.form-item label {
+  font-size: 1em; }
+
+button {
+  font-size: .8em;
+  line-height: 1em; }
+
+input[type="reset"], input[type="submit"], input[type="button"] {
+  font-size: .8em;
+  line-height: 1em; }
+
+form h5, legend {
+  font-size: 1.4em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 0 .25em 0; }
+
+.form-item label {
+  font-size: 1.1em;
+  font-weight: normal;
+  line-height: 1.6em; }
+
+.form-type-radio label, .form-type-checkbox label {
+  font-size: 1em; }
+
+fieldset fieldset legend {
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase; }
+fieldset fieldset.fieldset-wrapper {
+  margin: 0 0 1em 0; }
+
+.description {
+  clear: both;
+  font-style: italic; }
+
+.fieldset-description {
+  font-style: italic;
+  margin: 0 0 .5em 0; }
+
+/*Aside
+------------------------------------------------------------------------*/
+/*Sidebar First
+------------------------------------------------------------------------*/
+aside#sidebar-first {
+  font-size: .9em;
+  line-height: 1em; }
+
+/*Postscript
+------------------------------------------------------------------------*/
+/*Site Info
+------------------------------------------------------------------------*/
+#site-info {
+  font-size: .8em; }
+
+/*SPECIFIC TYPOGRAPHY*/
+/*-------------------------------------------------------------------------------------*/

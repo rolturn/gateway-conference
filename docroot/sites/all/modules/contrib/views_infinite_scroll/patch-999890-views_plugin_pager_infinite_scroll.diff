@@ -1,0 +1,29 @@
+diff --git a/docroot/sites/all/modules/contrib/views_infinite_scroll/views_plugin_pager_infinite_scroll.inc b/docroot/sites/all/modules/contrib/views_infinite_scroll/views_plugin_pager_infinite_scroll.inc
+index 0c12eb9..1c12d8b 100644
+--- a/docroot/sites/all/modules/contrib/views_infinite_scroll/views_plugin_pager_infinite_scroll.inc
++++ b/docroot/sites/all/modules/contrib/views_infinite_scroll/views_plugin_pager_infinite_scroll.inc
+@@ -42,6 +42,24 @@ class views_plugin_pager_infinite_scroll extends views_plugin_pager_full {
+        $content_selector = 'div.view-content>' . $wrapper_class . ' > *';
+         $items_selector = '.views-row';
+         break;
++
++    case 'semanticviews_default':
++        $content_selector = 'div.view-content';
++        if ($this->view->style_plugin->options['list']['element_type']) {
++        $content_selector .= ' ' . $this->view->style_plugin->options['list']['element_type'];
++        if ($this->view->style_plugin->options['list']['class']) {
++        $content_selector .= '.' . $this->view->style_plugin->options['list']['class'];
++                }
++            }
++        $items_selector = 'div';
++        if ($this->view->style_plugin->options['row']['element_type']) {
++        $items_selector = $this->view->style_plugin->options['row']['element_type'];
++        if ($this->view->style_plugin->options['row']['class']) {
++        $items_selector .= '.' . $this->view->style_plugin->options['row']['class'];
++                }
++            }
++        break;
++
+       case 'table':
+         $content_selector = 'div.view-content > table > tbody';
+         $items_selector = 'tr';

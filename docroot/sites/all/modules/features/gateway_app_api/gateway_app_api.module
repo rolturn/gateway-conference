@@ -1,0 +1,153 @@
+<?php
+/**
+ * @file
+ * Code for the Gateway App API feature.
+ */
+
+include_once 'gateway_app_api.features.inc';
+
+/**
+ * Implements hook_menu().
+ *
+ */
+function gateway_app_api_menu() {
+  $items = array();
+  
+  // Custom API pages
+  $items['api/app'] = array(
+    'title' => 'Confernece App',
+    'description' => 'Returns a filtered list of options for the app',
+    'page callback' => 'gateway_app_api_app',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  
+  return $items;
+}
+
+/**
+ * Returns a filtered list of options for the Open Church Ministry app.
+ * 
+ * @return json      json list of options for the home screen of the app
+ */
+function gateway_app_api_app() {
+  $nodes = db_select('node', NULL, array('fetch' => PDO::FETCH_ASSOC))
+    ->fields('node')
+    ->condition('type', 'app', '=')
+    ->orderBy('nid')
+    ->execute()
+    ->fetchAllAssoc('nid', PDO::FETCH_ASSOC);
+//  echo '<pre>'; print_r($nodes); echo '</pre>';
+  
+  $apps = array();
+  $item = array();
+  $count = 0;
+  $url = gateway_app_api_get_full_url(FALSE, TRUE);
+  foreach($nodes as $app) {
+//    echo '<pre>'; print_r($app); echo '</pre>';
+    $node = node_load($app['nid']);
+//    echo '<pre>node: '; print_r($node); echo '</pre>';
+    $apps['app'][$count]['ttl'] = gateway_app_api_get_ttl('app');
+    $apps['app'][$count]['nid'] = $node->nid;
+    $apps['app'][$count]['title'] = $node->title;
+    $apps['app'][$count]['abbreviation'] = $node->field_app_abbreviation['und'][0]['safe_value'];
+    $apps['app'][$count]['body'] = $node->body['und'][0]['safe_value'];
+    $apps['app'][$count]['intermediate_banner'] = str_replace('public://', $url, $node->field_app_intermediate_banner['und'][0]['uri']);
+    $apps['app'][$count]['website'][0]['title'] = $node->field_app_website_url['und'][0]['title'];
+    $apps['app'][$count]['website'][0]['url'] = $node->field_app_website_url['und'][0]['url'];
+    foreach ($node->field_app_social_links['und'] as $id => $link) {
+      $apps['app'][$count]['social_links'][$id]['title'] = $link['title'];
+      $apps['app'][$count]['social_links'][$id]['url'] = $link['url'];
+    }
+    
+    $banner_count = 0;
+    foreach($node->field_app_banner_images['und'] as $banner) {
+//      echo "banner: " . $banner['nid'] . "<br>";
+      $banner_node = node_load($banner);
+//      echo '<pre>node: '; print_r($banner_node); echo '</pre>';
+      $apps['app'][$count]['banners'][$banner_count]['title'] = @$banner_node->title;
+      $apps['app'][$count]['banners'][$banner_count]['description'] = @$banner_node->body['und'][0]['safe_value'];
+//      $apps['app'][$count]['banners'][$banner_count]['image'] = $banner_node->field_app_image['und'][0]['uri'];
+      $apps['app'][$count]['banners'][$banner_count]['image'] = str_replace('public://', $url, @$banner_node->field_app_image['und'][0]['uri']);
+      $apps['app'][$count]['banners'][$banner_count]['external_link'] = @$banner_node->field_external_link['und'][0]['url'];
+      $apps['app'][$count]['banners'][$banner_count]['timeout'] = @$banner_node->field_timeout['und'][0]['value'];
+      $apps['app'][$count]['banners'][$banner_count]['touch_function'] = @$banner_node->field_touch_function['und'][0]['value'];
+//      $apps['app'][$count]['banners'][$banner_count]['nid'] = $banner_node->nid; // For now, this will be null since this will be used to indicate the node id of the type if applicable
+      $banner_count++;
+    }
+    
+    $button_count = 0;
+    foreach($node->field_app_button_images['und'] as $button) {
+//      echo "button: " . $button['nid'] . "<br>";
+      $button_node = node_load($button);
+//      echo '<pre>node: '; print_r($button_node); echo '</pre>';
+      $apps['app'][$count]['buttons'][$button_count]['title'] = $button_node->title;
+//      $apps['app'][$count]['buttons'][$button_count]['image'] = $button_node->field_app_image['und'][0]['uri'];
+      
+      $image_count = 0;
+      foreach ($button_node->field_app_image['und'] as $id => $image) {
+        $apps['app'][$count]['buttons'][$button_count]['images'][$id]['image'] = str_replace('public://', $url, $button_node->field_app_image['und'][0]['uri']);
+      }
+//      $apps['app'][$count]['buttons'][$button_count]['image'] = str_replace('public://', $url, $button_node->field_app_image['und'][0]['uri']);
+      $apps['app'][$count]['buttons'][$button_count]['type'] = strtolower($button_node->field_app_button_type['und'][0]['safe_value']);
+      $apps['app'][$count]['buttons'][$button_count]['external_link'] = @$button_node->field_external_link['und'][0]['url'];
+      $apps['app'][$count]['buttons'][$button_count]['touch_function'] = @$button_node->field_touch_function['und'][0]['value'];
+      //$apps['app'][$count]['buttons'][$button_count]['nid'] = $button_node->nid; // For now, this will be null since this will be used to indicate the node id of the type if applicable
+      $apps['app'][$count]['buttons'][$button_count]['nid'] = NULL;
+      $button_count++;
+    }
+    $apps['app'][$count]['ar_db_xml'] = $node->field_app_ar_db_xml['und'][0]['url'];
+    $apps['app'][$count]['ar_db_dat'] = $node->field_app_ar_db_dat['und'][0]['url'];
+    $count++;
+  }
+  
+  $data = array(
+    'apps' => $apps
+  );
+  print json_encode($data);
+}
+
+/**
+ * Provides the full url for the site, useful for replacing public:// for files, etc. and to avoid hard coding to the production url
+ * 
+ * @param  bool $path   Set to true if you want the full url of the current page;
+ * set to FALSE if you just want the full url to the given website
+ * @param  bool $files   Set to true if you want to add the files directory to the full url of the website path
+ * 
+ * @return string     full url for the given site with an ending slash (http://example.com/)
+ */
+function gateway_app_api_get_full_url($path, $files) {  
+  if ($path) {
+    $path = isset($_GET['q']) ? $_GET['q'] : '<front>';
+  }
+  $url = url($path, array('absolute' => TRUE));
+  if ($files) {
+    $url .= variable_get('file_' . file_default_scheme() . '_path', conf_path() . '/files');
+  }
+//  echo "url: $url<br>";
+  return $url . '/';
+}
+
+/**
+ * Provides the TTL value for the given feed based on the TTL taxonomy
+ * 
+ * @param  bool $path   Set to true if you want the full url of the current page;
+ * set to FALSE if you just want the full url to the given website
+ * 
+ * @return int     TTL for the given feed, with a default of 1440
+ */
+function gateway_app_api_get_ttl($feed) {
+  $ttl = 1440;
+  $terms = taxonomy_get_term_by_name($feed, 'ttl'); // should only get one term, but this function returns an array of terms that match
+  if (count($terms) > 0) {
+    foreach ($terms as $tid => $term) {
+      if ($term->name === $feed) {
+        return (int) $term->field_minutes['und'][0]['value'];
+      }
+    }
+  } else {
+    return $ttl;
+  }
+  
+  return $ttl; // in case there are terms but for some reason the name doesn't match
+}

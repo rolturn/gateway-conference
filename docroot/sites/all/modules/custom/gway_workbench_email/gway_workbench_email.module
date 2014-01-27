@@ -1,0 +1,132 @@
+<?php
+// $Id$
+/**
+* A module that emails editorial when content needs reviewing.
+*/
+
+
+/**
+ * Sets up and defines email settings 
+ */
+
+define('USER_WARN_MAIL_SUBJECT', 'Content Ready for Review');
+define('USER_WARN_MAIL_TEXT',
+'Hello Editorial,
+
+There is some content that is ready for your review.
+
+[site:url]admin/workbench/needs-review
+
+Sincerely,
+[site:name]');
+
+/**
+* Implements hook_help()
+*/
+
+function gway_workbench_email_help($path, $arg)
+{
+	if ($path == 'admin/help#gway_workbench_email')
+	{
+		return t('A module that emails editorial when content needs reviewing.');
+	}
+}
+
+/**
+ * Implements hook_menu().
+ */
+
+/*function workbench_email_menu()
+{
+   $items['admin/settings/workbench_email'] = array(
+        'title' => 'Workbench Email',
+        'description' => 'Configuration for Workbench Email settings.',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('workbench_email_admin_settings'),
+        'access arguments' => array('administer site configuration'),
+        'type' => MENU_NORMAL_ITEM,
+        'file' => 'workbench_email.admin.inc',
+   );
+   
+   
+   return $items;
+}*/
+
+/**
+ * Implements hook_node_insert
+ * This allows an email to be sent on node creation with
+ * a workbench state of needs review
+ */
+
+function gway_workbench_email_node_insert($node)
+{
+    //echo '<pre>'; print_r($node); echo '</pre>'; exit(0);
+    //dsm($node);
+    if(@$node->workbench_moderation_state_new == 'needs_review') {
+        send_email();
+    }
+}
+
+/**
+ * Implements hook_node_update
+ * 
+ * This allows an email to be sent on node update 
+ * with a workbench state of needs review
+ */
+
+function gway_workbench_email_node_update($node)
+{
+     if(@$node->workbench_moderation_state_new == 'needs_review') {
+        _gway_workbench_send_email();
+    }
+}
+
+/**
+ * Function to send out email through Drupal 
+ */
+
+function _gway_workbench_send_email()
+{
+    
+    drupal_mail(
+    	'gway_workbench_email', 
+            'state', 
+            	'editorialemail@gatewaypeople.com',
+               //variable_get('workbench_email_address', NULL),
+               variable_get('site_mail', NULL),
+    		TRUE
+	
+    );
+}
+
+
+/**
+ * Implement hook_mail().
+ */
+
+function gway_workbench_email_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'state':
+      $account = $params['account'];
+      $subject = variable_get('user_warn_email_subject', USER_WARN_MAIL_SUBJECT);
+      $body = variable_get('user_warn_email_text', USER_WARN_MAIL_TEXT);
+
+      if (variable_get('user_warn_bcc', FALSE)) {
+        $admin_mail = variable_get('site_mail', NULL);
+        $message['headers']['bcc'] = $admin_mail;
+      }
+
+      //$message['to'] = variable_get('workbench_email_address', NULL);  
+      $message['to'] = 'editorialemail@gatewaypeople.com';
+      $message['subject'] = $subject;
+      $message['body'][] = token_replace($body, array('user' => $account));
+      break;
+  }
+}
+
+
+
+
+
+
+

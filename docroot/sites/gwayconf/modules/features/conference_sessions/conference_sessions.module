@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Conference Sessions feature.
+ */
+
+include_once 'conference_sessions.features.inc';

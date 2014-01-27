@@ -1,0 +1,123 @@
+@import "_variables.scss";
+
+// !COLOR MIXINS
+
+
+// takes your color variables and coverts them in to rbga for opacity and generates a ie compatible transparent filter attribute.
+// options: @include trans-bg($color, $alpha); color can be a variable
+
+@mixin trans-bg($color, $alpha) {
+	$rgba: rgba($color, $alpha);
+	$ie-hex-str: ie-hex-str($rgba);
+	background-color: $rgba;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+@mixin gradient-trans($start_color:darken($grey,20%),$start_alpha:0,$end_color:darken($grey,60%),$end_alpha:.5) {
+  	$rgba_start: rgba($start_color,$start_alpha);
+  	$rgba_end: rgba($end_color,$end_alpha);
+	background: $start_color; /* Old browsers */
+	background: -moz-linear-gradient(top, $rgba_start 0%, $rgba_end 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$rgba_end)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, $rgba_start 0%,$rgba_end 100%); /* IE10+ */
+	background: linear-gradient(to bottom, $rgba_start 0%,$rgba_end 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$rgba_start}', endColorstr='#{$rgba_end}',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin transitions($time:200ms) {
+	-webkit-transition:all #{$time} ease-in;
+		 -moz-transition:all #{$time} ease-out;
+		   -o-transition:all #{$time} ease-out;
+		      transition:all #{$time} ease-out;
+}
+
+@mixin outer-glow($size:10,$spread:5) {
+	-webkit-box-shadow:  0px 0px #{$size}px #{$spread}px rgba(0, 0, 0, .5);
+	box-shadow:  0px 0px #{$size}px #{$spread}px rgba(0, 0, 0, .5);
+}
+
+@mixin b-shadow($x:0,$y:5,$blur:10,$color:#000) {
+	-webkit-box-shadow: #{$x}px #{$y}px #{$blur}px $color;
+	-moz-box-shadow: #{$x}px #{$y}px #{$blur}px $color;
+	box-shadow: #{$x}px #{$y}px #{$blur}px $color;
+}
+
+@mixin b-shadow-inset($x,$y,$blur,$color) {
+	-webkit-box-shadow: inset $x $y $blur $color;
+	-moz-box-shadow: inset $x $y $blur $color;
+	box-shadow: inset $x $y $blur $color;
+}
+
+@mixin gradient($start_color,$end_color) {
+	background: $start_color; /* Old browsers */
+	background: -moz-linear-gradient(top, $start_color 0%, $end_color 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start_color), color-stop(100%,$end_color)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, $start_color 0%,$end_color 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, $start_color 0%,$end_color 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, $start_color 0%,$end_color 100%); /* IE10+ */
+	background: linear-gradient(to bottom, $start_color 0%,$end_color 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$start_color}', endColorstr='#{$end_color}',GradientType=0 ); /* IE6-9 */
+}
+
+@mixin border-radius($tl:3px,$tr:3px,$br:3px,$bl:3px) {
+	-moz-border-radius: $tl $tr $br $bl;
+	-webkit-border-radius: $tl $tr $br $bl;
+	border-radius: $tl $tr $br $bl;
+}
+
+@mixin multi-col-text($col,$gap) {
+	-moz-column-count: $col;
+	-moz-column-gap: $gap;
+	-webkit-column-count: $col;
+	-webkit-column-gap: $gap;
+	column-count: $col;
+	column-gap: $gap;
+}
+
+@mixin grayscale($amount) {  
+	@if $amount == 100 {
+		filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+		-webkit-filter:grayscale(100%);
+		   -moz-filter:grayscale(100%);
+		     -o-filter:grayscale(100%);
+		        filter:grayscale(100%);
+	}
+	@else if $amount == 0 {
+		-webkit-filter:grayscale(0%);
+	   -moz-filter:grayscale(0%);
+	     -o-filter:grayscale(0%);
+	        filter:grayscale(0%);
+	        filter: none;
+	}
+}
+
+@mixin box-sizing($type:border-box) {
+	-webkit-box-sizing: $type; /* content-box */
+	-moz-box-sizing: $type;
+	box-sizing: $type;
+}
+
+
+@mixin opacity($opacity:.5) {
+	zoom: 1;
+	filter: alpha(opacity=$opacity*100);
+	opacity: $opacity;
+}
+
+@mixin box-emboss($opacity, $opacity2){
+    -moz-box-shadow: 0 1px 4px rgba(255,255,255,($opacity)), inset 1px 1px 2px rgba(0,0,0,($opacity2));
+    -webkit-box-shadow: 0 1px 4px rgba(255,255,255,($opacity)), inset 1px 1px 2px rgba(0,0,0,($opacity2));
+    box-shadow: 0 1px 4px rgba(255,255,255,($opacity)), inset 1px 1px 2px rgba(0,0,0,($opacity2));
+}
+//the alpha you add in the style for box-emboss is very sensitive 
+
+@mixin letterpress-w($opacity){
+    text-shadow: 0 1px 0 rgba(255,255,255,($opacity));
+    
+}
+@mixin letterpress-b($opacity){
+    text-shadow: 0 -1px 0 rgba(0,0,0,($opacity));
+    
+}

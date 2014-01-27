@@ -1,0 +1,225 @@
+/* LAYOUT EDITS
+----------------------------------------------------------------------------------------------------*/
+/* This stylesheet should be used to edit the base layout.
+ * If you find that you have developed a system for better layout of pages please share your ideas and add lets add to Gateway Prototype.
+ * If you find that you have to override something from the base theme often let us know and we make the adjustments accordingly.
+----------------------------------------------------------------------------------------------------*/
+
+// Wrapper Defines with of site
+.wrapper {
+	width: 1350px;
+	margin-left: auto;
+	margin-right: auto;
+	@include break(tablet) {
+		width: 100% - $wrap-pad*2;
+	}
+	@include break(mobile) {
+		width: 100%; 
+	}
+}
+
+.clearfix {
+	@include clearfix(before);
+	@include clearfix(after);
+}
+
+
+//Code that builds css for columing system
+
+//Column Number is used to determine to total amount of columns you desire to generate
+$col-number: 4;
+
+.columns {
+	@include multi-column;
+}
+
+@include break-contain(desk) {
+	@include col-build(desk,$col-number);
+	.desk-2-3 {
+		@include col(2,3,0);
+	}
+}
+
+@include break-contain(tablet-desk) {
+	@include col-build(tablet,$col-number);
+	.tablet-2-3 {
+		@include col(2,3,0);
+	}
+}
+
+@include break-contain(v-tablet-tablet) {
+	@include col-build(v-tablet,$col-number);
+	.v-tablet-2-3 {
+		@include col(2,3,0);
+	}
+}
+
+@include break-contain(mobile-v-tablet) {
+	@include col-build(mobile,$col-number);
+	.mobile-2-3 {
+		@include col(2,3,0);
+	}
+}
+
+@include break-contain(v-mobile-mobile) {
+	@include col-build(v-mobile,$col-number);
+	.v-mobile-2-3 {
+		@include col(2,3,0);
+	}
+}
+
+
+// TAGS =================================================================
+
+hr {
+	margin: 1.5em;
+}
+
+// CODE =================================================================
+
+pre {
+	background: #0F0;
+	color: #000;
+	width: 100%;
+	display: block;
+	overflow: scroll;
+}
+
+// TABLES =================================================================
+
+table {
+	margin: 0px 0px 10px;
+	width: 100%;
+	caption {
+		font-style: italic;
+		text-transform: capitalize;
+	}
+}
+
+.fieldset table {
+	margin: 0px;
+}
+
+table {
+	td {
+		vertical-align: top;
+		border-width: 0px 0px;
+		padding: .5em .75em;
+	}
+	th {
+		vertical-align: top;
+		border-width: 0px 0px;
+		padding: .5em .75em;
+		padding: .5em .75em .5em 0;
+	}
+	thead {
+		color: #000;
+		text-transform: uppercase;
+		font-weight: normal;
+	}
+	tbody tr {
+		&:nth-child(2n-1) {
+			background: rgba(255, 255, 255, 0.35);
+		}
+		&:nth-child(2n) {
+			background: rgba(0, 0, 0, 0.025);
+		}
+	}
+	tfoot tr {
+		color: #aaa;
+		text-transform: uppercase;
+		font-size: .7em;
+		font-weight: normal;
+	}
+}
+
+// HEADER =================================================================
+
+header #identity {
+	border-bottom: none;
+	text-transform: uppercase;
+}
+
+
+// CONTENT-MAIN =================================================================
+
+.messages {
+	border-radius: 3px;
+}
+
+.help, .tab {
+	margin: 12.5px;
+}
+
+
+// USER-LOGIN =================================================================
+
+#user-login {
+	.form-item-name {
+		@include col(1,2,4);
+		@include break(mobile) {
+			@include col(1,1,0);
+		}
+	}
+	.form-item-pass {
+		@include col-last(1,2,4);
+		@include break(mobile) {
+			@include col(1,1,0);
+		}
+	}
+}
+
+#node-content {
+	margin-bottom: 0;
+	&.include-aside-first {
+		@include break-contain(desk) {
+			@include col-last(12,16,5);
+			@include push(3,16,5);
+		}
+		@include break-contain(tablet-desk) {
+			@include col(6,16,5);
+		}
+	}
+	&.include-aside-first-last {
+		@include break-contain(desk) {
+			@include col(9,16,5);
+			@include push(3,16,5);
+		}
+		@include break-contain(tablet-desk) {
+			@include col(6,16,5);
+		}
+	}
+	&.include-aside-last {
+		@include break-contain(desk) {
+			@include col(11,16,5);
+		}
+		@include break-contain(tablet-desk) {
+			@include col(11,16,5);
+		}
+	}
+}
+
+// SIDEBARS ===================================================
+
+#sidebar-first {
+	@include break-contain(desk) {
+		@include col(4,16,5);
+		//@include pull(9,16,5);
+	}
+	@include break-contain(tablet-desk) {
+		@include col(5,16,5);
+	}
+}
+
+
+#sidebar-last {
+	@include break-contain(desk) {
+		@include col-last(5,16,5);
+	}
+	@include break-contain(tablet-desk) {
+		@include col-last(5,16,5);
+	}
+}
+
+
+

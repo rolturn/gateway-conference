@@ -1,0 +1,16 @@
+diff --git a/docroot/sites/all/modules/contrib/ds/modules/ds_search/ds_search.module b/docroot/sites/all/modules/contrib/d
+index bc2e1f8..46fd32c 100644
+--- a/docroot/sites/all/modules/contrib/ds/modules/ds_search/ds_search.module
++++ b/docroot/sites/all/modules/contrib/ds/modules/ds_search/ds_search.module
+@@ -276,8 +276,8 @@ function ds_search_search_page($results) {
+           );
+ 
+           if ($type == 'markup') {
+-            $build['search_results'][$result['#bundle']]['#prefix'] = '<div class="' . $class . '">' . ((!empty($title)) 
+-            $build['search_results'][$result['#bundle']]['#suffix'] = '</div>';
++            $build['search_results'][$result['#bundle']]['#prefix'] = '<div class="' . $class . '">' . ((!empty($title)) 
++            $build['search_results'][$result['#bundle']]['#suffix'] = '</div></div>';
+           }
+         }
+ 
+(END) 

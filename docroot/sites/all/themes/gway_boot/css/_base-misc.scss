@@ -1,0 +1,90 @@
+/* DatePicker
+----------------------------------------------------------------------------------------------------*/
+/* styles for datepicker which Webform uses, didn't think they really fit with the forms pages */
+
+#ui-datepicker-div {
+  background: #fff;
+}
+
+table.ui-datepicker-calendar! tbody td {}
+
+.ui-datepicker td {
+  span {
+    color: #fff;
+    background: #999;
+    border-bottom: none;
+    border-radius: 3px;
+    margin: 1px;
+    padding: 2px 5px;
+  }
+  a {
+    color: #fff;
+    background: #999;
+    border-bottom: none;
+    border-radius: 3px;
+    margin: 1px;
+    padding: 2px 5px;
+    &:hover {
+      color: #fff;
+      background: #000;
+    }
+  }
+}
+
+.ui-icon {
+  background-repeat: no-repeat;
+  display: block;
+  overflow: hidden;
+  text-indent: 0;
+  font-size: .6em;
+  cursor: pointer;
+}
+
+.ui-datepicker th {
+  border: 0 none;
+  font-weight: normal;
+  padding: inherit;
+  text-align: center;
+}
+
+/* Hide tabledrag markers */
+
+table tr.draggable span.tabledrag-changed {
+  display: none;
+}
+
+/* `Data Table
+----------------------------------------------------------------------------------------------------*/
+
+.data {
+  border-style: solid;
+  border-color: #ddd;
+  th, td {
+    border-style: solid;
+    border-color: #ddd;
+  }
+  border-width: 0 1px 1px;
+  width: 100%;
+  caption {
+    padding: 0 10px 5px;
+    text-transform: uppercase;
+  }
+  th, td {
+    border-top-width: 1px;
+    padding: 5px 10px;
+  }
+  th {
+    white-space: nowrap;
+  }
+  thead th {
+    background: #eee;
+    font-weight: bold;
+    text-shadow: #fff 0 1px 0;
+  }
+  tbody th {
+    width: 1px;
+  }
+  tr th:first-child {
+    text-align: right;
+  }
+}

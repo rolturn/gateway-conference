@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Gateway Ads feature.
+ */
+
+include_once('gway_ads.features.inc');

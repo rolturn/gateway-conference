@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Installation and uninstallation hooks
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function skitch_requirements($phase) {
+  module_load_include('module', 'libraries');
+  module_load_include('module', 'skitch', 'skitch');
+
+  $requirements['skitch'] = array(
+    'title' => t('Simple HTML DOM'),
+    'value' => skitch_simplehtmldom_path() ? t('available') : t('not available'),
+    'description' => !skitch_simplehtmldom_path() ? t('Skitch needs the Simple HTML DOM parser to run. Download it <a href="http://simplehtmldom.sourceforge.net/">here</a> and extract it under sites/all/libraries such that simple_html_dom.php is found at sites/all/libraries/simpledomhtml/simple_html_dom.php') : NULL,
+    'severity' => skitch_simplehtmldom_path() ? REQUIREMENT_OK : REQUIREMENT_ERROR,
+  );
+
+  return $requirements;
+}

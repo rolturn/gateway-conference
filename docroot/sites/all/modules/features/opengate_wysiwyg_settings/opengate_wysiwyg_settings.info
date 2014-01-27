@@ -1,0 +1,17 @@
+name = OpenGate WYSIWYG Settings
+description = Settings for the WYSIWYG Text Editor and Paste Format
+core = 7.x
+package = Configurations
+php = 5.2.4
+version = 7.x-1.0
+project = opengate_wysiwyg_settings
+dependencies[] = ckeditor
+dependencies[] = ctools
+dependencies[] = pasteformat
+dependencies[] = strongarm
+features[ckeditor_profile][] = Advanced
+features[ckeditor_profile][] = CKEditor Global Profile
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:1
+features[variable][] = pasteformat_cleanup_format
+features[variable][] = pasteformat_message_success

@@ -1,0 +1,6 @@
+
+OG Access Admins 6.x-1.0-beta1, 2010-04-13
+------------------------------------------
+Initial release of OG Access Admins module. Allows to restrict
+permissions to change audience/visibility of posts belonging to a
+group to only administrators of this group.

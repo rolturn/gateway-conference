@@ -1,0 +1,109 @@
+<?php
+// $Id$
+/**
+* A module that emails editorial when content needs reviewing.
+*/
+
+
+/**
+ * Sets up and defines email settings 
+ */
+
+define('USER_WARN_MAIL_SUBJECT', 'Content Ready for Review');
+define('USER_WARN_MAIL_TEXT',
+'Hello Editorial,
+
+There is some content that is ready for your review.
+
+Sincerely,
+[site:name]
+[site:mail]');
+
+/**
+* Implements hook_help()
+*/
+
+function workbench_email_help($path, $arg)
+{
+	if ($path == 'admin/help#workbench_email')
+	{
+		return t('A module that emails editorial when content needs reviewing.');
+	}
+}
+
+
+/**
+ * Implements hook_node_insert
+ * This allows an email to be sent on node creation with
+ * a workbench state of needs review
+ */
+
+function workbench_email_node_insert($node)
+{
+    //echo '<pre>'; print_r($node); echo '</pre>'; exit(0);
+    //dsm($node);
+    if(@$node->workbench_moderation_state_new == 'needs_review') {
+        send_email();
+    }
+}
+
+/**
+ * Implements hook_node_update
+ * 
+ * This allows an email to be sent on node update 
+ * with a workbench state of needs review
+ */
+
+function workbench_email_node_update($node)
+{
+     if(@$node->workbench_moderation_state_new == 'needs_review') {
+        send_email();
+    }
+}
+
+/**
+ * Function to send out email through Drupal 
+ */
+
+function send_email()
+{
+    drupal_mail(
+    	'workbench_email', 
+            'state', 
+    		'editorial@gatewaypeople.com', 
+                    variable_get('site_mail', NULL),
+    		TRUE
+	
+    );
+}
+
+
+/**
+ * Implement hook_mail().
+ */
+
+function workbench_email_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'state':
+      $account = $params['account'];
+      $subject = variable_get('user_warn_email_subject', USER_WARN_MAIL_SUBJECT);
+      $body = variable_get('user_warn_email_text', USER_WARN_MAIL_TEXT);
+
+      if (variable_get('user_warn_bcc', FALSE)) {
+        $admin_mail = variable_get('site_mail', NULL);
+        $message['headers']['bcc'] = $admin_mail;
+      }
+
+      $message['to'] = 'editorial@gatewaypeople.com';
+      $message['subject'] = $subject;
+      $message['body'][] = token_replace($body, array('user' => $account));
+      break;
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+diff --git a/docroot/sites/gwp/modules/custom/smart_trim/smart_trim.module b/docroot/sites/gwp/modules/custom/smart_trim/smart_trim.module
+index 5505915..92c4806 100644
+--- a/docroot/sites/gwp/modules/custom/smart_trim/smart_trim.module
++++ b/docroot/sites/gwp/modules/custom/smart_trim/smart_trim.module
+@@ -16,7 +16,6 @@ function smart_trim_field_formatter_info() {
+         'more_text' => 'Read more',
+         'summary_handler' => 'full',
+         'trim_options' => array(),
+-        'exclude_options' => '<p><strong><em><br><ul><ol><li>'
+       ),
+     )
+   );
+@@ -50,7 +49,7 @@ function smart_trim_field_formatter_view($entity_type, $entity, $field, $instanc
+         if (!empty($settings['trim_options'])) {
+           if (!empty($settings['trim_options']['text'])) {
+             // Strip tags
+-            $output = strip_tags(str_replace('<', ' <', $output), $settings['exclude_options']);
++            $output = strip_tags(str_replace('<', ' <', $output));
+ 
+             // Strip out line breaks
+             $output = preg_replace('/\n|\r|\t/m', ' ', $output);
+@@ -210,14 +209,6 @@ function smart_trim_field_formatter_settings_form($field, $instance, $view_mode,
+     ),
+     '#default_value' => empty($settings['trim_options']) ? array() : $settings['trim_options'],
+   );
+-  
+-  $element['exclude_options'] = array(
+-    '#title' => t('Tags to exclude'),
+-    '#type' => 'textfield',
+-    '#size' => 30,
+-    '#default_value' => $settings['exclude_options'],
+-    '#description' => t('Choose tags you want to display.'),
+-  );
+ 
+   return $element;
+ }

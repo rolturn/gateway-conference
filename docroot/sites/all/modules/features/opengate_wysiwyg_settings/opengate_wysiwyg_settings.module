@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the WYSIWYG Settings feature.
+ */
+
+include_once 'opengate_wysiwyg_settings.features.inc';

@@ -1,0 +1,163 @@
+<?php
+// Helper functions.
+include_once ('media_theplatform_mpx_upload.admin.inc');
+include_once ('media_theplatform_mpx_upload.browser.inc');
+include_once ('media_theplatform_mpx_upload.upload.inc');
+
+/**
+ * Implements hook_permission().
+ */
+function media_theplatform_mpx_upload_permission() {
+  return array(
+    'upload mpx videos' => array(
+      'title' => t('Upload mpxMedia'),
+      'description' => t('Can upload videos to mpx'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function media_theplatform_mpx_upload_menu() {
+  $items = array();
+  $items[MPX_PATH_ADMIN.'/settings'] = array(
+    'title' => t('Import Settings'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10
+  );
+
+  $items[MPX_PATH_ADMIN.'/upload'] = array(
+    'title' => t('Upload Settings'),
+    'description' => t('Configure thePlatForm mpx upload settings.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('media_theplatform_mpx_form_upload_server_settings'),
+    'type' => MENU_LOCAL_TASK,
+    'access arguments' => array('administer mpx account'),
+  );
+
+  $items['mpx-worker/upload/%'] = array(
+    'title' => t('MPX Upload Callback'),
+    'description' => '',
+    'page callback' => 'media_theplatform_mpx_upload_worker',
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
+
+  $items['mpx-worker/upload/%/status'] = array(
+    'title' => t('MPX Status Callback'),
+    'description' => '',
+    'page callback' => 'media_theplatform_mpx_upload_worker_status',
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+  );
+
+  $items['admin/content/file/mpxuploads'] = array(
+    'title' => t('MPX Upload Status'),
+    'description' => '',
+    'page callback' => 'media_theplatform_mpx_upload_list',
+    'type' => MENU_LOCAL_TASK,
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_media_browser_plugin_info().
+ */
+function media_theplatform_mpx_upload_media_browser_plugin_info() {
+  $info['theplatform_mpx_mpxmedia_upload'] = array(
+    'title' => t('mpxMedia Upload'),
+    'class' => 'MediaThePlatformMpxMediaUpload',
+  );
+  return $info;
+}
+
+/**
+ * If auto-publish is turned on, publish nodes with MPX videos in Drupal when they are
+ * finished publishing in MPX. Also creates a hook for other modules to act upon.
+ * @param $published_video
+ */
+function media_theplatform_mpx_upload_published($published_video) {
+  // Run cron so the video gets updated
+  media_theplatform_mpx_import_all_videos('cron');
+
+  $nodes = array();
+  $files = array();
+  if(media_theplatform_mpx_variable_get('auto_publish', 0)) {
+    $guid = $published_video->guid;
+    // Fuzzy match for guid on uri field, this will catch all
+    // player+video combinations
+    $files = db_select('file_managed', 'm')
+      ->fields('m', array('fid'))
+      ->condition('uri', '%'.$guid.'%', 'LIKE')
+      ->execute()
+      ->fetchAll();
+    // For player+video combo, find it's usage on nodes
+    foreach($files as $file) {
+      $nodes = db_select('file_usage', 'f')
+        ->fields('f', array('id'))
+        ->condition('type', 'node', '=')
+        ->condition('fid', $file->fid, '=')
+        ->execute()
+        ->fetchAll();
+      // Publish each node
+      foreach($nodes as $node) {
+        $node = node_load($node->id);
+        node_publish_action($node);
+        node_save($node);
+        watchdog('media_theplatform_mpx_upload', 'Node "@title" automatically published by MPX.', array('@title' => $node->title), WATCHDOG_INFO);
+      }
+    }
+  }
+  // Allow other modules to hook at this point
+  module_invoke_all('media_theplatform_mpx_upload_published', $published_video, $nodes, $files);
+}
+
+/**
+ * Implements hook_cron().
+ */
+function media_theplatform_mpx_upload_cron() {
+  // Start the publishing watcher, it will automatically exit if another
+  // is already running
+  if(!module_exists('httprl')) {
+    // Fetch upload queue item
+    $upload_items = db_select('mpx_uploads', 'q')
+      ->fields('q')
+      ->condition('status', 'new', '=')
+      ->execute()
+      ->fetchAll();
+
+    foreach($upload_items as $upload_item) {
+      media_theplatform_mpx_upload_worker($upload_item->id);
+    }
+  }
+
+  // If the publishing watcher thread is running, make sure it's not stuck
+  $semaphore = db_select('semaphore', 's')
+    ->fields('s', array('value'))
+    ->condition('name', 'mpx_publishing_watcher_running', '=')
+    ->range(0,1)
+    ->execute()
+    ->fetchField();
+  if($semaphore) {
+    _mpx_publishing_status_watcher_health_check();
+  }
+}
+
+/**
+ * Checks whether stream functions required for non-blocking
+ * http requests are available on the server.
+ */
+function media_theplatform_mpx_upload_check_stream_availability() {
+  $required_functions = array('stream_socket_client', 'stream_select', 'stream_set_blocking', 'stream_socket_get_name', 'stream_get_meta_data');
+  $disabled_functions = array_map('trim',explode(', ', ini_get('disable_functions')));
+  foreach($required_functions as $required_function) {
+    if(!function_exists($required_function) || in_array($required_function, $disabled_functions))
+      return false;
+  }
+  return true;
+}

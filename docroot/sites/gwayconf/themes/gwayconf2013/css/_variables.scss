@@ -1,0 +1,45 @@
+// !GLOBAL RESPONSIVE VARIABLES
+
+$desk: 1200px;
+$tablet: 1300px;
+$v-tablet: 1020px;
+$mobile: 760px;
+$v-mobile: 500px;
+$sm-mobile: 500px;
+
+// !GLOBAL GUTTER VARIABLES
+//column gutter variables we now how four options if using gutter space
+$gut-no: 0;
+$gut-sm: .1;
+$gut-med: 3;
+$gut-lg: 20;
+
+
+// !GLOBAL COLORS
+$c-primary: #d80b8c;
+$c-secondary: #00a994;
+$c-support: #124857;
+
+$c-schedule-links: #76ffee;
+
+$black: #000;
+$red: #c91818;
+$blue: #6a818a;
+
+$dark-grey: #3d3e3f;
+$grey: #ced0d1;
+$light-grey: #f8f8f8;
+
+
+// !PADDING VARIABLES
+$wrap-pad: 6%; 
+
+// !BORDER RADIUS
+$b-radius: 6px;
+
+$f-primary: "museo-slab", "Trebuchet MS", Tahoma, Verdana, sans-serif;
+$f-secondary: "proxima-nova", "Trebuchet MS", Tahoma, Verdana, sans-serif;
+
+
+//$f-primary: "SteelfishRegular", "Trebuchet MS", Tahoma, Verdana, sans-serif;
+//$f-secondary: "LiberationSansRegular","Trebuchet MS",Tahoma,Verdana,sans-serif;
